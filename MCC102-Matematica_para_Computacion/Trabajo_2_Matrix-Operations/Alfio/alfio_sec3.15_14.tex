@@ -1,0 +1,28 @@
+Demostrar que si $A = QR$, entonces:
+\[\frac{1}{n}K_1(A) \leq K_1(R) \leq nK_1(A)\]
+Mientras $K_2(A) = K_2(R)$.
+
+\noindent \textcolor{red}{\bf Solución:}
+
+Primero demostramos $\frac{1}{n}K_1(A) \leq K_1(R)$:
+\begin{equation*}
+    \begin{split}
+        \frac{1}{n}K_1(A)   & = \frac{1}{n}K_1(QR) = \frac{1}{n} \|QR\|_1 \|(QR)^{-1}\|_1  \\
+                            & \leq \frac{1}{n} \|Q\|_1 \|R\| \|R^{-1}\|_1 \|Q^T\|_1     \\
+                            & \leq K_1 (R)                                              \\
+    \end{split}
+\end{equation*}
+
+Ahora, demostramos la segunda inecuación $\leq K_1(R) \leq nK_1(A)$:
+\begin{equation*}
+    \begin{split}
+        K_1(R)  & = \|R\|_1 \|R^{-1}\|                          \\
+                & \leq \sqrt{n} \|R\|_2 \sqrt{n} \|R^{-1}\|_2 = n \|R\|_2 \|R^{-1}\|_2 = n K_2(A) = n \|A\|_2 \|A^{-1}\|_2                      \\
+                & \leq n \|A\|_1 \|A^{-1}\|_1                   \\
+                & \leq n K_1 (A)                                \\
+    \end{split}
+\end{equation*}
+Como se demostramos las dos inecuaciones para $A=QR$, entonces: 
+\begin{equation}
+    \frac{1}{n}K_1(A) \leq K_1(R) \leq nK_1(A)
+\end{equation}

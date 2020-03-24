@@ -1,0 +1,67 @@
+\textbf{Considere el sistema de bloques que converge de la solución de la ecuación discreta de Poisson $u_xx + u_yy = f$.}
+% matriz
+\begin{align*}
+    \begin{bmatrix}
+    T      & -I    &  \dots  & \dots  & 0\\
+    -I     & T     &  \ddots & \ddots  & \vdots\\
+    \vdots &\ddots &  \ddots & \ddots & -I\\
+    0     &\dots   &  \dots  & -I     & T
+\end{bmatrix}
+Donde \quad T=
+\begin{bmatrix}
+    4 & -1 & x_{13} & \dots  & 0 \\
+    -1 & x_{22} & x_{23} & \dots  & \vdots \\
+    \vdots & \ddots & \ddots & \ddots & \vdots \\
+    0 & x_{d2} & \dots & \dots  & x_{dn}
+\end{bmatrix}
+\end{align*}
+
+lo anterior muestra que el bloque de iteración de Jacobi, en este caso particular es 
+\begin{align*}
+    Tx^{k+1}_{1} = x^{k}_{i+1} + x^{k}_{i-1} +b_{i} \quad i = 1,\dots, N
+\end{align*}
+describiendo los bloques de iteración de Gauss-Seidel y SOR.
+para el métdo.
+
+para el metodo en bloque de Jacobi se tiene que:
+\begin{align*}
+    Tx^{k+1}_{1}=b_i \quad \sum^{N}_{j = 1, i \neq j} A_{ij}x_j^k
+,\quad i = 1,\dots, N
+\end{align*}
+Como $A_{ii} = T$ y $A_{ij, i != j}= -I$, entonces:
+\begin{align*}
+    Tx^{k+1}_{1}=b_i - \sum^{N}_{j = 1, i \neq j} -Ix_j^k \quad i = 1,\dots, N\\
+    Tx^{k+1}_{1}=b_i + \sum^{N}_{j = 1, i \neq j} x_j^k \quad i = 1,\dots, N
+\end{align*}
+
+como los unicos elementos existentes alrededor de la diagonal son los términos $(i-1)$ e $(i+1)$, entonces:
+\begin{align*}
+    Tx^{k+1}_{1} = x^{k}_{i+1} + x^{k}_{i-1} + b_{i} \quad i = 1,\dots, N
+\end{align*}
+
+De la misma forma el bloque de iteración del Gaus-Seidel, tiene la forma:
+
+\begin{align*}
+    A_{ii}x_{i}^{k+1} = b_i - \sum^{i-1}_{j = i} A_{ij}x^{k}_j -\sum^{N}_{j = i + 1} A_{ij}x^{k}_j \quad i = 1,\dots, N\\
+    Tx_{i}^{k+1} = b_i + \sum^{i-1}_{j = 1} Ix^{k + 1}_j +\sum^{N}_{j = i + 1} Ix^{k}_j \quad i = 1,\dots, N\\
+    Tx_{i}^{k+1} = b_i + \sum^{i-1}_{j = 1} x^{k + 1}_j +\sum^{N}_{j = i + 1} x^{k}_j \quad i = 1,\dots, N\\
+\end{align*}
+
+Como los únicos elementos alrededor de la diagonal son los términos $(i-1)$ e $(i-1)$, entonces :
+
+\begin{align*}
+    Tx^{k+1}_{i} = x^{k+1}_{i-1} + x^{k}_{i+1} + b_{i} \quad i = 1,\dots, N
+\end{align*}
+
+Por otro lado para el caso del SOR se tiene :
+\begin{align*}
+    x^{k+1}_{i} = \frac{W}{A_{ii}} \left[b_i - \sum^{i-1}_{j = 1}A_{ij}x^{k+1}_j - \sum^{N}_{j = i+1}A_{ij}x^k_j \right] + (1 -w)x^k_i \quad i = 1,\dots, N\\
+    x^{k+1}_{i} = \frac{W}{T} \left[b_i - \sum^{i-1}_{j = 1}x^{k+1}_j - \sum^{N}_{j = i+1}x^k_j \right] + (1 -w)x^k_i \quad i = 1,\dots, N\\
+\end{align*}
+
+Ahora como los únicos elementos existentes alrededor de la diagonal son los términos $(i-1)$  e $(i +1)$, entonces:
+\begin{align*}
+    x^{k+1}_i = \frac{W}{T}\left[b_i + x^{k+1}_{i-1} + x^k_{i+1}
+    \right]x^k_i + (1 - W)x^k_i\quad i = 1,\dots, N\\
+    Tx^{k+1}_i = W\left[b_i + x^{k+1}_{i-1} + x^k_{i+1} \right]x^k_i + (1 - W)Tx^k_i \quad i = 1,\dots, N\\
+\end{align*}

@@ -1,0 +1,44 @@
+El radio espectral de la matriz 
+\begin{center}
+\[
+B
+=
+\begin{pmatrix}
+     $a$ &  $4$\\
+     $0$ &  $a$\\
+\end{pmatrix}
+\]
+\end{center}
+es $p(B) = a$. Verificar que si $0<a<1$, entonces $p(B)<1$, mientras $||B^m||_2^{\frac{1}{m}}$ puede ser mas grande que 1 
+
+\textbf{Solución:}
+
+Matriz B multiplicada $m$ veces:
+\[
+    B^m = B * B * B ... B
+\]
+Entonces, para la norma 2 de $B^m$ se multiplica m veces B por m veces $B^T$:
+\[
+    ||B^m||_2 = \sqrt{max \ \lambda \ de \ (B^m)^T*B^m}
+\]
+Sabemos que $p(B^m*(B^m)^T) = ||B^m||_2$, entonces:
+\[
+    ||B^m||_2 = p(B*B*B...*B*B^T*B^T*B^T*...*B^T)   
+\]
+Considerando que los autovalores de la matriz $B$ coinciden con los de $B^T$ y por propiedad de radio espectral, tenemos radio espectral de $B$ multiplicado $2m$ veces:
+\[
+    ||B^m||_2 \leq p(B)*p(B)*...*p(B)
+\]
+\[
+    ||B^m||_2 \leq p^{2m}(B)
+\]
+\[
+    ||B^m||_2^{\frac{1}{m}} \leq p^{2}(B)
+\]
+Por definición $p(B) = a$
+\[
+    ||B^m||_2^{\frac{1}{m}} \leq a^2
+\]
+$0 < a < 1$, entonces $||B^m||_2^{\frac{1}{m}}$ no sera mas grande que 1.
+
+Por lo tanto, $||B^m||_2^{\frac{1}{m}} \leq 1 $

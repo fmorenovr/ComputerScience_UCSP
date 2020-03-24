@@ -1,0 +1,53 @@
+\begin{enumerate}[label=(\alph*)]
+\item ¿Cómo está relacionado $Cond(A)$ y $Cond(A^{-1})$?
+\item Pruebe que:\\
+(i) $1 \leq Cond(A)$\\
+(ii) $Cond(A^TA)=Cond^2(A)$
+\end{enumerate}
+
+\noindent \textcolor{red}{\bf Solución:}
+\begin{enumerate}[label=(\alph*)]
+    \item ¿Cómo está relacionado $Cond(A)$ y $Cond(A^{-1})$?\\
+Ambos numeros condicionantes son los mismos. Por definicion sabemos:
+$$Cond(A) =  \begin{Vmatrix} A \end{Vmatrix} \begin{Vmatrix} A^{-1} \end{Vmatrix}$$
+Si calculamos $Cond(A^{-1})$:
+$$Cond(A^{-1}) =  \begin{Vmatrix} A^{-1} \end{Vmatrix} \begin{Vmatrix} (A^{-1})^{-1} \end{Vmatrix}$$
+$$Cond(A^{-1}) =  \begin{Vmatrix} A^{-1} \end{Vmatrix} \begin{Vmatrix} A \end{Vmatrix}$$
+Al tratarse de normas se puede escribir:
+$$\begin{Vmatrix} A^{-1} \end{Vmatrix} \begin{Vmatrix} A \end{Vmatrix} = \begin{Vmatrix} A \end{Vmatrix}\begin{Vmatrix} A^{-1} \end{Vmatrix}$$
+$$Cond(A^{-1}) = Cond(A)$$
+
+\item Pruebe que:
+
+(i) $1 \leq Cond(A)$
+
+Sabiendo que $Cond(AB) \leq Cond(A)Cond(B)$
+\begin{gather*}
+Cond(A)=Cond(AA^{-1}A) \\
+Cond(AA^{-1}A) \leq Cond(A)Cond(A^{-1})Cond(A)
+\end{gather*}
+
+Como $Cond(A) = Cond(A^{-1})$
+
+\begin{gather*}
+Cond(AA^{-1}A) \leq Cond(A)Cond(A)Cond(A)\\
+Cond(A) \leq Cond(A)Cond(A)Cond(A)\\
+1 \leq Cond^2(A)\\
+1 \leq Cond(A)\\
+\end{gather*}
+
+(ii) $Cond(A^TA)=Cond^2(A)$
+
+Puesto que $Cond(A)= \frac{\sigma_{max}}{\sigma_{min}}$ tenemos que
+\begin{gather*}
+Cond(A^TA)=\frac{\sigma_{max}^1}{\sigma_{min}^1}\\
+\begin{Vmatrix} (A^TA)^T(A^TA) - \sigma^1I \end{Vmatrix}=0\\
+\begin{Vmatrix} (A^TA)^2 - \sigma^1I \end{Vmatrix}=0\\
+\begin{Vmatrix} A^TA - \sqrt{\sigma^1}I \end{Vmatrix} \begin{Vmatrix} A^TA + \sqrt{\sigma^1}I \end{Vmatrix}=0\\
+\begin{Vmatrix} A^TA - \sqrt{\sigma^1}I \end{Vmatrix} = 0\\
+\sqrt{\sigma^1}=sqrt{\sigma}\\
+\frac{\sigma_{max}^1}{\sigma_{min}^1}=\left( \frac{\sigma_{max}}{\sigma_{min}} \right) ^2\\
+Cond(A^TA)=Cond^2(A)\\
+\end{gather*}
+
+\end{enumerate}

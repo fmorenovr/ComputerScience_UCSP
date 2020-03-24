@@ -1,0 +1,103 @@
+Dado el sistema $Ax=b$, donde:
+
+$$
+    A=\begin{pmatrix}
+     1 &  2 & -2 \\
+     1 &  1 &  1 \\
+     2 &  2 &  1 
+    \end{pmatrix},\ 
+    b=\begin{pmatrix}
+    1\\
+    4\\
+    5
+    \end{pmatrix}
+$$
+
+¿Es posible resolver el sistema por los métodos de Gauss-Seidel y Jacobi? en caso de ser factible halle la solución.
+
+\textbf{Solución:}
+
+Para saber si es posible resolver el sistema por los métodos mencionados se debe hallar el radio de convergencia de cada método:
+
+$$
+    B_{J}=\begin{pmatrix}
+     2 &  -2 & 2 \\
+     -1 &  0 &  -1 \\
+     -2 &  -2 &  0 
+    \end{pmatrix},\ \rho(B_{J}) = 1.0809*10^{-5}
+$$
+
+y
+
+$$
+    B_{GS}=\begin{pmatrix}
+     0 &  -2 & 2 \\
+     0 &  -2 &  1 \\
+     0 &  -8 &  6 
+    \end{pmatrix},\ \rho(B_{GS}) = 4.8284
+$$
+
+De donde se observa que solo es posible resolver el sistema usando el método de Jacobi. Entonces:
+
+Siendo:
+
+$$
+    b_{J}=D^{-1}b = \begin{pmatrix}
+    1\\
+    4\\
+    5
+    \end{pmatrix}
+$$
+
+Entonces:
+
+$$
+    x^{(0)}=\begin{pmatrix}
+    0\\
+    0\\
+    0
+    \end{pmatrix}
+$$
+
+$$
+    x^{(1)}=\begin{pmatrix}
+    -1\\
+    -4\\
+    -5
+    \end{pmatrix}
+$$
+
+$$
+    x^{(2)}=\begin{pmatrix}
+    -3\\
+    2\\
+    5
+    \end{pmatrix}
+$$
+
+$$
+    x^{(3)}=\begin{pmatrix}
+    5\\
+    -6\\
+    -3
+    \end{pmatrix}
+$$
+
+$$
+    x^{(4)}=\begin{pmatrix}
+    5\\
+    -6\\
+    -3
+    \end{pmatrix}
+$$
+
+Se puede observar que en la tercera iteración ya se alcanzó la solución:
+
+$$
+    x=\begin{pmatrix}
+    5\\
+    -6\\
+    -3
+    \end{pmatrix}
+$$
+

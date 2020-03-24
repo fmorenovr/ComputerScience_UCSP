@@ -1,0 +1,2 @@
+ImgLenght KerLenght numthd serialTime parallelTime eff speedUp
+2000 5 16 290.611 0.00112 16217.2 259474

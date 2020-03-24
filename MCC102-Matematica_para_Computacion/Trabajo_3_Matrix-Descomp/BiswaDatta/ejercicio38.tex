@@ -1,0 +1,154 @@
+Deje que la matriz A de n x n sea particionada dentro de la forma
+\[\begin{pmatrix} 
+A_{11} & A_{12} & \cdots & A_{1N} \\ 
+A_{21} & A_{22} & \cdots & A_{2N} \\ 
+\vdots & \vdots &     & \vdots \\ 
+A_{N,1} & A_{N,2} & \cdots & A_{N,N}  
+\end{pmatrix} \]
+donde cada bloque de la diagonal $A_{ii}$ es cuadrado y no singular. Considere el sistema lineal
+\[Ax=b\]
+con A como el anterior y $x$ y $b$ particionados de manera proporcional.
+\begin{itemize}
+\item Escriba el bloque Jacobi, bloque Gauss-Seidel, y el bloque de iteraciones SOR para el sistema lineal $Ax =b$. (Consejo: Escribe $A=L+D+U$, donde $D=diag(A_{11},...,A_{NN})$ y $L$ y $U$ son estrictamente bloques superiores e inferiores matrices triangulares)\\
+\textbf{Solución}\\
+Bloque de Iteración de Jacobi:\\
+\[A_{ii}X_i^{k+1} = B_i - \sum_{j=1, j\neq i}^N A_{ij}X_j^{(k)} , i=1,2,...,N\]
+Bloque de Iteración de Gauss-Seidel:\\
+\[A_{ii}X_i^{k+1} = B_i - \sum_{j=1}^{i-1} A_{ij}X_j^{(k+1)} - \sum_{j=i+1}^N A_{ij}X_j^{(k)}, i=1,2,...,N\]
+Bloque de iteración del SOR:\\
+\[A_{ii}X_i^{k+1} =\omega(B_i - \sum_{j=1}^{i-1} A_{ij}X_j^{(k+1)} - \sum_{j=i+1}^N A_{ij}X_j^{(k)}) + (1-\omega)X_i^{(k)}, i=1,2,...,N\]
+
+\item Si $A$ es simétrica definida positiva, luego muestra que $U=L^T$ y $D$ es positiva definida. En este caso, usando los resultados correspondientes en los casos escalares, pruebe que, con una elección arbitraria de la aproximación inicial, el bloque Gauss-Seidel siempre converge y el bloque SOR converge si y solo si $0<\omega<2$\\
+\textbf{Solución}\\
+SAbiendo que:\\
+\[A= L + D + U\]
+\[L_{ij} =
+\begin{cases} 
+      A_{ij}    & \mbox{si }  j < i  \\
+      0         & \mbox{si } i \leq j 
+\end{cases}\]
+\[D_{ij} =
+\begin{cases} 
+      A_{ij}    & \mbox{si }  j = i  \\
+      0         & \mbox{si } i \neq j 
+\end{cases}\]
+\[U_{ij} =
+\begin{cases} 
+      A_{ij}    & \mbox{si }  j > i  \\
+      0         & \mbox{si } i \geq j 
+\end{cases}\]
+Si A es definida positiva, entonces mostrar que $U= L ^T$ y $D$ es positiva.\\
+Muestra que $U=L^T$:
+\[\text{Si A es simétrica} =
+\begin{cases} 
+      A_{ij}^T=A_{ji}    & \mbox{si }  j \neq i  \\
+      A_{ij} \text{ es simétrica} & \mbox{si } i = j 
+\end{cases}\]
+$$
+    U=\begin{pmatrix}
+      0 &  A_{12} & A_{13} & \ldots &  A_{1N} \\
+      0 &  0      & A_{23} & \ldots &  A_{2N} \\
+      \vdots & \vdots  & \ddots & \vdots & \vdots \\
+      0 &  0      & 0      & \ldots &  A_{N-1 N} \\
+      0 &  0      & 0      & \ldots &  0 
+    \end{pmatrix},
+    L=\begin{pmatrix}
+      0 &  0 & 0 & \ldots &  0 \\
+      A_{21} &  0   & 0 & \ldots &  0 \\
+      \vdots & \vdots  & \ddots & \vdots & \vdots \\
+      A_{N-1 1} &  A_{N-1 2}      & A_{N-1 3}      & \ldots &  0 \\
+      A_{N 1} &  A_{N 2}      & A_{N 3}      & \ldots &  0 
+    \end{pmatrix},
+$$
+$$
+    L^T=\begin{pmatrix}
+      0 &  A_{21}^T & A_{31}^T & \ldots &  A_{N1}^T \\
+      0 &  0      & A_{32}^T & \ldots &  A_{N2}^T \\
+      \vdots & \vdots  & \ddots & \vdots & \vdots \\
+      0 &  0      & 0      & \ldots &  A_{N N-1 }^T \\
+      0 &  0      & 0      & \ldots &  0 
+    \end{pmatrix}
+    =\begin{pmatrix}
+      0 &  A_{12} & A_{13} & \ldots &  A_{1N} \\
+      0 &  0      & A_{23} & \ldots &  A_{2N} \\
+      \vdots & \vdots  & \ddots & \vdots & \vdots \\
+      0 &  0      & 0      & \ldots &  A_{N-1 N} \\
+      0 &  0      & 0      & \ldots &  0 
+    \end{pmatrix} L^T =U
+$$
+Entonces para mostrar que $D$  es definida positiva partimos de que $A$ es definida positiva, es decir $a_{ii}>0$
+Entonces tendríamos a $D$:
+$$
+    D=\begin{pmatrix}
+      0 &  A_{11} & 0 & \ldots &  0 \\
+      0 &  A_{22} & 0 & \ldots &  0 \\
+      \vdots & \vdots  & \ddots & \vdots & \vdots \\
+      0 &  0      & 0      & \ldots &  0 \\
+      0 &  0      & 0      & \ldots &  A_{N N} 
+    \end{pmatrix}
+$$
+$diag(A) = diag(D)$ entonces $d_{ii}>0$
+Por lo tanto se demuestra que $S$ es definida positiva.
+
+\textbf{Probar que, con una elección arbitraria de la aproximación inicial, el bloque Gauss-Seidel siempre converge y el bloque SOR converge si y solo si $0<\omega<2$}\\
+\textbf{Probando que el bloque Gauss-Seidel converge}\\
+$X^{(k+1)} = B_{GS}X^{(k)} + B_{GS}$, converge si $B_{GS}\rightarrow 0$ para $k \rightarrow \infty \Longleftrightarrow \rho(B_{GS})<1$
+Probaremos que $\rho(B_{GS})<1$.\\
+Partimos de que $A$ es  simétrica:\\
+\[A=L+ D+ L^T\]
+Entonces $B_{GS} = - (D+L)^{-1}L^T$ y si $-\lambda$ es un autovalor de $B_{GS}$ y $u$ su correspondiente autovector.
+\[(D+L)^{-1}L^Tu = \lambda u\]
+\[L^T u =\lambda(D+L)u\]
+\[u*L^T u = \lambda u*(D+L)u, u*=( \bar{u})^T\]
+\[u*Au - u*(L+D)u = \lambda u*(L+D)u, L^T = A-(L+D)\]
+\[u*Au=(\lambda+1)u*(L+D)u\]
+Tomando la conjugada transpuesta:
+\[u*Au = ( \bar{\lambda} + 1)u*(L^T+D^T)u\]
+Al considerar I y II se tiene:
+\[(\frac{1}{1+\lambda}+\frac{1}{1+\lambda})u*Au=u*(L+D)u + u*(L^T+D^T)u\]
+\[=u*(L+D+L^T+D^T)u\]
+\[=u*(A+D^T)u , D^T =D\]
+\[=u*(A+D)u\]
+Como $A$ y $D$ son definidos positivos, $(u*Au > 0, u*Au>0)$.
+\[u*(A+D)u > u*Au\]
+\[(\frac{1}{1+\lambda}+\frac{1}{1+ \bar{\lambda}})u*Au > u*Au\]
+\[\frac{1}{1+\lambda}+\frac{1}{1+\lambda} > 1\]
+\[ \frac{2+\lambda + \bar{\lambda}}{(1+\lambda)(1+ \bar{\lambda})}> 1\]
+Sea $\lambda=\alpha+i\beta $, $ \bar{\lambda}=\alpha-i \beta$
+\[\frac{2(1+\alpha)}{(1+\alpha)^2 + \beta^2}>1\]
+\[1 > |\lambda|, \text{para todo } \lambda \text{de A}\]
+\[1 > |\lambda_{MAX}|, \rho(B_{GS})<1\]
+Por lo tanto si $A$ es matriz definida positiva y simétrica,$B_{GS} $converge\\
+\textbf{Probando que el bloque SOR converge}\\
+EL método converge sí $B_{SOR} $ converge siendo:
+\[B_{SOR}= (D+WL)^{-1}[(1-W)D - WU]\]
+$$
+    (D+WL)^{-1}=\begin{pmatrix}
+      A_{11}^{-1} &  0 & 0 & \ldots &  0 \\
+      * &  A_{22}^{-1} & 0 & \ldots &  0 \\
+      \vdots & \vdots  & \ddots & \vdots & \vdots \\
+      * &  *      & *      & \ldots &  0 \\
+      * &  *      & *      & \ldots &  A_{N N}^{-1} 
+    \end{pmatrix},\text{ triangular inferior}
+$$
+
+$$
+    |(1-W)D - WU|=\begin{pmatrix}
+      (1-\omega)A_{11} &  * & * & \ldots &  * \\
+      0 &  (1-\omega)A_{22} & * & \ldots &  * \\
+      \vdots & \vdots  & \ddots & \vdots & \vdots \\
+      0 & 0  & 0 & \ldots &  0 \\
+      0 & 0  & 0 & \ldots &  (1-\omega)A_{N N}
+    \end{pmatrix},\text{ triangular inferior}
+$$
+\[\det(B_{SOR}) = det((D+WL)^{-1})det[(1-W)D - WU]\]
+\[\prod_{n=1}^N |A_{NN}^{-1}|\prod_{n=1}^N(1-\omega)^P|A_{NN}|\]
+\[det(B_{SOR}) = (1-\omega)^{Np}, (A_{ij} \textbf{es de orden pxp})\]
+Como el determinante de una matriz es igual al producto de sus autovalores.
+\[\rho(B_{SOR}) \geq |1-\omega|\]
+\[\rho(B_{SOR}) \geq 1-\omega \cup \rho(B_{SOR}) \geq \omega - 1, \text{además} \rho(B_{SOR})<1\]
+\[\omega \geq 0 \cup 2\geq \omega\]
+Por lo tanto se cumple que $0\leq \omega \leq 2$
+
+\end{itemize}
+

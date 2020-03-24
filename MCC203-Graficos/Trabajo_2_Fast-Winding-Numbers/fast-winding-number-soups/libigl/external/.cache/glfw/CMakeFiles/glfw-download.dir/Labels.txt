@@ -1,0 +1,14 @@
+# Target labels
+ glfw-download
+# Source files and their labels
+/home/jenazads/github/ComputerScience_UCSP/MCC203_Graficos/Trabajo_2_Fast-Winding-Numbers/fast-winding-number-soups/libigl/external/.cache/glfw/CMakeFiles/glfw-download
+/home/jenazads/github/ComputerScience_UCSP/MCC203_Graficos/Trabajo_2_Fast-Winding-Numbers/fast-winding-number-soups/libigl/external/.cache/glfw/CMakeFiles/glfw-download.rule
+/home/jenazads/github/ComputerScience_UCSP/MCC203_Graficos/Trabajo_2_Fast-Winding-Numbers/fast-winding-number-soups/libigl/external/.cache/glfw/CMakeFiles/glfw-download-complete.rule
+/home/jenazads/github/ComputerScience_UCSP/MCC203_Graficos/Trabajo_2_Fast-Winding-Numbers/fast-winding-number-soups/libigl/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/glfw-download-install.rule
+/home/jenazads/github/ComputerScience_UCSP/MCC203_Graficos/Trabajo_2_Fast-Winding-Numbers/fast-winding-number-soups/libigl/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/glfw-download-mkdir.rule
+/home/jenazads/github/ComputerScience_UCSP/MCC203_Graficos/Trabajo_2_Fast-Winding-Numbers/fast-winding-number-soups/libigl/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/glfw-download-download.rule
+/home/jenazads/github/ComputerScience_UCSP/MCC203_Graficos/Trabajo_2_Fast-Winding-Numbers/fast-winding-number-soups/libigl/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/glfw-download-update.rule
+/home/jenazads/github/ComputerScience_UCSP/MCC203_Graficos/Trabajo_2_Fast-Winding-Numbers/fast-winding-number-soups/libigl/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/glfw-download-patch.rule
+/home/jenazads/github/ComputerScience_UCSP/MCC203_Graficos/Trabajo_2_Fast-Winding-Numbers/fast-winding-number-soups/libigl/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/glfw-download-configure.rule
+/home/jenazads/github/ComputerScience_UCSP/MCC203_Graficos/Trabajo_2_Fast-Winding-Numbers/fast-winding-number-soups/libigl/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/glfw-download-build.rule
+/home/jenazads/github/ComputerScience_UCSP/MCC203_Graficos/Trabajo_2_Fast-Winding-Numbers/fast-winding-number-soups/libigl/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/glfw-download-test.rule

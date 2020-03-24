@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>RTREE</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <script type="text/javascript" src="dependencies/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="dependencies/materialize.min.js"></script>
+    <script type="text/javascript" src="dependencies/fabric.min.js"></script>
+    <script type="text/javascript" src="dependencies/mqttws31.js"></script>
+  </head>
+ <style type="text/css">
+ 
+	body, html { height:100%;
+	  margin:0;
+	  padding:0;
+	  width:100%;
+	  }
+	 
+	#mando{ 
+	  width:39.5%;
+	  display:inline-block;
+	  margin:auto;
+	  height:94.5%;
+	  }
+    
+	#pizarra{  
+    width:59.5%;
+	  display:inline-block;
+	  height:94.5%;
+	  }
+
+ </style>
+  <style type="text/css">
+     *{
+          font-family: "Roboto", sans-serif;
+          font-weight: 100;
+     }        
+  </style>
+  <body>
+    <nav class="grey darken-4" role="navigation" id = "nav-bar" style = "height:50px;">
+      <div class="nav-wrapper container">
+        <a id="logo-container" class="brand-logo" style="line-height: 50px;font-size: 20px;">R TREE</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        </ul>
+      </div>
+    </nav>
+    <div id="mando" style="float:right;">
+    <center>
+    <form id="dataForm" action="" method="get" style="max-width: 300px;padding: 0 5px;">
+    <center>
+      <img src="images/logo-ucsp.png" border="0" width="150" height="80" align="middle">
+    </center>
+    <fieldset>
+    <legend>Insertar:</legend>
+    <br>
+    <input id="create-point" type="button" value="Puntos" />
+    <input id="create-polygon" type="button" value="Poligonos" />
+    <input type="button" onclick="Reset()" value="Reiniciar" />
+    </fieldset>
+    <fieldset>
+      <legend>Busqueda:</legend>
+      <p>Para realizar una busqueda presione la opción adecuada:</p>
+      <input id="range-search" type="button" value="Range Search"/>
+      <div class="md-checkbox">
+        <input id="knn-search" type="checkbox" onclick="showKNNOptions()">
+        <label for="knn-search"><b>k - mas cercanos</b></label>
+        <div id="esc" style="display:none">
+          <label id="text" ><b>Digite K</b></label>
+          <input type="number" name="quantity" min="1" max="100" value=1>
+          <label id="msg" style="color: #FF0000;">presione con un clic en la pizarra</label>
+        </div>
+      </div>    
+      <br/>
+      </textarea>
+    </fieldset>
+    </form>
+    </center>
+    </div>
+    <div class="section" id="pizarra" style="padding-left: 20px;float:left">
+      <canvas id="c" style="border: 3px solid black; width:100%;height:100%"></canvas>
+    </div>
+  </body>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/polygon.js"></script>
+  <script type="text/javascript" src="js/point.js"></script>
+  <script type="text/javascript" src="js/mqtt.js"></script>
+</html>

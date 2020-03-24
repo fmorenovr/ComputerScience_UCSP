@@ -1,0 +1,182 @@
+Para el sistema del problema $\#39$ calcule $\rho(B_{J})$, $\rho(B_{GS})$, y $w_{opt}$ con $N=50,100,1000$. Compare el radio de convergencia de \textbf{SOR} usando el valor óptimo $w_{opt}$ en cada caso con el de Gauss Seidel, sin actualmente realizar las iteraciones.\\
+
+\textbf{Solución:\\}
+
+Calculando $B_{J} = -D^{-1}(L+U)$, $B_{GS} = -(D+L)^{-1}U$ y $w_{opt}=\frac{2}{1+\sqrt{1-\rho(B_{J})^{2}}}$
+
+\textbf{Caso 1: N=50}
+
+Siendo: 
+
+$$
+    T = \begin{pmatrix}
+     4 &	-1 &	 . &	 . &	 0 &	 0 \\
+    -1 &	 4 &	-1 &	 . &     . &	 0 \\
+     . &	-1 &	 4 &	 . &	 . &	 . \\
+     . &	 . &	-1 &	 . &	-1 &	 . \\
+     0 &	 . &	 . &	 . &	 4 &	-1 \\
+     0 &	 0 &	 . &	 . &	-1 &	 4
+    \end{pmatrix}_{50x50}
+$$
+
+Tendremos que:
+
+$$
+    B_{J} = \begin{pmatrix}
+     0 &  0.25 &	 . &	 . &	 0 &	 0 \\
+  0.25 &	 0 &  0.25 &	 . &     . &	 0 \\
+     . &  0.25 &	 0 &	 . &	 . &	 . \\
+     . &	 . &  0.25 &	 . &  0.25 &	 . \\
+     0 &	 . &	 . &	 . &	 0 &  0.25 \\
+     0 &	 0 &	 . &	 . &  0.25 &	 0
+    \end{pmatrix}_{50x50}\ \rho(B_{J}) = 0.49905
+$$
+
+$$
+    B_{GS} = \begin{pmatrix}
+     0 &	0.25 &	 . &	 . &	 0 &	 0 \\
+     0 &	-0.0625 & 0.25 &	 . &     . &	 0 \\
+     . &	0.01562 & -0.0625 &	 . &	 . &	 . \\
+     . &	 . &	0.01562 &	 . &	0.25 &	 . \\
+     0 &	 . &	 . &	 . &	 -0.0625 &	0.25 \\
+     0 &	 0 &	 . &	 . &	0.01562 &	 -0.0625
+    \end{pmatrix}_{50x50}\ \rho(B_{GS}) = 0.24905
+$$
+
+y
+
+$$
+    w_{opt} = 1.8413
+$$
+
+\textbf{Caso 2: N=100}
+
+Siendo: 
+
+$$
+    T = \begin{pmatrix}
+     4 &	-1 &	 . &	 . &	 0 &	 0 \\
+    -1 &	 4 &	-1 &	 . &     . &	 0 \\
+     . &	-1 &	 4 &	 . &	 . &	 . \\
+     . &	 . &	-1 &	 . &	-1 &	 . \\
+     0 &	 . &	 . &	 . &	 4 &	-1 \\
+     0 &	 0 &	 . &	 . &	-1 &	 4
+    \end{pmatrix}_{100x100}
+$$
+
+Tendremos que:
+
+$$
+    B_{J} = \begin{pmatrix}
+     0 &  0.25 &	 . &	 . &	 0 &	 0 \\
+  0.25 &	 0 &  0.25 &	 . &     . &	 0 \\
+     . &  0.25 &	 0 &	 . &	 . &	 . \\
+     . &	 . &  0.25 &	 . &  0.25 &	 . \\
+     0 &	 . &	 . &	 . &	 0 &  0.25 \\
+     0 &	 0 &	 . &	 . &  0.25 &	 0
+    \end{pmatrix}_{100x100}\ \rho(B_{J}) = 0.49976
+$$
+
+$$
+    B_{GS} = \begin{pmatrix}
+     0 &	0.25 &	 . &	 . &	 0 &	 0 \\
+     0 &	-0.0625 & 0.25 &	 . &     . &	 0 \\
+     . &	0.01562 & -0.0625 &	 . &	 . &	 . \\
+     . &	 . &	0.01562 &	 . &	0.25 &	 . \\
+     0 &	 . &	 . &	 . &	 -0.0625 &	0.25 \\
+     0 &	 0 &	 . &	 . &	0.01562 &	 -0.0625
+    \end{pmatrix}_{100x100}\ \rho(B_{GS}) = 0.24976
+$$
+
+y
+
+$$
+    w_{opt} = 1.8418
+$$
+
+\textbf{Caso 3: N=1000}
+
+Siendo: 
+
+$$
+    T = \begin{pmatrix}
+     4 &	-1 &	 . &	 . &	 0 &	 0 \\
+    -1 &	 4 &	-1 &	 . &     . &	 0 \\
+     . &	-1 &	 4 &	 . &	 . &	 . \\
+     . &	 . &	-1 &	 . &	-1 &	 . \\
+     0 &	 . &	 . &	 . &	 4 &	-1 \\
+     0 &	 0 &	 . &	 . &	-1 &	 4
+    \end{pmatrix}_{1000x1000}
+$$
+
+Tendremos que:
+
+$$
+    B_{J} = \begin{pmatrix}
+     0 &  0.25 &	 . &	 . &	 0 &	 0 \\
+  0.25 &	 0 &  0.25 &	 . &     . &	 0 \\
+     . &  0.25 &	 0 &	 . &	 . &	 . \\
+     . &	 . &  0.25 &	 . &  0.25 &	 . \\
+     0 &	 . &	 . &	 . &	 0 &  0.25 \\
+     0 &	 0 &	 . &	 . &  0.25 &	 0
+    \end{pmatrix}_{1000x1000}\ \rho(B_{J}) = 0.5
+$$
+
+$$
+    B_{GS} = \begin{pmatrix}
+     0 &	0.25 &	 . &	 . &	 0 &	 0 \\
+     0 &	-0.0625 & 0.25 &	 . &     . &	 0 \\
+     . &	0.01562 & -0.0625 &	 . &	 . &	 . \\
+     . &	 . &	0.01562 &	 . &	0.25 &	 . \\
+     0 &	 . &	 . &	 . &	 -0.0625 &	0.25 \\
+     0 &	 0 &	 . &	 . &	0.01562 &	 -0.0625
+    \end{pmatrix}_{1000x1000}\ \rho(B_{GS}) = 0.2591
+$$
+
+y
+
+$$
+    w_{opt} = 1.8420
+$$
+
+Finalmente:\\
+
+Calculando $\rho(B_{SOR})$ siendo $B_{SOR} = (D + wL)^{-1}[(1-w)D-wU]$ usando $w=w_{opt}$:\\
+
+\textbf{Caso 1: N=50}
+
+$$
+    \rho(B_{SOR}) = 0.8413
+$$
+
+\textbf{Caso 2: N=100}
+
+$$
+    \rho(B_{SOR}) = 0.8418
+$$
+
+\textbf{Caso 3: N=1000}
+
+$$
+    \rho(B_{SOR}) = 0.8430
+$$
+
+Entonces, comparando el radio de convergencia de \textbf{SOR} usando $w=w_{opt}$ con el de Gauss Seidel, tenemos que:
+
+\textbf{Caso 1: N=50}
+
+$$
+    \rho(B_{SOR}) = \rho(B_{SOR})-1
+$$
+
+\textbf{Caso 2: N=100}
+
+$$
+    \rho(B_{SOR}) = \rho(B_{SOR})-1
+$$
+
+\textbf{Caso 3: N=1000}
+
+$$
+    \rho(B_{SOR}) = \rho(B_{SOR})-1
+$$

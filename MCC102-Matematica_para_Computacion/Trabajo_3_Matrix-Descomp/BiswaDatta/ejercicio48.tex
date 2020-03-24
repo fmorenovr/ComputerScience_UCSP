@@ -1,0 +1,52 @@
+Considerando la iteración:
+$$x^{k+1}=Bx^{k}+d$$
+donde: 
+$$B=\sum_{i=1}^{k}D_{i}B_{i}^{-1}C_{i}$$ y $$d = (\sum_{i=1}^{k}D_{i}B_{i}^{-1})b$$
+$A=B_{i}+C_{i}$, $i=1,....,k$ y $\sum_{i=1}^{k}D_i=I(D_i)\leq 0$\\
+
+Desarrolle la convergencia por Gauss-Seidel, Jacobi y SOR para la matriz de bloques A:
+\textbf{Solución:}\\
+
+    $B_i$, $C_i$ y $D_i$ son matrices bloques de A. Considerando $A=B+L_i+U_i$, siendo:
+    \[
+        A = \left( \begin{array}{cccc}
+        A_11 & A_12 & ... & A_1p \\ 
+        A_21 & A_22 & ... & A_2p \\ 
+        ... & ... & ... & ... \\ 
+        A_p1 & A_p2 & ... & A_pp \\ 
+        \end{array} \right)
+    \]
+    
+Donde:
+$A_{ii} \in \mathbb{R}$, $i=1,...,p$ son bloques de A no singulares y $n_1$+$n_2$+$n_p$ = n.\\
+$D=diag(A_11,A_22,...,A_pp)$
+$L_i=(K_ki^i)$, es una matriz triangular infenior estructa de bloques $L_ki^i$ con elementos de A.
+$U_i = A-D-L_i$\\
+
+\begin{itemize}
+    \item Método de \textbf{Jacobi}
+    
+        $B_{i}=D, C_{i}=-(L_{i}+U_{i})$\\
+        $B=-\sum_{i=1}^{k}D_{i}D^{-1}(L_{i}+U_{i})$\\
+        $d=(\sum_{i=1}^{k}D_{i}D^{-1})b$
+    
+    \item Método de \textbf{Gauss-Seidel}
+        
+        $B_{i}=D, D+L_{i}$, $C_{i} = U_i$\\
+        $B=-\sum_{i=1}^{k}D_{i}(D+L_{i})^{-1}U_{i}$\\
+        $d=(\sum_{i=1}^{k}D_{i}(D+L_i)^{-1})b$
+        
+    \item Método de \textbf{SOR}: $D+L_i+U_i$
+    
+        $wA = wD+wL_i+wU_i$\\
+        $wA = (D+wL_i)-((1-w)D+wU_i)$\\
+        $A=\frac{1}{w}(D+wL_i)-\frac{1}{w}((1-w)D+wU_i)$\\
+        Dado:\\
+        $B_i=\frac{1}{w}(D+wL_i)$ y $C_i=\frac{1}{w}((1-w)D+wU_i)$, por tanto:\\
+        $B=\sum_{i=1}^{k}D_{i}(\frac{1}{w}(D+wL_i))^{-1}\frac{1}{w}((1-w)D+wU_i)$\\
+        $B=\sum_{i=1}^{k}D_{i}((D+wL_i))^{-1}((1-w)D+wU_i)$\\
+        
+        $d=\sum_{i=1}^{k}D_{i}(\frac{1}{w}(D+wL_i))^{-1}b$\\
+        $d=w\sum_{i=1}^{k}D_{i}((D+wL_i))^{-1}b$
+    
+\end{itemize}

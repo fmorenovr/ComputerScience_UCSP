@@ -1,0 +1,62 @@
+Comprobar la matriz $A=tridiag(-1,\alpha,-1)$ con $\alpha \in R$ tiene autovalores dados por:\\
+$$\lambda_j=\alpha-2\cos(j\theta),j=1,..,n$$
+Donde $\theta=\pi/(n+1)$ y sus correspondientes autovectores son :\\
+$$q_j = [\sin(j\theta),\sin(2j\theta),...,\sin(nj\theta)]^{T},j=1,...,n$$\\
+¿Bajo que condiciones de $\alpha$, la matriz es definida positiva?\\
+
+Para comprobar la forma de los autovalores y autovectores de la matriz A, se tiene que $Av=v\lambda$, por lo que:\\
+$$
+    \begin{pmatrix}
+     \alpha &  -1 & 0 & \cdots & 0 \\
+     -1 &  \alpha & -1 & \cdots & 0 \\
+     \vdots &  \vdots & \ddots & \vdots & \vdots \\
+     0 &  \cdots &  -1 & \alpha &-1 \\
+     0 & 0 & \cdots & -1 & \alpha
+    \end{pmatrix}\ 
+    \begin{pmatrix}
+    \sin(j\theta)\\
+    \sin(2j\theta)\\
+    \sin(3j\theta)\\
+    \vdots\\
+    \sin(nj\theta)
+    \end{pmatrix}=
+    \begin{pmatrix}
+    \sin(j\theta)\alpha-\sin(2j\theta)\\
+    -\sin(j\theta)+\sin(2j\theta)\alpha-\sin(3j\theta)\\
+    -\sin(2j\theta)+\sin(3j\theta)\alpha-\sin(4j\theta)\\
+    \vdots\\
+    -\sin((n-1)j\theta)+\sin(nj\theta)\alpha
+    \end{pmatrix}
+$$
+Dado que $\sin(0j\theta)=sin((n+1)j\theta)=0$, agrupando los elementos se tiene:\\
+$$
+    \begin{pmatrix}
+    \sin(j\theta)\alpha-\sin(2j\theta)+\sin(0j\theta)\\
+    \sin(2j\theta)\alpha-\sin(3j\theta)+\sin(j\theta)\\
+    \sin(3j\theta)\alpha-\sin(4j\theta)+\sin(2j\theta)\\
+    \vdots\\
+    \sin(nj\theta)\alpha-(\sin((n+1)j\theta)+\sin((n-1)j\theta))
+    \end{pmatrix}=
+     \begin{pmatrix}
+    \sin(j\theta)\alpha-2(\sin(j\theta)\cos(j\theta))\\
+    \sin(2j\theta)\alpha-2(\sin(2j\theta)\cos(j\theta))\\
+    \sin(3j\theta)\alpha-2(\sin(3j\theta)\cos(j\theta))\\
+    \vdots\\
+    \sin(nj\theta)\alpha-2(\sin(nj\theta)\cos(j\theta))
+    \end{pmatrix}
+$$
+$$
+    =
+     \begin{pmatrix}
+    \sin(j\theta)\alpha\\
+    \sin(2j\theta)\alpha\\
+    \sin(3j\theta)\alpha\\
+    \vdots\\
+    \sin(nj\theta)\alpha
+    \end{pmatrix}(\alpha-2\cos(j\theta))=v\lambda
+$$
+Lo que comprueba la forma de los autovalores y autovectores. Para que una matriz sea definida positiva, todo los autovalores deben ser positivo, por lo que $\lambda_j \geq 0$ y dado que $1 \geq \cos(\beta) \geq -1$ entonces:\\
+$$
+\alpha-2\cos(j\theta) \geq 0 \Rightarrow \alpha \geq 2\cos(j\theta)
+$$
+Al reemplazar el rango máximo del coseno se tiene que $\alpha \geq 2$ para que la matriz A sea Definida Positiva.

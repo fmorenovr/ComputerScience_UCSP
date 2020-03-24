@@ -1,0 +1,103 @@
+Considere el sistema simetrico $Ax=b$, donde:
+$$A=\begin{bmatrix}
+    0.4445&0.4444&-0.2222\\
+    0.4444&0.4445&-0.2222\\
+    -0.2222&-0.2222&0.1112
+\end{bmatrix}
+b=\begin{bmatrix}
+    0.6667\\
+    0.6667\\
+    -0.3332
+\end{bmatrix}
+$$
+La solución exacta de el sistema es:
+$$x=\begin{bmatrix}
+    1\\
+    1\\
+    1
+\end{bmatrix}
+$$
+(a) Realice una pequeña perturbacion $\delta b$ en $b$, manteniendo $A$ sin cambiar. Resuelva el sistema $Ax'=b+\delta b$. Compare $x'$ con $x$. Calcule $Cond(A)$ y verifique la desigualdad en el texto.\\
+(b)Realice una pequeña perturbacion $\bigtriangleup A$ en $A$ tal que $||\bigtriangleup A||\leq 1/||A^{-1}||$. Resuelva el sistema  $(A+\bigtriangleup A)x'=b$. Compare $x'$ con $x$ y verifique la desigualdad en el libro. (Hint: $||A^{-1}||_2=O(10^4)$)
+\\\\
+\noindent \textcolor{red}{\bf Soluci\'on}\\
+(a) Sea $b'=b+\delta b$, con $\delta b=[0.0001 \quad 0.0001 \quad 0.0001]^t$, entonces:
+$$b'=\begin{bmatrix}
+    0.6668\\
+    0.6668\\
+    -0.3333
+\end{bmatrix}
+$$
+Resolviendo el nuevo sistema:
+$$Ax=b'$$
+$$x'=\begin{bmatrix}
+    1.3334\\
+    1.3334\\
+    2.3333
+\end{bmatrix}
+$$
+Al comparar $x$ y $x'$ podemos observar un cambio considerable en sus valores:
+$$x'=\begin{bmatrix}
+    1.3334\\
+    1.3334\\
+    2.3333
+\end{bmatrix}
+, x=\begin{bmatrix}
+    1\\
+    1\\
+    1
+\end{bmatrix}
+$$
+Calculando la diferencia:
+$$x'=  x+\delta x $$
+$$\delta x = x'-x$$
+$$\delta x=\begin{bmatrix}
+    0.3334\\
+   0.3334\\
+   1.3333
+\end{bmatrix}$$
+Ahora calculamos el numero condicionante:
+$$Cond(A)=||A||||A^{-1}||= (1)(10000)=10000$$
+Verificamos la desigualdad:
+$$\frac{||\delta x||}{||x||} \leq Cond(A)\frac{||\delta b||}{||b||}$$
+
+$$\frac{1.4142}{1.7321} \leq (10000)\frac{1.7221 x 10^{-4}}{1}$$
+
+
+(b) Sea $A'=A+\bigtriangleup A$, donde:
+$$\bigtriangleup A=\begin{bmatrix}
+    0 & 0 & 0\\
+    0& 0 & 0.0001\\
+    0&0&0
+\end{bmatrix}
+$$
+$$A'=\begin{bmatrix}
+     0.4445&0.4444&-0.2222\\
+    0.4444&0.4445&-0.2221\\
+    -0.2222&-0.2222&0.1112
+\end{bmatrix}
+$$
+Resolviendo el nuevo sistema:
+$$A'x=b$$
+$$x'=\begin{bmatrix}
+    1.3636\\
+    1.5454\\
+    1.8182
+\end{bmatrix}
+$$
+Al comparar $x$ y $x'$ calculamos la diferencia:
+$$x'=  x+\delta x $$
+$$\delta x = x'-x$$
+$$\delta x=\begin{bmatrix}
+    0.3636\\
+  -0.4546\\
+   -0.1818
+\end{bmatrix}$$
+Ahora calculamos el numero condicionante:
+$$Cond(A)=||A||||A^{-1}||= (1)(10000)=10000$$
+Verificamos la desigualdad:
+$$\frac{||\delta x||}{||x||} \leq Cond(A)\frac{||\bigtriangleup A||}{||A||}/(1-Cond(A)\frac{||\bigtriangleup A||}{||A||})$$
+
+$$0.3521 \leq (10000)1.0000 x 10^{-4}/(1-1.0000 x 10^{-4})$$
+$$0.3521 \leq (10000)1.0000 x 10^{-4}/(0.9999)$$
+$$0.3521 \leq 1.0001$$

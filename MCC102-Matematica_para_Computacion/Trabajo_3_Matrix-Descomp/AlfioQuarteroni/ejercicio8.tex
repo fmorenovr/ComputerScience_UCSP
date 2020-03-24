@@ -1,0 +1,118 @@
+Considere el sistema Ax = b:
+\[
+\begin{bmatrix}
+    5 & 7 & 6 & 5\\
+    7 & 10 & 8 & 7 \\
+    6 &  8 & 10 & 9 \\
+    5 & 7 & 9 & 10\\
+\end{bmatrix}
+\begin{bmatrix}
+    x_{1} \\
+    x_{2} \\
+    x_{3} \\
+    x_{4} \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+    22 \\
+    32\\
+    33\\
+    31\\
+\end{bmatrix}
+\]
+
+Analizar las propiedades de convergencia de los métodos de Jacobi y Gauss-Seidel aplicado al sistema de arriba en sus formas de punto y bloque (para un bloque de 2 × 2 partición de A).
+
+\textbf{Solución}:
+
+Haciendo el método de Jacobi por bloques, tenemos:
+\begin{center}
+$X^{k+1}_i = A^{-1}_{ii}  (B_i − \sum_{j=1, j \neq i}^{n} A_{ij} X^k _ j)$
+\end{center}
+
+Haciendo el método de Gauss-Seidel por bloques, tenemos:
+\begin{center}
+$X^{k+1}_i = A^{-1}_{ii}  (B_i − \sum_{j=1}^{i-1} A_{ij} X^{k+1} _ j − \sum_{j=i+1}^{n} A_{ij} X^{k} _ j )$
+\end{center}
+
+Sabemos que la convergencia (por bloques) se sigue manteniendo, y que se analiza la convergencia de ambos métodos según la descomposición y pre condicionamiento aplicado al sistema.
+
+\textbf{Gauss Seidel}
+
+En el caso de Gauss Seidel, tenemos:
+$x^{(k+1)}={-(L+D)}^{-1}{U}x^{(k)}+{(L+D)}^{-1}b$
+
+Donde D es la diagonal de A, L es el triangulo inferior a la diagonal de A y U es el triangulo superior de A.
+
+Tal que: L + D + U = A
+
+La convergencia se analiza según el radio espectral de la matriz M, definida por:
+
+$x^{(k+1)}=Mx + c$, donde $M=-(L+D)^{-1} U$ y $c=(L+D)^{-1} b$.
+
+Teniendo A y b como datos, calculamos M:
+\begin{center}
+\[
+\begin{bmatrix}
+    0 & -1.4 & -1.2 & -1 \\
+    0 & 0.98 & 0.04 & 0 \\
+    0 &  0.056 & 0.688 & -0.3 \\
+    0 & -0.0364 & -0.0472 & 0.77 \\
+\end{bmatrix}
+\]    
+\end{center}
+
+Calculamos su radio espectral (máximo de los valores absolutos de la matriz M menores a 1).
+
+$\lambda_1 =0$, $\lambda_2 = 0.99690$, $\lambda_3 = 0.83728$ , $\lambda_4 = 0.60382$.
+
+El radio espectral de Gauss Seidel para este sistema es:
+\begin{center}
+    $\rho_gs (M) = 0.99690 < 1$
+\end{center}
+
+Vemos que si converge.
+
+\textbf{Jacobi}
+
+En el caso de Jacobi, tenemos:
+$x^{(k+1)}={-(D)}^{-1}{R}x^{(k)}+{(D)}^{-1}b$
+
+Donde D es la diagonal de A, R es la matriz A menos la diagonal.
+
+Tal que: D + R = A
+
+La convergencia se analiza según el radio espectral de la matriz M, definida por:
+
+$x^{(k+1)}=Mx + c$, donde $M=-(D)^{-1} R$ y $c=(D)^{-1} b$.
+
+Teniendo A y b como datos, calculamos M:
+\begin{center}
+\[
+\begin{bmatrix}
+    0 & -1.4 & -1.2 & -1 \\
+    -0.7 & 0 & -0.8 & -0.7 \\
+    -0.6 &  -0.8 & 0 & -0.9 \\
+    -0.5 & -0.7 & -0.9 & 0 \\
+\end{bmatrix}
+\]    
+\end{center}
+
+Calculamos su radio espectral (máximo de los valores absolutos de la matriz M menores a 1).
+
+$\lambda_1 = -2.47579$, $\lambda_2 = 0.56220$, $\lambda_3 = 0.99845$ , $\lambda_4 = 0.91514$.
+
+El radio espectral de Gauss Seidel para este sistema es:
+\begin{center}
+    $\rho_j (M) = 0.99845 < 1$
+\end{center}
+
+Vemos que si converge.
+
+Y comparando los radios espectrales, tenemos que:
+
+\begin{center}
+    $\rho_j ^ 2 (M) = \rho_{gs} (M) = 0.99690 < 1$
+\end{center}
+
+Por lo tanto, Ambos métodos convergen y el más rápido es el Jacobi por bloques.

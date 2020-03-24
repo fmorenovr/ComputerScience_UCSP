@@ -1,0 +1,106 @@
+Para resolver el siguiente bloque de sistema lineal:
+\[
+    \begin{bmatrix}
+    A_{1} & B\\
+    B & A_{2}
+    \end{bmatrix}
+    \begin{bmatrix}
+    x\\ 
+    y 
+    \end{bmatrix} = 
+    \begin{bmatrix}
+    b_{1}\\ 
+    b_{2}
+    \end{bmatrix}
+\]
+Considere los siguientes métodos:\\
+\begin{itemize}
+    \item $ A_{1}x^{(k + 1)} + By^{(k)} =  b_{1}$ , $Bx^{(k)} + A_{2}y^{(k + 1)} =  b_{2}$ 
+    \item $ A_{1}x^{(k + 1)} + By^{(k)} =  b_{1}$ , $Bx^{(k + 1)} + A_{2}y^{(k + 1)} =  b_{2}$ 
+\end{itemize}
+
+Encontrar las condiciones suficientes de modo que los dos casos sean convergentes para cualquier elección de los datos iniciales de $x^{(0)}$,  $y^{(0)}$\\
+Solución: Método (1) es un sistema desacoplado en el desconocido $x^{k+1}$ y $y^{k+1}$. Asumimos que que $A_1$ y $A_2$ son invertibles, método $(1)$ converge si $ \rho (A_1^{-1}B) < 1 $ y $\rho (A_2^{-1}B) < 1 $. en el caso del método $(2)$ tenemos una sistema acoplado para resolver en cada los $x^{k+1}$ y $y^{k+1}$ desconocidos. Resolviendo formalmente la primera ecuación con respecto a $x^{k+1}$  y sustituyendo en la segunda podemos ver que el método $(2)$ es convergente si $\rho (A_2^{-1}BA_1^{-1}B) < 1 $. \\
+\textbf{Solución}\\
+\begin{itemize}
+    \item $ A_{1}x^{(k + 1)} + By^{(k)} =  b_{1}$ , $Bx^{(k)} + A_{2}y^{(k + 1)} =  b_{2}$ 
+    \begin{eqnarray*}
+        A_{1}x^{(k + 1)} + By^{(k)} =  b_{1} & , & Bx^{(k)} + A_{2}y^{(k + 1)} =  b_{2}\\
+        x^{(k + 1)}  =  A_{1}^{-1}b_{1} - A_{1}^{-1}By^{(k)}& , & y^{(k + 1)} =  A_{2}^{-1}b_{2} + A_{2}^{-1}Bx^{(k)}
+    \end{eqnarray*} 
+    Si 
+    \begin{eqnarray*}
+        B_{M1} = -A_{1}^{-1}B & , & b_{M1} =  A_{1}^{-1}b\\
+        B_{M2} = A_{2}^{-1}B & , & b_{M2} =  A_{2}^{-1}b
+    \end{eqnarray*} 
+    Entonces
+    \begin{eqnarray*}
+        x^{(k + 1)} = B_{M1}y^{(k)} + b_{M1} & , & y^{(k + 1)} = B_{M2}y^{(k)} + b_{M2}
+    \end{eqnarray*} 
+    Para que $x^{(k + 1)}$ converja a $x$:
+    \begin{eqnarray*}
+        x = B_{M1}y + b_{M1} & , & x^{(k + 1)} = B_{M1}y^{(k)} + b_{M1}\\
+        (x - x^{(k + 1)}) & = &  B_{M1}(y - y^{(k)})
+    \end{eqnarray*} 
+    
+    \begin{eqnarray*}
+        y = B_{M2}x + b_{M2} & , & y^{(k + 1)} = B_{M2}x^{(k)} + b_{M2}\\
+        (y - y^{(k + 1)}) & = &  B_{M2}(x - x^{(k)})
+    \end{eqnarray*} 
+    
+    Asumimos que $k = k - 1$ en $(y - y^{(k + 1)}) = B_{M2}(x - x^{(k)}$, entonces 
+     \begin{eqnarray*}
+        (y - y^{(k + 1)}) & = &  B_{M2}(x - x^{(k)})\\
+        (y - y^{(k)}) & = &  B_{M2}(x - x^{(k - 1)})
+    \end{eqnarray*} 
+    
+    Si reemplazamos $(y - y^{(k)})$ obtenido en $ (x - x^{(k + 1)}) = B_{M1}(y - y^{(k)})$ obtenemos lo siguiente:
+    
+    \begin{eqnarray*}
+        (x - x^{(k + 1)}) & = &  B_{M1}\underbrace{(y - y^{(k)})}\\
+        (x - x^{(k + 1)}) & = &  B_{M1}(B_{M2}(x - x^{(k - 1)}))\\
+        (x - x^{(k + 1)}) & = &  B_{M1}(B_{M2}^{2}(x - x^{(k - 2)}))\\
+        (x - x^{(k + 1)}) & = &  B_{M1}(B_{M2}^{3}(x - x^{(k - 3)}))\\
+        (x - x^{(k + 1)}) & = &  B_{M1}(B_{M2}^{4}(x - x^{(k - 4)}))\\
+        \vdots \\
+        (x - x^{(k + 1)}) & = &  B_{M1}(B_{M2}^{k}(x - x^{(k - k)}))\\
+        (x - x^{(k + 1)}) & = &  B_{M1}(B_{M2}^{k}(x - x^{(0)}))
+    \end{eqnarray*}
+    Una condición suficiente para determinar la convergencia de $x^{(k + 1)}$ a $x$ para cualquier valor de $x^{(0)}$ es que $B_{M2}^{k}$ converja. Para que $B_{M2}^{k}$ converja se tiene que cumplir que  $\rho (B_{M2}) < 1  \rightarrow  \rho (A_{2}^{-1}B) < 1$ \\
+    
+    %Convergencia de y
+    Para que $y^{(k + 1)}$ converja a $y$. Se tiene 
+    \begin{eqnarray*}
+        (x - x^{(k + 1)}) & = &  B_{M1}(y - y^{(k)})
+    \end{eqnarray*} 
+    y
+    \begin{eqnarray*}
+        (y - y^{(k + 1)}) & = &  B_{M2}(x - x^{(k)})
+    \end{eqnarray*} 
+    
+    Asumimos que $k = k -1$ en la primera ecuación y luego reemplazamos en la segunda ecuación:
+    \begin{eqnarray*}
+        (x - x^{(k + 1)}) & = &  B_{M1}(y - y^{(k)})\\
+        (x - x^{(k)}) & = &  B_{M1}(y - y^{(k - 1)})
+    \end{eqnarray*} 
+    Reemplazamos $(x - x^{(k)}) =  B_{M1}(y - y^{(k - 1)})$  en 
+     \begin{eqnarray*}
+        (y - y^{(k + 1)}) & = &  B_{M2}(x - x^{(k)})\\
+        (y - y^{(k + 1)}) & = &  B_{M2}( B_{M1}(y - y^{(k - 1)}))\\
+    \end{eqnarray*} 
+    Desarrollamos
+    \begin{eqnarray*}
+        (y - y^{(k + 1)}) & = &  B_{M2} B_{M1}(y - y^{(k - 1)})\\
+        (y - y^{(k + 1)}) & = &  B_{M2} B_{M1}^{2}(y - y^{(k - 2)})\\
+        (y - y^{(k + 1)}) & = &  B_{M2} B_{M1}^{3}(y - y^{(k - 3)})\\
+        (y - y^{(k + 1)}) & = &  B_{M2} B_{M1}^{4}(y - y^{(k - 4)})\\
+        \vdots \\
+        (y - y^{(k + 1)}) & = &  B_{M2} B_{M1}^{k}(y - y^{(k - K)})\\
+        (y - y^{(k + 1)}) & = &  B_{M2} B_{M1}^{k}(y - y^{(0)})
+    \end{eqnarray*} 
+    
+    
+    Una condición suficiente para determinar la convergencia de $y^{(k + 1)}$ a $y$ para cualquier valor de $y^{(0)}$ es que $B_{M1}^{k}$ converja. Para que $B_{M1}^{k}$ converja se tiene que cumplir que  $\rho (B_{M1}) < 1 \rho (A_{1}^{-1}B) < 1$ \\
+    
+   
+\end{itemize}

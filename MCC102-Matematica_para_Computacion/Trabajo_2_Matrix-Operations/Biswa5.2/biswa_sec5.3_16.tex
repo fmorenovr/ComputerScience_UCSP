@@ -1,0 +1,179 @@
+Pruebe que la matriz L en las factorizaciones PA=LU y PAQ=LU obtenidas mediante eliminación Gaussiana con pivoteo parcial y total respectivamente es una triangular inferior unitaria.\\
+
+\noindent \textcolor{red}{\bf Solución:}\\    
+
+Para ambos casos (pivoteo parcial y total) la matriz L se define como:\\
+\[L=P_{n-1}^{-1}.P_{n-2}^{-1}...P_{3}^{-1}.P_{2}^{-1}.L_1^{-1}.P_{2}.L_{2}^{-1}.P_{3}.L_{3}^{-1}...P_{n-2}.L_{n-2}^{-1}.P_{n-1}.L_{n-1}^{-1}\quad ...(1)\]
+Se sabe además que para cada paso en la eliminación Gaussiana la matriz $L_i$:\\
+\[L_i^{-1}=
+\begin{bmatrix}
+    1  & \dots & 0 & \dots & 0 \\
+   \vdots  & \ddots & \vdots & \ddots & \vdots \\
+   0  & \dots & 1 & \dots & 0 \\
+   0  & \dots & -a_{i+1,i}^{i}/a_{i,i}^{i} & \dots & 0 \\
+   \vdots  & \ddots & \vdots & \ddots & \vdots \\
+   0  & \dots & -a_{n,i}^{i}/a_{i,i}^{i} & \dots & 0 \\
+\end{bmatrix}^{-1}
+=
+\begin{bmatrix}
+    1  & \dots & 0 & \dots & 0 \\
+   \vdots  & \ddots & \vdots & \ddots & \vdots \\
+   0  & \dots & 1 & \dots & 0 \\
+   0  & \dots & a_{i+1,i}^{i}/a_{i,i}^{i} & \dots & 0 \\
+   \vdots  & \ddots & \vdots & \ddots & \vdots \\
+   0  & \dots & a_{n,i}^{i}/a_{i,i}^{i} & \dots & 0 \\
+\end{bmatrix}\quad ...(2)
+\]
+Dado que solo se desea demostrar que la matriz L es triangular inferior unitaria se procede a realizar un análisis inductivo analizando la evolución de L para cada paso del proceso, según lo cual a partir de (1) definimos la matriz T como la evolución de L por cada iteración:\\
+%Denominado T para evitar la confusión por múltiples L.
+\[T^{(i)}=P_{i}^{-1}.T^{(i-1)}.P_{i}.L_{i}^{-1},\quad T^{(1)}=L_1^{-1},\quad T^{(n-1)}=L\]
+Para realizar la inducción planteamos la hipótesis:\\
+\[T^{(i)}=
+\begin{bmatrix}
+    1  & \dots & 0 & 0 & \dots & 0 \\
+   \vdots  & \ddots & \vdots & \vdots & \ddots & \vdots \\
+     T_{i,1}^{(i)} & \dots & 1 & 0 & \dots & 0 \\
+    T_{i+1,1}^{(i)} & \dots &  T_{i+1,i}^{(i)} & 1 & \dots & 0 \\
+   \vdots  & \ddots & \vdots & \vdots & \ddots & \vdots \\
+    T_{n,1}^{(i)} & \dots &  T_{n,i}^{(i)} & 0 & \dots & 1 \\
+\end{bmatrix}\quad ...(3)
+\]
+Según lo cual realizamos el proceso inductivo correspondiente:\\
+
+* Para el caso inicial se tiene $T^{(1)}=L_1^{-1}$, la cual según definición previamente mostrada en (2) es cumple con la forma mostrada en (3).\\
+* Para lograr la demostración inductiva debe comprobarse el caso i+1 a partir del caso i, lo que implica que bajo la hipótesis mostrada anteriormente debe demostrarse que:\\
+
+\[T^{(i+1)}=P_{i+1}^{-1}.T^{(i)}.P_{i+1}.L_{i+1}^{-1}=
+\begin{bmatrix}
+    1  & \dots & 0 & 0 & \dots & 0 \\
+   \vdots  & \ddots & \vdots & \vdots & \ddots & \vdots \\
+     T_{i+1,1}^{(i+1)} & \dots & 1 & 0 & \dots & 0 \\
+    T_{i+2,1}^{(i+1)} & \dots &  T_{i+2,i+1}^{(i+1)} & 1 & \dots & 0 \\
+   \vdots  & \ddots & \vdots & \vdots & \ddots & \vdots \\
+    T_{n,1}^{(i+1)} & \dots &  T_{n,i+1}^{(i+1)} & 0 & \dots & 1 \\
+\end{bmatrix}
+\]
+Se sabe que las matrices de permutación $P_{i+1}$ y $P_{i+1}^{-1}$ son iguales y que según se multipliquen por la izquierda o derecha permiten intercambiar filas y columnas respectivamente.\\
+Según ello definimos un intercambio entre las filas i+1 y j, tal que $i+1< j$. Al realizar la permutación de filas se tiene:\\
+\[P_{i+1}.L^{(i)}=
+\begin{bmatrix}
+    1 &  0 & \dots & 0 & 0 & \dots &  0 & \dots & 0 \\
+   \vdots  & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+   T_{j,1}^{(i)} &  T_{j,2}^{(i)} & \dots &  T_{j,i}^{(i)} & 0 & \dots  & {\bf 1} & \dots & 0 \\
+   \vdots  & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    T_{i+1,1}^{(i)} &  T_{i+1,2}^{(i)} & \dots &  T_{i+1,i}^{(i)} & {\bf 1} & \dots  & 0 & \dots & 0 \\
+   \vdots  & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    T_{n,1}^{(i)} &  T_{n,2}^{(i)} & \dots &  T_{n,i}^{(i)} & 0 & \dots & 0 & \dots & 1 \\
+\end{bmatrix}
+\]
+En este punto la matriz deja de ser triangular inferior debido a la ubicaciones de los antiguos elementos de la diagonal, sin embargo al realizar la permutación por columnas estos regresan a sus posiciones originales obteniendo la matriz:\\
+
+\[P_{i+1}.T^{(i)}.P_{i+1}^{-1}=
+\begin{bmatrix}
+    1 &  0 & \dots & 0 & 0 & \dots &  0 & \dots & 0 \\
+   \vdots  & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+   T_{j,1}^{(i)} &  T_{j,2}^{(i)} & \dots &  T_{j,i}^{(i)} &  {\bf 1} & \dots  & 0 & \dots & 0 \\
+   \vdots  & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    T_{i+1,1}^{(i)} &  T_{i+1,2}^{(i)} & \dots &  T_{i+1,i}^{(i)} & 0 & \dots  &  {\bf 1} & \dots & 0 \\
+   \vdots  & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    T_{n,1}^{(i)} &  T_{n,2}^{(i)} & \dots &  T_{n,i}^{(i)} & 0 & \dots & 0 & \dots & 1 \\
+\end{bmatrix}
+\]
+Ahora la matriz cumple con una forma similar a la planteada en la hipótesis por lo que solo resta comprobar que tras multiplicar por $L_{i+1}^{-1}$ el resultado sigue poseyendo una estructura similar. Según esto:\\
+
+\[P_{i+1}.T^{(i)}.P_{i+1}^{-1}.L_{i+1}^{-1}=
+\begin{bmatrix}
+    1 & \dots & 0 & 0 & \dots &  0 & \dots & 0 \\
+   \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+   T_{j,1}^{(i)} & \dots &  T_{j,i}^{(i)} & 1 & \dots  & 0 & \dots & 0 \\
+   \vdots  & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    T_{i+1,1}^{(i)} & \dots &  T_{i+1,i}^{(i)} & 0 & \dots  & 1 & \dots & 0 \\
+   \vdots  & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    T_{n,1}^{(i)} & \dots &  T_{n,i}^{(i)} & 0 & \dots & 0 & \dots & 1 \\
+\end{bmatrix}.
+\begin{bmatrix}
+    1  & \dots & 0 & \dots & 0 \\
+   \vdots  & \ddots & \vdots & \ddots & \vdots \\
+   0  & \dots & 1 & \dots & 0 \\
+   0  & \dots & a_{i+2,i+1}^{i+1}/a_{i+1,i+1}^{i+1} & \dots & 0 \\
+   \vdots  & \ddots & \vdots & \ddots & \vdots \\
+   0  & \dots & a_{n,i+1}^{i+1}/a_{i+1,i+1}^{i+1} & \dots & 0 \\
+\end{bmatrix}
+\]
+
+Dado que la matriz $L_{i+1}^{-1}$ se asemeja a una matriz identidad excepto por la columna i+1, el único cambio se dará al multiplicar por esta columna.\\
+Esto implica demostrar que el producto de la matriz $P_{i+1}.T^{(i)}.P_{i+1}^{-1}$ y la columna i+1 de $L_{i+1}^{-1}$ dan como resultado:\\
+
+\[P_{i+1}.T^{(i)}.P_{i+1}^{-1}.L_{i+1}^{-1}=
+\begin{bmatrix}
+    1 & \dots & 0 & 0 & \dots &  0 & \dots & 0 \\
+   \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+   T_{j,1}^{(i)} & \dots &  T_{j,i}^{(i)} & 1 & \dots  & 0 & \dots & 0 \\
+   \vdots  & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    T_{i+1,1}^{(i)} & \dots &  T_{i+1,i}^{(i)} & 0 & \dots  & 1 & \dots & 0 \\
+   \vdots  & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    T_{n,1}^{(i)} & \dots &  T_{n,i}^{(i)} & 0 & \dots & 0 & \dots & 1 \\
+\end{bmatrix}.
+\begin{bmatrix}
+0\\
+\vdots\\
+1\\
+a_{i+2,i+1}^{i+1}/a_{i+1,i+1}^{i+1}\\
+\vdots\\
+a_{j,i+1}^{i+1}/a_{i+1,i+1}^{i+1}\\
+\vdots\\
+a_{n,i+1}^{i+1}/a_{n,i+1}^{i+1}\\
+\end{bmatrix}=
+\begin{bmatrix}
+0\\
+\vdots\\
+1\\
+T_{i+2,i+1}^{(i+1)}\\
+\vdots\\
+T_{n,i+1}^{(i+1)}\\
+\end{bmatrix}
+\]
+
+Debido a que los i primeros términos del vector columna son nulos al multiplicarse por las filas de la matriz $P_{i+1}.T^{(i)}.P_{i+1}^{-1}$ solo importarán sus términos a partir del elemento i+1, por lo cual puede omitirse las primeras i columnas para facilitar la visualización:\\
+\[P_{i+1}.T^{(i)}.P_{i+1}^{-1}.L_{i+1}^{-1}=
+\begin{bmatrix}
+   0 & \dots &  0 & \dots & 0 \\
+   \vdots & \ddots & \vdots & \ddots & \vdots \\
+   1 & \dots  & 0 & \dots & 0 \\
+   \vdots & \ddots & \vdots & \ddots & \vdots \\
+    0 & \dots  & 1 & \dots & 0 \\
+   \vdots & \ddots & \vdots & \ddots & \vdots \\
+   0 & \dots & 0 & \dots & 1 \\
+\end{bmatrix}.
+\begin{bmatrix}
+1\\
+a_{i+2,i+1}^{i+1}/a_{i+1,i+1}^{i+1}\\
+\vdots\\
+a_{j,i+1}^{i+1}/a_{i+1,i+1}^{i+1}\\
+\vdots\\
+a_{n,i+1}^{i+1}/a_{n,i+1}^{i+1}\\
+\end{bmatrix}=
+\begin{bmatrix}
+0\\
+\vdots\\
+1\\
+a_{i+2,i+1}^{i+1}/a_{i+1,i+1}^{i+1}\\
+\vdots\\
+a_{n,i+1}^{i+1}/a_{n,i+1}^{i+1}\\
+\end{bmatrix}
+\]
+
+Finalmente dado que el resto de columnas de $ L_{i+1}^{-1}$ no modifica el resto de columnas de la matriz original al multiplicarse, se obtendrá como resultado:\\
+\[T_{(i+1)}=
+\begin{bmatrix}
+    1 &  0 & \dots & 0 & 0 & \dots &  0 & \dots & 0 \\
+   \vdots  & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+   T_{j,1}^{(i)} &  T_{j,2}^{(i)} & \dots &  T_{j,i}^{(i)} & 1 & \dots  & 0 & \dots & 0 \\
+   T_{i+2,1}^{(i)} &  T_{i+2,2}^{(i)} & \dots &  T_{i+2,i}^{(i)} & a_{i+2,i+1}^{i+1}/a_{i+1,i+1}^{i+1} & \dots  & 0 & \dots & 0 \\
+   \vdots  & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    T_{i+1,1}^{(i)} &  T_{i+1,2}^{(i)} & \dots &  T_{i+1,i}^{(i)} & a_{j,i+1}^{i+1}/a_{j,i+1}^{i+1} & \dots  & 1 & \dots & 0 \\
+   \vdots  & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    T_{n,1}^{(i)} &  T_{n,2}^{(i)} & \dots &  T_{n,i}^{(i)} &a_{n,i+1}^{i+1}/a_{n,i+1}^{i+1} & \dots & 0 & \dots & 1 \\
+\end{bmatrix}
+\]
+Como se puede observar la matriz resultante cumple con la forma planteada en la hipótesis, por lo cual se demuestra que durante cada etapa intermedia la matriz L sigue siendo triangular inferior unitaria.

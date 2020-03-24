@@ -1,0 +1,3 @@
+/home/jenazads/github/ComputerScience_UCSP/MCC201_Imagenes/ComputerVision/Trabajo_2_Fast-3D-Recognition/fast-3D-recognition/build/CMakeFiles/rebuild_cache.dir
+/home/jenazads/github/ComputerScience_UCSP/MCC201_Imagenes/ComputerVision/Trabajo_2_Fast-3D-Recognition/fast-3D-recognition/build/CMakeFiles/Kinect2_PCLGrabber.dir
+/home/jenazads/github/ComputerScience_UCSP/MCC201_Imagenes/ComputerVision/Trabajo_2_Fast-3D-Recognition/fast-3D-recognition/build/CMakeFiles/edit_cache.dir

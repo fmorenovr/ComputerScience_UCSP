@@ -1,0 +1,96 @@
+Sean $A$ una matriz simétrica definida positiva. Al finalizar el primer paso de la factorización $LU$ de $A$ tenemos:
+
+$$
+A^{(1)} = \begin{pmatrix}
+            a_{11} & a_{12} & ... & a_{1n} \\ 
+            0 & & & \\
+            0 & & & \\
+            . & & & \\
+            . & & A^{'} & \\
+            . & & & \\
+            0 & & & \\
+        \end{pmatrix}
+$$
+
+Pruebe que $A^{'}$ es simétrica y definida positiva. Entonces muestre que la factorización $LU$ de una matriz simétrica definida positiva usando eliminación Gaussiana sin pivoteo siempre existe y es única.\\
+
+\noindent \textcolor{red}{\bf Solución:\\}
+
+Sea:
+
+$$
+A = \begin{pmatrix}
+    a_{11} & a_{12} & ... & a_{1n} \\
+    a_{21} & a_{22} & ... & a_{2n} \\
+    ... & ... & ... & ... \\
+    a_{n1} & a_{n2} & ... & a_{nn} \\
+\end{pmatrix}
+$$
+
+una matriz simétrica y definida positiva y 
+
+$$
+m_1 = \begin{pmatrix}
+    0 \\
+    a_{21} \\
+    ... \\
+    a_{n1}
+\end{pmatrix}
+$$
+
+siendo $M_1=I-m_1e_1^{t}$
+
+$$
+M_1 = \begin{pmatrix}
+    1 & 0 & ... & 0 \\
+    \frac{-a_{21}}{a_{11}} & 1 & ... & 0 \\
+    ... & ... & ... & ... \\
+    \frac{-a_{n1}}{a_{11}} & 0 & ... & 1 \\
+\end{pmatrix}
+$$
+
+Entonces:
+
+$$
+A_1 = M_1*A
+$$
+
+$$
+A_1 = \begin{pmatrix}
+    1 & 0 & ... & 0 \\
+    \frac{-a_{21}}{a_{11}} & 1 & ... & 0 \\
+    ... & ... & ... & ... \\
+    \frac{-a_{n1}}{a_{11}} & 0 & ... & 1 \\
+\end{pmatrix} * \begin{pmatrix}
+    a_{11} & a_{12} & ... & a_{1n} \\
+    a_{21} & a_{22} & ... & a_{2n} \\
+    ... & ... & ... & ... \\
+    a_{n1} & a_{n2} & ... & a_{nn} \\
+\end{pmatrix}
+$$
+
+$$
+A_1 = \begin{pmatrix}
+            a_{11} & a_{12} & ... & a_{1n} \\ 
+            0 & & & \\
+            0 & & & \\
+            . & & & \\
+            . & & A^{'} & \\
+            . & & & \\
+            0 & & & \\
+        \end{pmatrix}
+$$
+
+Operando:
+
+$$
+A^{'} = \begin{pmatrix}
+    \frac{-a_{21}a_{12}}{a_{11}}+a_{22} & \frac{-a_{21}a_{13}}{a_{11}}+a_{23} & ... & \frac{-a_{21}a_{1n}}{a_{11}}+a_{2n} \\
+    \frac{-a_{31}a_{12}}{a_{11}}+a_{32} & \frac{-a_{31}a_{13}}{a_{11}}+a_{33} & ... & ...\\
+    ... & ... & ... & ... \\
+    \frac{-a_{n1}a_{12}}{a_{11}}+a_{n2} & ... & ... & ... \\
+\end{pmatrix}
+$$
+
+Pero dado que $A$ era simétrica y definida positiva, entonces $a_{ij}=a_{ji}$, por lo tanto del cálculo anterior se demuestra que $A^{'}$  también es simétrica y definida positiva.
+

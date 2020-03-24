@@ -1,0 +1,444 @@
+    Resolver el siguiente sistema
+    \[
+  	\begin{bmatrix}
+    2 & -1 & 0 & 0 \\
+    -1 & 2 & -1 & 0 \\
+    0 & -1 & 2 & -1 \\
+    0 & 0 & -1 & 2  
+  	\end{bmatrix}
+  	\begin{bmatrix}
+    x_{1} \\
+    x_{2} \\
+    x_{3}  \\
+    x_{4}   
+  	\end{bmatrix}
+  	=
+  	\begin{bmatrix}
+    1 \\
+    1 \\
+    1  \\
+    1   
+  	\end{bmatrix}
+	\]\\
+	\noindent \textcolor{red}{\bf Solución:}
+	\begin{itemize}
+		\item Usando Eliminación gaussiana
+		La matriz aumentada es:
+			\[
+  			\begin{bmatrix}
+   			 2 & -1 & 0 & 0 & | & 1 \\
+    		-1 & 2 & -1 & 0 & | & 1\\
+    		 0 & -1 & 2 & -1 & | & 1 \\
+    		 0 & 0 & -1 & 2 & | & 1 
+  			\end{bmatrix}
+  			\]
+  			Dividimos entre 2 la $1^{ra}$ fila 
+  			\[
+  			\begin{bmatrix}
+   			 2 & -1 & 0 & 0 & | & 1 \\ 
+    		-1 & 2 & -1 & 0 & | & 1\\
+    		 0 & -1 & 2 & -1 & | & 1 \\
+    		 0 & 0 & -1 & 2 & | & 1 
+  			\end{bmatrix}
+  			\]
+  			\[
+  			\begin{bmatrix}
+   			 1 & -1/2 & 0 & 0 & | & 1/2 \\ 
+    		-1 & 2 & -1 & 0 & | & 1\\
+    		 0 & -1 & 2 & -1 & | & 1 \\
+    		 0 & 0 & -1 & 2 & | & 1 
+  			\end{bmatrix}
+			\]	
+  			Sumamos $F_{1}$ a $F_{2}$
+			\[
+  			\begin{bmatrix}
+   			 1 & -1/2 & 0 & 0 & | & 1/2 \\ 
+    		 0 & 3/2 & -1 & 0 & | & 3/2\\
+    		 0 & -1 & 2 & -1 & | & 1 \\
+    		 0 & 0 & -1 & 2 & | & 1 
+  			\end{bmatrix}
+  			\]
+  			\[
+  			\begin{bmatrix}
+   			 1 & -1/2 & 0 & 0 & | & 1/2 \\ 
+    		 0 & 3/2 & -1 & 0 & | & 3/2\\
+    		 0 & -1 & 2 & -1 & | & 1 \\
+    		 0 & 0 & -1 & 2 & | & 1 
+  			\end{bmatrix}
+  			\]
+  			Multiplicamos por (2/3) la $2^{ra}$ fila 
+  			\[
+  			\begin{bmatrix}
+   			 1 & -1/2 & 0 & 0 & | & 1/2 \\ 
+    		 0 & 1 & -2/3 & 0 & | & 1\\
+    		 0 & -1 & 2 & -1 & | & 1 \\
+    		 0 & 0 & -1 & 2 & | & 1 
+  			\end{bmatrix}
+  			\]
+  			Sumamos la $2^{da}$ fila a la $3^{ra}$
+  			\[
+  			\begin{bmatrix}
+   			 1 & -1/2 & 0 & 0 & | & 1/2 \\ 
+    		 0 & 1 & -2/3 & 0 & | & 1\\
+    		 0 & 0 & 4/3 & -1 & | & 2 \\
+    		 0 & 0 & -1 & 2 & | & 1 
+  			\end{bmatrix}
+  			\]
+  			Multiplicamos por (3/4) la $3^{ra}$ fila 
+			\[
+  			\begin{bmatrix}
+   			 1 & -1/2 & 0 & 0 & | & 1/2 \\ 
+    		 0 & 1 & -2/3 & 0 & | & 1\\
+    		 0 & 0 & 1 & -3/4 & | & 3/2 \\
+    		 0 & 0 & -1 & 2 & | & 1 
+  			\end{bmatrix}
+  			\]	
+  			Sumamos la $3^{ra}$ fila a la $4^{ta}$ fila 
+  			\[
+  			\begin{bmatrix}
+   			 1 & -1/2 & 0 & 0 & | & 1/2 \\ 
+    		 0 & 1 & -2/3 & 0 & | & 1\\
+    		 0 & 0 & 1 & -3/4 & | & 3/2 \\
+    		 0 & 0 & 0 & 5/4 & | & 5/2 
+  			\end{bmatrix}
+  			\]	
+  			Multiplicamos la ultima fila por (4/5)
+  			\[
+  			\begin{bmatrix}
+   			 1 & -1/2 & 0 & 0 & | & 1/2 \\ 
+    		 0 & 1 & -2/3 & 0 & | & 1\\
+    		 0 & 0 & 1 & -3/4 & | & 3/2 \\
+    		 0 & 0 & 0 & 1 & | & 2 
+  			\end{bmatrix}
+  			\]	
+  			Entonces tenemos lo siguiente:
+  			\begin {equation*} \begin {split}  	
+				x_{4} = 2 \\
+				x_{3} - 3/4(x_{4}) = 3/2 \\
+				x_{3} = 3 \\ 
+				x_{2} - 2/3(x_{3}) = 1 \\
+				x_{2} = 3 \\
+				x_{1} - 1/2(x_{2}) = 1/2 \\
+				x_{1} = 2 
+  			\end {split} \end {equation*}
+  			Por lo tanto, el sistema es el siguiente:
+  			\[
+  			\begin{bmatrix}
+    		2 & -1 & 0 & 0 \\
+    		-1 & 2 & -1 & 0 \\
+    		0 & -1 & 2 & -1 \\
+    		0 & 0 & -1 & 2  
+  			\end{bmatrix}
+  			\begin{bmatrix}
+    		2 \\
+    		3 \\
+    		3 \\
+    		2   
+  			\end{bmatrix}
+  			=
+  			\begin{bmatrix}
+    		1 \\
+    		1 \\
+    		1  \\
+    		1   
+  			\end{bmatrix}
+			\]
+		\item Calculando la factorización LU 
+		  	\begin {equation*} \begin {split}  	
+				m_{1}(2) = -A(2,1)/A(1,1) = 1/2 \\
+				m_{1}(3) = -A(3,1)/A(1,1) = 0 \\
+				m_{1}(4) = -A(4,1)/A(1,1) = 0  
+  			\end {split} \end {equation*}
+			\[ M_{1} = 
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 0 & 1 & 0 & 0 \\
+    		 0 & 0 & 1 & 0 \\
+    		 0 & 0 & 0 & 1  
+  			\end{bmatrix}
+  			+
+  			\begin{bmatrix}
+   			 0 \\ 
+    		 1/2 \\
+    		 0 \\
+    		 0  
+  			\end{bmatrix}
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 
+  			\end{bmatrix}
+  			=
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 1/2 & 1 & 0 & 0 \\
+    		 0 & 0 & 1 & 0 \\
+    		 0 & 0 & 0 & 1  
+  			\end{bmatrix}
+  			\]	
+  			\[ A_{1} = 
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 1/2 & 1 & 0 & 0 \\
+    		 0 & 0 & 1 & 0 \\
+    		 0 & 0 & 0 & 1  
+  			\end{bmatrix}
+  			\begin{bmatrix}
+    		2 & -1 & 0 & 0 \\
+    		-1 & 2 & -1 & 0 \\
+    		0 & -1 & 2 & -1 \\
+    		0 & 0 & -1 & 2  
+  			\end{bmatrix}
+  			=
+  			\begin{bmatrix}
+    		2 & -1 & 0 & 0 \\
+    		0 & 3/2 & -1 & 0 \\
+    		0 & -1 & 2 & -1 \\
+    		0 & 0 & -1 & 2  
+  			\end{bmatrix}
+  			\]
+  			\[ MM_{1} = 
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 1/2 & 1 & 0 & 0 \\
+    		 0 & 0 & 1 & 0 \\
+    		 0 & 0 & 0 & 1  
+  			\end{bmatrix}
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 0 & 1 & 0 & 0 \\
+    		 0 & 0 & 1 & 0 \\
+    		 0 & 0 & 0 & 1  
+  			\end{bmatrix}
+  			= 
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 1/2 & 1 & 0 & 0 \\
+    		 0 & 0 & 1 & 0 \\
+    		 0 & 0 & 0 & 1  
+  			\end{bmatrix}
+  			\]
+  			\begin {equation*} \begin {split}  	
+				m_{2}(3) = -A_{1}(3,2)/A_{1}(2,2) = 2/3 \\
+				m_{2}(4) = -A_{1}(4,2)/A_{1}(2,2) = 0  
+  			\end {split} \end {equation*}
+  			\[ M_{2} = 
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 0 & 1 & 0 & 0 \\
+    		 0 & 0 & 1 & 0 \\
+    		 0 & 0 & 0 & 1  
+  			\end{bmatrix}
+  			+
+  			\begin{bmatrix}
+   			 0 \\ 
+    		 0 \\
+    		 2/3 \\
+    		 0  
+  			\end{bmatrix}
+  			\begin{bmatrix}
+   			 0 & 1 & 0 & 0 
+  			\end{bmatrix}
+  			=
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 0 & 1 & 0 & 0 \\
+    		 0 & 2/3 & 1 & 0 \\
+    		 0 & 0 & 0 & 1  
+  			\end{bmatrix}
+  			\]
+  			\[ A_{2} = 
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 0 & 1 & 0 & 0 \\
+    		 0 & 2/3 & 1 & 0 \\
+    		 0 & 0 & 0 & 1  
+  			\end{bmatrix}
+			\begin{bmatrix}
+    		2 & -1 & 0 & 0 \\
+    		0 & 3/2 & -1 & 0 \\
+    		0 & -1 & 2 & -1 \\
+    		0 & 0 & -1 & 2  
+  			\end{bmatrix}
+  			=
+  			\begin{bmatrix}
+    		2 & -1 & 0 & 0 \\
+    		0 & 3/2 & -1 & 0 \\
+    		0 & 0 & 4/3 & -1 \\
+    		0 & 0 & -1 & 2  
+  			\end{bmatrix}
+  			\]
+  			\[ MM_{2} = 
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 0 & 1 & 0 & 0 \\
+    		 0 & 2/3 & 1 & 0 \\
+    		 0 & 0 & 0 & 1  
+  			\end{bmatrix}
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 1/2 & 1 & 0 & 0 \\
+    		 0 & 0 & 1 & 0 \\
+    		 0 & 0 & 0 & 1  
+  			\end{bmatrix}
+  			= 
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 1/2 & 1 & 0 & 0 \\
+    		 1/3 & 2/3 & 1 & 0 \\
+    		 0 & 0 & 0 & 1  
+  			\end{bmatrix}
+  			\]
+   			\begin {equation*} \begin {split}  	
+				m_{3}(4) = -A_{2}(4,3)/A_{2}(3,3) = 3/4  
+  			\end {split} \end {equation*} 
+  			\[ M_{3} = 
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 0 & 1 & 0 & 0 \\
+    		 0 & 0 & 1 & 0 \\
+    		 0 & 0 & 0 & 1  
+  			\end{bmatrix}
+  			+
+  			\begin{bmatrix}
+   			 0 \\ 
+    		 0 \\
+    		 0 \\
+    		 3/4  
+  			\end{bmatrix}
+  			\begin{bmatrix}
+   			 0 & 0 & 1 & 0 
+  			\end{bmatrix}
+  			=
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 0 & 1 & 0 & 0 \\
+    		 0 & 0 & 1 & 0 \\
+    		 0 & 0 & 3/4 & 1  
+  			\end{bmatrix}
+  			\]	
+  			\[ A_{3} = 
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 0 & 1 & 0 & 0 \\
+    		 0 & 0 & 1 & 0 \\
+    		 0 & 0 & 3/4 & 1  
+  			\end{bmatrix}
+			\begin{bmatrix}
+    		2 & -1 & 0 & 0 \\
+    		0 & 3/2 & -1 & 0 \\
+    		0 & 0 & 4/3 & -1 \\
+    		0 & 0 & -1 & 2  
+  			\end{bmatrix}
+  			=
+  			\begin{bmatrix}
+    		2 & -1 & 0 & 0 \\
+    		0 & 3/2 & -1 & 0 \\
+    		0 & 0 & 4/3 & -1 \\
+    		0 & 0 & 0 & 5/4  
+  			\end{bmatrix}
+  			\]	
+  			\[ MM_{3} = 
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 0 & 1 & 0 & 0 \\
+    		 0 & 0 & 1 & 0 \\
+    		 0 & 0 & 3/4 & 1  
+  			\end{bmatrix}
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 1/2 & 1 & 0 & 0 \\
+    		 1/3 & 2/3 & 1 & 0 \\
+    		 0 & 0 & 0 & 1  
+  			\end{bmatrix}
+  			= 
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 1/2 & 1 & 0 & 0 \\
+    		 1/3 & 2/3 & 1 & 0 \\
+    		 1/4 & 1/2 & 3/4 & 1  
+  			\end{bmatrix}
+  			\]
+  			Entonces:
+			\[ L =   			
+  			Inv(\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 1/2 & 1 & 0 & 0 \\
+    		 1/3 & 2/3 & 1 & 0 \\
+    		 1/4 & 1/2 & 3/4 & 1  
+  			\end{bmatrix})
+  			\]
+			\[ L =   			
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 -1/2 & 1 & 0 & 0 \\
+    		 0 & -2/3 & 1 & 0 \\
+    		 0 & 0 & -3/4 & 1  
+  			\end{bmatrix}
+  			\] 			
+  			\[ U =   			
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 1/2 & 1 & 0 & 0 \\
+    		 1/3 & 2/3 & 1 & 0 \\
+    		 1/4 & 1/2 & 3/4 & 1  
+  			\end{bmatrix}
+  			\begin{bmatrix}
+    		2 & -1 & 0 & 0 \\
+    		-1 & 2 & -1 & 0 \\
+    		0 & -1 & 2 & -1 \\
+    		0 & 0 & -1 & 2  
+  			\end{bmatrix}
+  			\]
+  			\[ U =   			
+  			\begin{bmatrix}
+   			 2 & -1 & 0 & 0 \\ 
+    		 0 & 3/2 & -1 & 0 \\
+    		 0 & 0 & 4/3 & -1 \\
+    		 0 & 0 & 0 & 5/4  
+  			\end{bmatrix}
+  			\]
+  			Sabemos que $Ux = y$, donde  $y = L^{-1}b$
+  			\[ y =   			
+  			\begin{bmatrix}
+   			 1 & 0 & 0 & 0 \\ 
+    		 1/2 & 1 & 0 & 0 \\
+    		 1/3 & 2/3 & 1 & 0 \\
+    		 1/4 & 1/2 & 3/4 & 1  
+  			\end{bmatrix}
+  			\begin{bmatrix}
+   			 1  \\ 
+    		 1 \\
+    		 1 \\
+    		 1  
+  			\end{bmatrix}
+  			=
+  			\begin{bmatrix}
+   			 1 \\ 
+    		 3/2 \\
+    		 2 \\
+    		 5/2  
+  			\end{bmatrix}
+  			\] 
+  			Entonces $x = U^{-1}y$:		
+  			\[ x =   			
+  			\begin{bmatrix}
+   			 1/2 & 1/3 & 1/4 & 1/5 \\ 
+    		 0 & 2/3 & 1/2 & 2/5 \\
+    		 0 & 0 & 3/4 & 3/5 \\
+    		 0 & 0 & 0 & 4/5  
+  			\end{bmatrix}
+  			\begin{bmatrix}
+   			 1  \\ 
+    		 3/2 \\
+    		 2 \\
+    		 5/2  
+  			\end{bmatrix}
+  			=
+  			\begin{bmatrix}
+   			 2 \\ 
+    		 3 \\
+    		 3 \\
+    		 2  
+  			\end{bmatrix}
+  			\] 
+	\end{itemize}
+	Por ambos métodos demostramos que el sistema tiene la misma solución.

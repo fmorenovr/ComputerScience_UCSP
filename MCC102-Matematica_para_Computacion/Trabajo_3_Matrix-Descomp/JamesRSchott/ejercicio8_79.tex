@@ -1,0 +1,48 @@
+Se ha visto en el Teorema 8.41 que $\rho(A)$ es un valor singular de $A$ si $A$ es positiva. En este ejercicio, se usará la extensión de este resultado que dice que $\rho(A)$ es un valor singular de $A$ si $A$ es no negativa. Para los siguientes enunciados asuma que $A$ es una matriz no negativa de $m$ x $m$.
+
+\begin{itemize}
+    \item Muestre que $\rho(I_m + A) = 1 + \rho(A)$
+    
+    \item Muestre que si $ A^k > (0) $ para algún entero positivo $k$, entonces $\rho(A)$ es un simple valor singular de $A$
+    
+    \item Aplique b) en la matriz $(I_m + A)$ para probar el Teorema 8.49; esto es, probar que para cualquier matriz no negativa irreducible $A$, $\rho(A)$ debe ser un simple valor singular.
+\end{itemize}
+
+
+\textbf{Solución:}
+
+\begin{itemize}
+
+\item Muestre que $\rho(I_m + A) = 1 + \rho(A)$\\
+    
+    Partimos de la ecuación que nos permite obtener los autovalores de una matriz. Denominaremos $\lambda_1$ a los autovalores de esta matriz.
+    
+    \begin{equation*}
+        det(A - \lambda_1 I) = 0
+    \end{equation*}
+    
+    Definimos una segunda matriz $B = A + I$, y denominaremos a sus autovalores como $\lambda_2$. 
+    
+    %\[  
+        $$det(B - \lambda_2 I) = 0$$
+        $$det(A + I - \lambda_2 I) = 0 $$
+        $$det(A - I ( \lambda_2 - 1) = 0 $$
+    %\]
+    
+    Si igualamos ambas expresiones, se tiene que:
+ 
+    $$\lambda_1 = \lambda_2 - 1$$
+    
+    Suponiendo que ambos $\lambda$ ($\lambda_1$ y $\lambda_2$) representan los radios espectrales de las matrices $ A $ y $ I_m + A $ respectivamente, se concluye que:
+    
+    $$\rho(A) = \rho(I_m + A) - 1$$
+    
+\item Muestre que si $ A^k > (0) $ para algún entero positivo $k$, entonces $\rho(A)$ es un simple valor singular de $A$\\
+    
+    Primero, partiendo del presente enunciado, que indica que $ A^k > (0) $, se puede concluir que la matriz $A$ es positiva, ya que para que una potencia de la matriz $A$ sea positiva, cada componente de la matriz $A$ debió ser positivo y diferente de cero. Por lo tanto, la matriz $A$ no solo es no negativa (como lo indica el enunciado general), sino que es positiva.
+    
+    Segundo, existe un Teorema llamado el Teorema de Perron, que demuestra mediante la relación que existe entre los autovalores y autovectores de una matriz positiva que, el radio espectral de una matriz positiva siempre tiene multiplicidad algebraica de 1, es decir, que existe . Por lo tanto, se puede concluir que $\rho (A)$ es un autovalor simple.
+    
+\item 
+
+\end{itemize}

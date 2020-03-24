@@ -1,0 +1,175 @@
+\textbf{Resolver usando eliminación Gaussiana sin pivoteo parcial y con pivoteo parcial, y comparar respuestas.}\\
+
+    \[
+    \left(\begin{array}{ccc}
+        0.0001 & 1 & 1  \\
+         3 & 1 & 1 \\
+         1 & 2 & 3 \\
+    \end{array}\right) \left(\begin{array}{c}
+         x_1  \\
+         x_2 \\
+         x_3 \\
+    \end{array} \right) = \left(\begin{array}{c}
+         2.0001  \\
+         3 \\
+         3 \\
+    \end{array}\right)\]
+    
+    \textbf{Solución:}\\
+    
+    \begin{enumerate}
+        \item \textbf{Eliminación Gaussiana sin Pivoteo} \\
+        
+            \[ \left( \begin{array}{ccccc}
+                 0.0001 & 1 & 1 & | & 2.0001    \\
+                 3      & 1 & 1 & | & 3         \\
+                 1      & 2 & 3 & | & 3         \\
+            \end{array}
+            \right) \quad \rightarrow R_2 - \frac{3}{0.0001}R_1 
+            \]
+            
+            \[ \left( \begin{array}{ccccc}
+                 0.0001 & 1         & 1         & | & 2.0001    \\
+                 0      & -29999    & -29999    & | & -60000    \\
+                 1      & 2         & 3         & | & 3         \\
+            \end{array}
+            \right) \quad \rightarrow R_3 - \frac{1}{0.0001}R_1
+            \]
+            
+            \[ \left( \begin{array}{ccccc}
+                 0.0001 & 1         & 1         & | & 2.0001    \\
+                 0      & -29999    & -29999    & | & -60000    \\
+                 0      & -9998     & -9997     & | & -19998    \\
+            \end{array}
+            \right) \quad \rightarrow R_3 - 0.33328R_2
+            \]
+            
+            \[ \left( \begin{array}{ccccc}
+                 0.0001 & 1         & 1         & | & 2.0001    \\
+                 0      & -29999    & -29999    & | & -60000    \\
+                 0      & 0         & 1.0667    & | & -1.1999   \\
+            \end{array}
+            \right) \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad
+            \]
+            
+            Encontrando las valores para $x_1$, $x_2$ y $x_3$: 
+            
+            \begin{equation*}
+                \begin{split}
+                    1.0667x_3   & = -1.1999 \\
+                    x_3         & = -1.1249 \\
+                \end{split}
+            \end{equation*}
+            
+            \begin{equation*}
+                \begin{split}
+                    -29999x_2 - 29999x_3    & = -60000          \\
+                    -29999x_2 + 33745.8751  & = -60000          \\
+                    -29999x_2               & = -93745.8751     \\
+                    x_2                     & = 3.12497         \\
+                \end{split}
+            \end{equation*}
+            
+            \begin{equation*}
+                \begin{split}
+                    0.0001x_1 + x_2 + x_3   & = 2.0001          \\
+                    0.0001x_1 + 2.0001      & = 2.0001          \\
+                    x_1                     & = 0               \\
+                \end{split}
+            \end{equation*}
+            
+            \textbf{Por lo tanto: $x = (0 \ \ 3.12497 \ -1.1249)^T$}\\
+            
+        
+        \item \textbf{Eliminación Gaussiana con Pivoteo Parcial}\\
+        
+            \[ \left( \begin{array}{ccccc}
+                 0.0001 & 1 & 1 & | & 2.0001    \\
+                 3      & 1 & 1 & | & 3         \\
+                 1      & 2 & 3 & | & 3         \\
+            \end{array}
+            \right)  
+            \]
+            
+            Considerando que el valor máximo en la columna 1 es 3, se procede a intercambiar:\\
+            
+            \[ \left( \begin{array}{ccccc}
+                 0.0001 & 1 & 1 & | & 2.0001    \\
+                 3      & 1 & 1 & | & 3         \\
+                 1      & 2 & 3 & | & 3         \\
+            \end{array}
+            \right) \quad \quad R_2 \longleftrightarrow R_1 \quad \quad 
+            \]
+            
+            \[ \left( \begin{array}{ccccc}
+                 3      & 1 & 1 & | & 3         \\
+                 0.0001 & 1 & 1 & | & 2.0001    \\
+                 1      & 2 & 3 & | & 3         \\
+            \end{array}
+            \right) \quad \rightarrow R_2 - \frac{0.0001}{3}R_1 
+            \]
+            
+            \[ \left( \begin{array}{ccccc}
+                 3      & 1         & 1         & | & 3         \\
+                 0      & 0.9999    & 0.9999    & | & 2         \\
+                 1      & 2         & 3         & | & 3         \\
+            \end{array}
+            \right) \quad \rightarrow R_3 - \frac{1}{3}R_1 \quad \quad
+            \]
+            
+            \[ \left( \begin{array}{ccccc}
+                 3      & 1         & 1         & | & 3         \\
+                 0      & 0.9999    & 0.9999    & | & 2         \\
+                 1      & 2         & 3         & | & 3         \\
+            \end{array}
+            \right) \quad \rightarrow R_3 - \frac{1}{3}R_1 \quad \quad
+            \]
+            
+            \[ \left( \begin{array}{ccccc}
+                 3      & 1         & 1         & | & 3         \\
+                 0      & 0.9999    & 0.9999    & | & 2         \\
+                 0      & 1.6667    & 2.6667    & | & 2         \\
+            \end{array}
+            \right) \quad \rightarrow R_3 - 1.6669R_2 
+            \]
+            
+            \[ \left( \begin{array}{ccccc}
+                 3      & 1         & 1         & | & 3         \\
+                 0      & 0.9999    & 0.9999    & | & 2         \\
+                 0      & 0         & 1         & | & -1.3338   \\
+            \end{array}
+            \right) \quad \rightarrow R_3 - 1.6669R_2 
+            \]
+            
+            Encontrando las valores para $x_1$, $x_2$ y $x_3$: 
+            
+            \begin{equation*}
+                \begin{split}
+                    x_3         & = -1.3338 \\
+                \end{split}
+            \end{equation*}
+            
+            \begin{equation*}
+                \begin{split}
+                    0.9999x_2 + 0.9999x_3   & = 2           \\
+                    0.9999x_2 - 1.3337      & = 2           \\
+                    0.9999x_2               & = 3.3337      \\
+                    x_2                     & = 3.3340      \\
+                \end{split}
+            \end{equation*}
+            
+            \begin{equation*}
+                \begin{split}
+                    3x_1 + x_2 + x_3    & = 3           \\
+                    3x_1 + 2.0002       & = 3           \\
+                    3x_1                & = 0.9998      \\
+                    x_1                 & = 0.33327     \\
+                \end{split}
+            \end{equation*}
+            
+            \textbf{Por lo tanto: $x = (0.33327 \ 3.3340 \ -1.3338)^T$}\\
+        
+    \end{enumerate}
+    
+    Finalmente, al comparar ambos resultados se ve una diferencia en los decimales; la cual se fundamenta en el número de operaciones realizadas; ya que a medida que se resuelve cada operación se va perdiendo precisión.
+    

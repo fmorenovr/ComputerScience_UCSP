@@ -1,0 +1,163 @@
+
+\begin{enumerate}[label=(\alph*)]
+\item Encontrar para qué valores de $a$ la matriz
+$$A = \begin{pmatrix}
+                1 & a \\ 
+                a & 1
+            \end{pmatrix}$$
+    
+    está mal condicionada.
+  \item Sea $a=0.999$. Resuelva el sistema
+    
+    $$Ax=\begin{pmatrix}
+                1\\ 
+                1
+            \end{pmatrix}$$
+\item Cuál es el número condicionante de $A$.
+  \end{enumerate}
+  
+  
+ \noindent \textcolor{red}{\bf Solución:}
+ \begin{enumerate}[label=(\alph*)]
+    \item Encontrar para qué valores de $a$ la matriz
+    
+    $$A = \begin{pmatrix}
+                1 & a \\ 
+                a & 1
+            \end{pmatrix}$$
+    
+    está mal condicionada.
+    
+    \textbf{Solución:}
+    
+    Calculando la matriz inversa:
+    
+    $$
+    A^{-1}=\frac{\begin{pmatrix}
+                1 & -a\\ 
+                -a & 1
+            \end{pmatrix}}{1-a^2}
+    $$
+    
+    Usando Norma $\infty$:
+    
+    $$
+    \|A\|_{\infty}=1+|a|
+    $$ y si $a\neq 1$:
+    
+    $$
+    \|A^{-1}\|_{\infty}=\frac{1+|a|}{|1-a^2|}=\frac{1+|a|}{|1-a||1+a|}
+    $$
+    
+    Entonces el número condicionante será:
+    
+    $$
+    cond(A)=\|A\|*\|A^{-1}\|=(1+|a|)*\frac{1+|a|}{|1-a||1+a|}
+    $$
+    
+    Para que un sistema esté mal condicionado el número condicionante debe ser un número grande:
+    
+    $$
+    cond(A)>100
+    $$
+    
+    Si $1>a\geq0$:
+    
+    $$
+    \|A^{-1}\|_{\infty}=\frac{1}{1-a}
+    $$
+    
+    $$
+    cond(A)=\frac{1+a}{1-a}
+    $$
+    
+    $$
+    \frac{1+a}{1-a}>100
+    $$
+    
+    Entonces:
+    $$
+    1>a>0.98
+    $$
+    
+    Si $a>1$:
+    
+    $$
+    \|A^{-1}\|_{\infty}=\frac{1}{a-1}
+    $$
+    
+    $$
+    cond(A)=\frac{1+a}{a-1}
+    $$
+    
+    $$
+    \frac{1+a}{a-1}>100
+    $$
+    
+    Entonces:
+    $$
+    1.02>a>1
+    $$
+    
+    \item Sea $a=0.999$. Resuelva el sistema
+    
+    $$Ax=\begin{pmatrix}
+                1\\ 
+                1
+            \end{pmatrix}$$
+            
+    \textbf{Solución:}
+    
+    Reemplazando:
+    
+    $$
+    A=\begin{pmatrix}
+                1 & 0.999\\ 
+                0.999 & 1
+            \end{pmatrix}
+    $$  y $$b=\begin{pmatrix}
+                1\\ 
+                1
+            \end{pmatrix}$$
+    
+    Usando el método de Gauss-Jordan:
+    
+    $$
+    \begin{pmatrix}
+        1 & 0.999\\ 
+        0 & 0.002
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1\\ 
+        x_2
+    \end{pmatrix}
+    =\begin{pmatrix}
+        1\\ 
+        0.001
+    \end{pmatrix}
+    $$
+    
+    De donde se obtiene:
+    
+    $$
+    x=\begin{pmatrix}
+        x_1\\ 
+        x_2
+    \end{pmatrix}
+    =\begin{pmatrix}
+        0.5005\\ 
+        0.5
+    \end{pmatrix}
+    $$
+    
+    \item Cuál es el número condicionante de $A$.
+    
+    \textbf{Solución:}
+    
+    Usando la sección $(a)$ para el valor dado tendremos:
+    
+    $$
+    cond(A)=\frac{1+a}{1-a}=\frac{1+0.999}{1-0.999}=1999
+    $$
+    
+\end{enumerate}

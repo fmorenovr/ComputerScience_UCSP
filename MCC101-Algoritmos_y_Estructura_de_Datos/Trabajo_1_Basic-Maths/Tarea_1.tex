@@ -1,0 +1,261 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+
+
+\parindent0in
+\pagestyle{plain}
+\thispagestyle{plain}
+
+\newcommand{\myname}{John Doe}
+\newcommand{\assignment}{Tarea 1}
+\newcommand{\duedate}{27 de Mayo, 2018}
+
+\renewcommand\thesubsection{\arabic{subsection}}
+
+\title{Inducción Matemática}
+\date{}
+
+\begin{document}
+
+Universidad Católica San Pablo\hfill\\
+Algoritmos y Estructura de Datos\hfill\textbf{\assignment}\\
+Prof.\ Jorge Poco\hfill\textbf{Entrega:}: \duedate\\
+Alumno: Moreno Vera Felipe Adrian
+\smallskip\hrule\bigskip
+
+{\let\newpage\relax\maketitle}
+\maketitle
+
+
+\section{Sumatorias}
+
+\begin{enumerate}
+  \item Probar por inducción que 
+  \(\sum_{i=1}^{n}i=\frac{n(n+1)}{2} \qquad\forall n \geq 0\)
+  
+  \textbf{Solución:}
+  
+  Para n=0, \(0 =\frac{0(0+1)}{2} \) \\
+  Para n=1, \(1 =\frac{1(1+1)}{2} \) \\
+  Supongamos que para n se cumple, es decir:  \(\sum_{i=1}^{n}i=\frac{n(n+1)}{2}\) \\
+  Entonces tomando para  \(\sum_{i=1}^{n+1}i=\sum_{i=1}^{n}i + (n+1) \)\\
+  \(\sum_{i=1}^{n+1}i= \frac{n(n+1)}{2} + (n+1) \) = \((n+1) [ \frac{n}{2} + 1 ] \) \\
+  \(\sum_{i=1}^{n+1}i= (n+1) [ \frac{n+2}{2} ] \) \\
+  Y esto es igual:\\
+   \(\sum_{i=1}^{n+1}i= \frac{(n+1) (n+2)}{2} \) \\
+   
+  \item Probar por inducción que
+  \( \sum_{i=1}^{n}i^2=\frac{n(n+1)(2n+1)}{6} \qquad\forall n \geq 0\)
+  
+  \textbf{Solución:}
+  
+  Para n=0, \(0^2 =\frac{0(0+1)(2*0+1)}{6} \) \\
+  Para n=1, \(1^2 =\frac{1(1+1)(2+1)}{6} \) \\
+  Supongamos que para n se cumple, es decir:  \(\sum_{i=1}^{n}i^2=\frac{n(n+1)(2n+1)}{6}\) \\
+  Entonces tomando para  \(\sum_{i=1}^{n+1}i^2=\sum_{i=1}^{n}i^2 + (n+1)^2 \)\\
+  \(\sum_{i=1}^{n+1}i^2= \frac{n(n+1)(2n+1)}{6} + (n+1)(n+1) \) = \((n+1) [ \frac{n(2n+1)}{6} + (n+1) ] \) \\
+  \(\sum_{i=1}^{n+1}i^2= (n+1) [ \frac{2n^2 + n + 6n + 6}{6} ] = \frac{(n+1) (2n^2+7n+6)}{6} \)  ...(1)\\
+  Por descomposición:\\
+  \( 2n^2 + 7n + 6  =  (n+2)(2n+3)\) \\
+  Reemplazando en (1):\\
+  \(\sum_{i=1}^{n+1}i^2=\frac{(n+1) (2n^2+7n+6)}{6} = \frac{(n+1)(n+2)(2n+3)}{6}\) \\
+  Y esto es igual:\\
+  \(\sum_{i=1}^{n+1}i^2 = \frac{(n+1)((n+1)+1)(2(n+1)+1)}{6}\) \\
+  
+  
+  \item Probar por inducción que
+  \(\sum_{i=0}^{n}a^i=\frac{a^{n+1}-1}{a-1}$, tal que $n \geq 1$ y $a \neq 1\)
+  
+   \textbf{Solución:}
+  
+  Para n=1, \(a ^0 + a^1 = a + 1=\frac{a^2 -1}{a-1} = \frac{(a -1)(a+1)}{(a-1)}\) \\
+  Supongamos que para n se cumple, es decir:  \(\sum_{i=0}^{n}a^i=\frac{a^{n+1}-1}{a-1}\) \\
+  Entonces tomando para \(\sum_{i=0}^{n+1}a^i=\sum_{i=0}^{n}a^i + a^{n+1} \)\\
+  \(\sum_{i=0}^{n+1}a^i=\frac{a^{n+1}-1}{a-1} + a^{n+1} \)\\
+  \(\sum_{i=0}^{n+1}a^i=\frac{a^{n+1}-1 + a^{n+1}(a-1)}{a-1} \)\\
+  \(\sum_{i=0}^{n+1}a^i=\frac{a^{n+1}-1 + a^{n+2} - a^{n+1}}{a-1} \)\\
+  Y esto es igual:\\
+  \(\sum_{i=0}^{n+1}a^i=\frac{a^{n+2}-1}{a-1} \)\\
+    
+\end{enumerate}
+
+\section{Inecuaciones}
+
+\begin{enumerate}
+  \item Probar por inducción que 
+  $\forall n \geq 1$ tal que si $x>-1$, entonces $(1+x)^n \geq 1 + nx$
+  
+  \textbf{Solución:}
+  
+  Para n=1, \((1+x)^1 \geq 1 + 1x \) \\
+  Supongamos que para n se cumple, es decir:  \((1+x)^n \geq 1 + nx\) \\
+  Entonces para \((1+x)^{n+1} = (1+x)^n (1+x) \geq (1+nx)(1+x)\)\\
+  Despejando:
+  \((1+x)^{n+1} \geq (1+x+nx+nx^2) = (1+(n+1)x+nx^2)\)\\
+  Y esta forma se puede avreviar:\\
+  \((1+x)^{n+1} \geq (1+(n+1)x+nx^2) \) ... (1)\\
+  Como \(x > -1\), se tiene que: \(x^2 > 1\), entonces sea  \(k \geq 1\) cumpliría:\\
+  \(kx^2 \geq x^2 > 1\), por lo cual en la ecuación 1, se puede deducir que:\\
+  \((1+x)^{n+1} \geq  (1+(n+1)x+nx^2) \geq (1+(n+1)x)  \)\\
+  Por lo cual quedaría:
+  \((1+x)^{n+1} \geq (1+(n+1)x)  \)\\
+  
+  Entonces por propiedad se tiene:\\
+  \((1+x)^{n+1} \geq (1+(n+1)x)\)\\
+  
+  \item Probar por inducción que
+  $\forall n \geq 7$ se cumple que $3^n<n!$
+  
+  \textbf{Solución:}
+  
+  Para n=7, \(3^7 \geq 7! \) \\
+  Supongamos que para n se cumple $3^n<n!$ con $n \geq 7$\\
+  Entonces para n+1 se tendría:
+  $3^(n+1) = 3 ^n * 3 < n! . 3 $ ...(1) \\
+  Pero $ n \geq 7 > 3$, entonces $n+1 \geq 8 > 3$, reemplazando en (1):\\
+  $3^(n+1) = 3 ^n * 3 < n! . 3 < n! . (n+1)$ \\
+  Por el cual tenemos:\\
+  $3^(n+1) < (n+1)!$ \\
+  
+  
+  \item Probar por inducción que
+  \(\sum_{i=1}^n\frac{1}{i^2}\leq 2-\frac{1}{n}  \qquad\forall n>0\)
+  
+  \textbf{Solución:}
+  
+  Para n=1, \( 1 \leq 2 - 1 = 1\) \\
+  Supongamos que para n se cumple \(\sum_{i=1}^n\frac{1}{i^2}\leq 2-\frac{1}{n}\)\\
+  Entonces para n+1 se tendría:
+  \(\sum_{i=1}^{n+1}\frac{1}{i^2} = \sum_{i=1}^{n}\frac{1}{i^2} + \frac{1}{(n+1)^2} \leq 2-\frac{1}{n} + \frac{1}{(n+1)^2}\) ...(1)\\
+  Como $n > 0$ se tendría que $ n+1 > 1$ y $ \frac{1}{(n+1)} < 1$ con $ \frac{1}{(n+1)^2} < 1$ y $ 0<\frac{1}{n} < 1$\\
+  Pero sabemos que : $ \frac{1}{(n+1)} < \frac{1}{n} < 1$ entonces $ \frac{1}{(n+1)^2} < \frac{1}{n(n+1)}$\\
+  Por lo tanto en (1):\\
+   \(\sum_{i=1}^{n+1}\frac{1}{i^2}   \leq 2-\frac{1}{n} + \frac{1}{(n+1)^2} < 2-\frac{1}{n} + \frac{1}{n(n+1)} = 2 - (\frac{1}{n})(1 - \frac{1}{(n+1)} )\)\\
+   \(\sum_{i=1}^{n+1}\frac{1}{i^2} \leq 2 - \frac{1}{(n+1)}\)\\
+   
+  
+\end{enumerate}
+
+\section{Funciones techo y piso}
+\begin{enumerate}
+  \item Probar por inducción que $\forall n \geq 0$ se cumple que
+  \[
+      \left \lfloor\frac{n}{2} \right \rfloor=
+      \left\{
+          \begin{array}{ll}
+              \frac{n}{2}& \textrm{si $n$ es par}\\
+              \frac{n-1}{2}& \textrm{si $n$ es impar}
+          \end{array}
+      \right.
+  \]
+  
+  \item Probar por inducción que $\forall n \geq 0$ se cumple que
+  \[
+    \left \lceil\frac{n}{2} \right \rceil=
+    \left\{
+    \begin{array}{ll}
+    \frac{n}{2}& \textrm{si $n$ es par}\\
+    \frac{n+1}{2}& \textrm{si $n$ es impar}
+    \end{array}
+    \right.
+  \]
+  
+  \item Probar por inducción que $\forall n \geq 1$ y $\forall m\in R^{+}$,
+  \[
+    \left\lceil\frac{n}{m}\right\rceil=\left\lfloor\frac{n+m+1}{m}\right\rfloor
+  \]
+
+\end{enumerate}
+
+
+\section{Divisibilidad}
+
+\begin{enumerate}
+  \item Probar por inducción que $\forall n \geq 0$ se cumple que
+$n^5-n$ es divisible por $5$
+
+  \item Probar por inducción que un número decimal es divisible por $3$ si la suma de sus dígitos es divisible por $3$
+
+  \item Sea $S_{n}={1,2,\ldots,2n}$ el conjunto de los enteros de
+$1$ a $2n$. Sea $T \subset S_{n}$ cualquier subconjunto que
+contiene exactamente $n+1$ elementos de $S_{n}$. Probar por
+inducción en $n$ que existen $x, y \in T$, $x\neq y$, tal que $x$
+divide en partes iguales a $y$, sin residuo.
+  
+\end{enumerate}
+
+\section{Vuelto con monedas}
+
+\begin{enumerate}
+  \item Mostrar que cualquier entero mayor que 34, puede ser formado en base a monedas de 5 y 9 céntimos.
+  
+  \item Mostrar que cualquier entero mayor que 59, puede ser formado usando solamente monedas de 7 y 11 céntimos.
+  
+  \item Mostrar que para todo $n>1$, cualquier cantidad entera positiva de vuelto que es al menos $n(n-1)$ puede ser formada usando solamente $n$ y $(n+1)$ céntimos
+\end{enumerate}
+
+\section{Problemas con el ajedrez}
+
+\begin{enumerate}
+  \item Probar por inducción que para todo $n\in N$ y todos los
+pares $m\in N$, un tablero de $n*m$ tiene exactamente el mismo
+número de casillas blancas y negras.
+
+  \item Probar por inducción que parar todo impar $n, m\in N$, un
+tablero de $n*m$ tiene cuatro esquinas cuadradas del mismo color.
+
+\end{enumerate}
+
+\section{Números de Fibonacci} 
+
+\begin{enumerate}
+  \item Probar por inducción que $F_{n+k}=F_{k}F_{n+1}+F_{k-1}F_{n}$
+  
+  \item Probar por inducción en $n\geq 1$ que $\sum_{i=1}^{n}F_i^2=F_{n}F_{n+1}$
+  
+\end{enumerate}
+
+\section{Coeficientes binomiales}
+
+\begin{enumerate}
+  \item Probar por inducción en $n$ que \(\sum_{m=0}^{n}{n \choose m}=2^n\)
+
+  \item Probar por inducción en $n\geq1$ para todo $1\leq m\leq n$,
+  \( {n \choose m} \leq n^m \)
+\end{enumerate}
+
+
+\section{Grafos}
+
+\begin{enumerate}
+  \item Probar por inducción que un grafo con $n$ vértices puede tener a lo más $\frac{n(n-1)}{2}$ aristas.
+  
+  \item Un círculo Euleriano en un grafo conexo, es un ciclo en el cual cada arista aparece exactamente una vez. Probar por inducción que todo grafo en el cual cada vértice tiene grado par (ósea, cada vértice tiene un número par de aristas incidentes en él) tiene un ciclo Euleriano.
+\end{enumerate}
+
+
+\section{Árboles}
+
+\begin{enumerate}
+  \item Probar por inducción que un árbol con $n$ vértices, tiene exactamente $n-1$ aristas.
+  
+  \item Probar por inducción que un árbol binario completo con n
+niveles tiene $2^n-1$ vértices.
+\end{enumerate}
+
+\section{Geometría}
+
+\begin{enumerate}
+  \item Probar por inducción que $n$ círculos dividen el plano en
+$n^2-n+2$ regiones si cada par de círculos interceptan en exactamente dos puntos y no hay tres círculos interceptando en un punto en común. Esto se cumple para otras figuras cerradas?
+
+  \item Un polígono es convexo si cada par de puntos en el polígono
+pueden ser unidos por una línea recta que no salga del polígono.
+Probar por inducción en $n>3$ que la suma de los ángulos de un
+polígono de $n$ vértices es $180(n-2)$.
+\end{enumerate}
+
+
+\end{document}

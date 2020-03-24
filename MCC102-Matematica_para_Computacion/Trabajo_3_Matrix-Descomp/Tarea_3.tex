@@ -1,0 +1,309 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+\documentclass[12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{color}
+\usepackage{subfigure}
+\usepackage{enumitem}
+\usepackage{algpseudocode}
+\usepackage{float}
+\usepackage{enumerate}
+
+
+\usepackage{listings}
+\lstset{language=Octave} % https://v2.overleaf.com/7342361719drzgtrhtknsj
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\sloppy
+\definecolor{lightgray}{gray}{0.5}
+\setlength{\parindent}{0pt}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+%\renewcommand{\qedsymbol}{\filledbox}
+
+\title{Trabajo de estatica en \LaTeX}
+
+\author{Beicker Baena Baldiris \and Yeison Sarmiento Lopez \and Yair Franco Puello \and 'Alvaro Polo Ulloque\and\ Dayana Jimenez Perez} 
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Universidad Cat\'olica San pablo}\\[1.5cm] % Name of your university/college
+\textsc{\Large Matem\'atica para la Computaci\'on}\\[0.5cm] % Major heading such as course name
+\textsc{\large }\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Lista de Ejercicios Nro.3 }\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Entregado por:}\\
+\begin{itemize}
+    \item Victor Flores
+\item  Daniel Palomino
+\item Solange Ramos
+\item Felipe Moreno
+\item David Choqueluque
+\end{itemize}
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Profesor:} \\
+Sergio \textsc{Aquise Escobedo} % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[2cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[2cm] % Date, change the \today to a set date if you want to be precise
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+\newpage
+
+\section{Implemente los siguientes códigos}
+\subsection{La solución de un sistema de ecuaciones lineales usando el método de sobre relajación (SOR)}
+%\input{implemente/a.tex} 
+
+%=====================(Solution)==========================
+
+\lstinputlisting{code/SOR.m}
+
+\subsection{Resolver el ejemplo numérico usando el seudocódigo de la página 610 capitulo 15
+Ecuaciones diferenciales parciales, el método iterativo de Gauss-Seidel, del libro David
+Kinkaid del dropbox}
+\textbf{Ejemplo Númerico}: Vamos a ilustrar este procedimiento en el problema con valores en la frontera
+\begin{align*}
+    \bigtriangledown^2u-\frac{1}{25}u &= 0 \quad dentro de R (cuadrado unitario) \\
+    q &= 0 \quad en la frontera de R.
+\end{align*}
+    donde $q = \cosh 15 x + \cosh 15$ y . De este problema conocemos la solución $u = q$. Se presenta a
+continuación un pseudocódigo de controlador para el procedimiento de Gauss-Seidel, comenzando
+con $u = 1$ y tomando 20 iteraciones. Considere que sólo se necesitan 81 palabras para el arreglo en
+la solución iterativa del sistema lineal de 49 x 49. Aquí, $h = \frac{1}{8}$.
+\\
+Para este problema modelo, la función principal es:
+\\
+\lstinputlisting{code/codeGausSeidel/Eliptico.m}
+
+y las funciones acompañantes se muestran acontinaución :
+funcion Gaus Seidel\\
+\lstinputlisting{code/codeGausSeidel/Seidel.m}
+
+otras funciones\\
+
+\lstinputlisting{code/codeGausSeidel/f.m}
+
+\lstinputlisting{code/codeGausSeidel/g.m}
+
+\lstinputlisting{code/codeGausSeidel/Bndy.m}
+
+\lstinputlisting{code/codeGausSeidel/ustart.m}
+
+\lstinputlisting{code/codeGausSeidel/TrueSolution.m}
+
+%=========================================================
+
+%=========================================================
+% BISWA DATA
+%=========================================================
+% 
+% Sección 6.3
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+\section{Biswa Datta: Sección 6.3}
+
+% Ejercicio 4
+\subsection{Ejercicio 4}
+\input{BiswaDatta/ejercicio04.tex} 
+
+% Ejercicio 5
+\subsection{Ejercicio 5}
+\input{BiswaDatta/ejercicio05.tex} 
+
+% Ejercicio 6
+\subsection{Ejercicio 6}
+\input{BiswaDatta/ejercicio06.tex}
+
+% Ejercicio 14
+\subsection{Ejercicio 14}
+\input{BiswaDatta/ejercicio14.tex} 
+
+% Ejercicio 17
+\subsection{Ejercicio 17}
+\input{BiswaDatta/ejercicio17.tex}
+
+%
+% Sección 6.10
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+\section{Biswa Datta: Sección 6.10}
+
+% Ejercicio 36
+\subsection{Ejercicio 36}
+\input{BiswaDatta/ejercicio36.tex} 
+
+% Ejercicio 37
+\subsection{Ejercicio 37}
+\input{BiswaDatta/ejercicio37.tex} 
+
+% Ejercicio 38
+\subsection{Ejercicio 38}
+\input{BiswaDatta/ejercicio38.tex} 
+
+% Ejercicio 39
+\subsection{Ejercicio 39}
+\input{BiswaDatta/ejercicio39.tex}
+
+% Ejercicio 42
+\subsection{Ejercicio 42}
+\input{BiswaDatta/ejercicio42.tex} 
+
+% Ejercicio 44
+\subsection{Ejercicio 44}
+\input{BiswaDatta/ejercicio44.tex} 
+
+% Ejercicio 47
+\subsection{Ejercicio 47}
+\input{BiswaDatta/ejercicio47.tex}
+
+% Ejercicio 48
+\subsection{Ejercicio 48}
+\input{BiswaDatta/ejercicio48.tex} 
+
+% Ejercicio 49
+\subsection{Ejercicio 49}
+\input{BiswaDatta/ejercicio49.tex}
+
+
+%=========================================================
+% Alfio Quarteroni
+%=========================================================
+\section{Alfio Quarteroni}
+
+% Ejercicio 1
+\subsection{Ejercicio 1}
+\input{AlfioQuarteroni/ejercicio1.tex} 
+
+% Ejercicio 2
+\subsection{Ejercicio 2}
+\input{AlfioQuarteroni/ejercicio2.tex} 
+
+% Ejercicio 3
+\subsection{Ejercicio 3}
+\input{AlfioQuarteroni/ejercicio3.tex} 
+
+% Ejercicio 4
+\subsection{Ejercicio 4}
+\input{AlfioQuarteroni/ejercicio4.tex} 
+
+% Ejercicio 5
+\subsection{Ejercicio 5}
+\input{AlfioQuarteroni/ejercicio5.tex} 
+
+% Ejercicio 6
+\subsection{Ejercicio 6}
+\input{AlfioQuarteroni/ejercicio6.tex} 
+
+% Ejercicio 7
+\subsection{Ejercicio 7}
+\input{AlfioQuarteroni/ejercicio7.tex} 
+
+% Ejercicio 8
+\subsection{Ejercicio 8}
+\input{AlfioQuarteroni/ejercicio8.tex} 
+
+% Ejercicio 11
+\subsection{Ejercicio 11}
+\input{AlfioQuarteroni/ejercicio11.tex} 
+
+% Ejercicio 13
+\subsection{Ejercicio 13}
+\input{AlfioQuarteroni/ejercicio13.tex} 
+
+% Ejercicio 14
+\subsection{Ejercicio 14}
+\input{AlfioQuarteroni/ejercicio14.tex} 
+
+
+%=========================================================
+% James Schott
+%=========================================================
+\section{James  R.  Schott}
+
+% Ejercicio 8.79
+\subsection{Ejercicio 8.79}
+\input{JamesRSchott/ejercicio8_79.tex} 
+
+% Ejercicio 8.80
+\subsection{Ejercicio 8.80}
+\input{JamesRSchott/ejercicio8_80.tex}
+
+%=========================================================
+% Ejercicios Adicionales
+%=========================================================
+
+\section{Ejercicios Adicionales}
+
+% Ejercicio Adicionales
+\subsection{Ejercicio 1}
+\input{Adicionales/ejercicio1.tex} 
+
+\subsection{Ejercicio 2}
+\input{Adicionales/ejercicio2.tex} 
+
+\end{document}

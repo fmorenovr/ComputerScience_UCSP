@@ -1,0 +1,41 @@
+Caracterizar el llenado para una matriz $A \in R^{n\times n}$ teniendo entradas diferentes de cero solo en la diagonal principal y en la primera columna y la última fila. Proponer una permutación que minimize el llenado.
+
+\noindent \textcolor{red}{\bf Solución:}
+
+Se trata de caracterizar la matriz definida de la siguiente forma:
+\begin{equation}
+    \begin{array}{cccccc}
+        a & 0 & 0 & ...& 0 & 0  \\ 
+        a & a & 0 & ...& 0 & 0 \\
+        a & 0 & a & ...& 0 & 0 \\
+        . & . & . & . & . & .\\
+        . & . & . & . & . & .\\
+        a & 0 & 0 & ...& a & 0 \\
+        a & a & 0 & ...& 0 & a \\
+    \end{array}
+\end{equation}
+Por lo tanto se puede definir $A$ una matriz donde$A_{i,j} \neq 0$ para todo $i$  igual a $j$ desde $ 2 < i < n-1$ ó donde $(i-1)\cdot(j-1) = 0$. Aplicando la definición la matriz obtenemos:
+\begin{equation}
+    \begin{array}{cccccc}
+        a & a & a & ...& a & a  \\ 
+        a & a & 0 & ...& 0 & 0 \\
+        a & 0 & a & ...& 0 & 0 \\
+        . & . & . & . & . & .\\
+        . & . & . & . & . & .\\
+        a & 0 & 0 & ...& a & 0 \\
+        a & 0 & 0 & ...& 0 & 0 \\
+    \end{array}
+\end{equation}
+Ahora se aplica un cambio de filas entre la primera fila y la última fila y obtenemos la matriz deseada.
+\begin{equation}
+    \begin{array}{cccccc}
+    a & 0 & 0 & ...& 0 & 0  \\ 
+    a & a & 0 & ...& 0 & 0 \\
+    a & 0 & a & ...& 0 & 0 \\
+    . & . & . & . & . & .\\
+    . & . & . & . & . & .\\
+    a & 0 & 0 & ...& a & 0 \\
+    a & a & 0 & ...& 0 & a \\
+    \end{array}
+\end{equation}
+De esta forma aplicando dos condiciones y una permutación se puede hacer el llenado de la matriz.

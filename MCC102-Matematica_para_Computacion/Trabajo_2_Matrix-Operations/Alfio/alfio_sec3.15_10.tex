@@ -1,0 +1,55 @@
+
+Considere el siguiente sistema lineal
+\begin{equation}
+    \begin{bmatrix}
+    1001 & 1000 \\ 
+    1000 & 1001
+    \end{bmatrix}
+    \begin{bmatrix}
+    x_1 \\ 
+    x_2
+    \end{bmatrix} = 
+    \begin{bmatrix}
+    b_1 \\ 
+    b_2
+    \end{bmatrix}
+\end{equation}
+
+Usando el Ejercicio 9, explique porque, cuando $b=[2001,2001]^{\intercal}$, un pequeño cambio $\delta b=[1,0]^{\intercal}$ produce una gran variación en la solución, por el contrario, cuando $b=[1,-1]^\intercal$, una pequeña variación $\delta x=[0.001,0]^\intercal$ en la solución induce un gran cambio en $b$.
+
+\noindent \textcolor{red}{\bf Solución:}
+
+En el Ejercicio 9 se demostró que para una matriz A simétrica y definida positiva, resolver el sistema $Ax = b$ equivale a calcular $x = \sum_{i=1}^n \left( c_i/\lambda_i \right) \textbf{v}_i$, donde $\lambda_i$ son los valores propios de A y $\textbf{v}_i$ son los vectores propios correspondientes.
+
+
+\begin{equation}
+    x = \sum_{i=1}^n \left( c_i/\lambda_i \right) \textbf{v}_i
+\end{equation}
+\begin{equation}
+    A x = A \sum_{i=1}^n \left( \frac{c_i}{\lambda_i}  \right) \textbf{v}_i
+    = \sum_{i=1}^n \left( \frac{c_i}{\lambda_i} \right) A \textbf{v}_i
+\end{equation}
+
+Por definición $A v_i = \lambda_i v_i$, entonces:
+\begin{equation}
+    A x = \sum_{i=1}^n \left( \frac{c_i}{\lambda_i} \right) \lambda_i \textbf{v}_i = \sum_{i=1}^n c_i \textbf{v}_i
+\end{equation}
+
+Entonces:
+\begin{equation}
+    b = \sum_{i=1}^n c_i \textbf{v}_i
+\end{equation}
+
+En el problema, los valores propios de A son $1$, $2001$; mientras que sus vectores propios asociados son $[-\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}]^{\intercal}$, $[\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}]^{\intercal}$ respectivamente. Entonces:
+
+\begin{equation}
+    b = c_1 \left[-\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right]^{\intercal} + c_2 \left[ \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}\right]^{\intercal}
+    \label{alfio:3.15:10:b}
+\end{equation}
+
+\begin{equation}
+    x = c_1 \left[-\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right]^{\intercal} + \frac{c_2}{2001} \left[ \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}\right]^{\intercal}
+    \label{alfio:3.15:10:x}
+\end{equation}
+
+Resolviendo (\ref{alfio:3.15:10:b}): $c_1 = c_2 = 2001 \sqrt{2}/2$. Luego, reemplazando en (\ref{alfio:3.15:10:x}) se obtiene $x = [-1000,1001]^\intercal$. Mientras que, al realizar un pequeño $b+\delta b$ en la ecuación (\ref{alfio:3.15:10:b}) se obtiene:  $c_1=-\sqrt{2}/2$, $c_2 = 4003\sqrt{2}/2$, por tanto en la ecuación (\ref{alfio:3.15:10:x}) $x = [1.5002,0.5002]^\intercal$.

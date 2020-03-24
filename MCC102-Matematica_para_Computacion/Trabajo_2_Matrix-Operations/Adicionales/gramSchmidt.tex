@@ -1,0 +1,57 @@
+Un  algoritmo  alternativo  al  método  de  Gram  Schmidt  es  el  método  de  Gram  Schmidt  modificado  que  es  obtenido  de  la  siguiente  forma:  dada  la  base  $a_1, a_2, ... a_n$ calculamos:
+
+$$
+  \widetilde{q_1} = \frac{a_1}{\|a_1\|_2}
+$$
+
+En el paso k del algoritmo modificamos el cálculo de $q_{k+1}$ de la siguiente manera:
+
+$$
+  a_{k+1}^{(1)} = a_{k+1} - <\widetilde{q_1}, a_{k+1}> \widetilde{q_1}
+$$
+$$
+  a_{k+1}^{(2)} = a_{k+1}^{(1)} - <\widetilde{q_2}, a_{k+1}^{(1)}> \widetilde{q_2}
+$$
+Haciendo hasta el paso k:
+$$
+  a_{k+1}^{(k)} = a_{k+1}^{(k-1)} - <\widetilde{q_k}, a_{k+1}^{(k)}> \widetilde{q_k} ...(1)
+$$
+
+Probar que:
+$$
+  a_{k+1}^{(k)} = q_{k+1}
+$$
+$$
+  \widetilde{q_{k+1}} = \frac{a_{k+1}^{(k)}}{\|a_{k+1}^{(k)}\|_2}
+$$
+
+\noindent \textcolor{red}{\bf Solución:}
+
+El paso de Gram Schmidt se tiene:
+
+$$
+  q_1 = a_1
+$$
+$$
+  q_k = a_k - \sum_{j=1}^{k-1} \frac{<a_k,u_j>}{\|u_j\|_2^2} u_j
+$$
+Esto se puede escribir como:
+$$
+  q_k = a_k - \sum_{j=1}^{k-1} <a_k,\frac{u_j}{\|u_j\|_2}> \frac{u_j}{\|u_j\|_2}
+$$
+Utilizando la expresión dada, podemos reemplazar como:
+$$
+  q_{k+1} = a_{k+1} - \sum_{j=1}^{n-1} <a_{k+1},\widetilde{q_{j}}> \widetilde{q_{j}} ...(2)
+$$
+vemos que la expresion (1) y (2) son equivalentes si expandimos la expresion (2):
+$$
+  a_{k+1}^{(k)} = a_{k+1} - \sum_{j=1}^{n-1} <a_{k+1},\widetilde{q_{j}}> \widetilde{q_{j}} ...(3)
+$$
+Por lo que de (2) y (3), vemos que:
+$$
+  a_{k+1}^{(k)} = q_{k+1}
+$$
+Y para normalizar todo, hacemos:
+$$
+  \widetilde{q_{k+1}} = \frac{a_{k+1}^{(k)}}{\|a_{k+1}^{(k)}\|_2}
+$$

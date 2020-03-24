@@ -1,0 +1,30 @@
+
+ \begin{enumerate}[label=(\alph*)]
+	\item Sea $O$ una matriz ortogonal. Muestre que el $Cond(O)$ con respecto a la norma 2 es 1
+	\item Muestra que el Cond(A) con respecto a la norma 2 es 1 si y solo si A es un múltiplo escalar de una matriz ortogonal.
+	
+   
+\end{enumerate}
+\noindent \textcolor{red}{\bf Solución:}
+\begin{enumerate}[label=(\alph*)]
+    
+    \item Sea $O$ una matriz ortogonal. Muestre que el $Cond(O)$ con respecto a la norma 2 es 1. \\\\
+    Sabiendo que $O$ es una matriz ortogonal entonces $O^T O = I$ .Debemos mostrar que :
+    $$Cond_2(O) = 1$$
+    
+    Si aplicamos la propiedad: $Cond(A^{T} A)=(Cond(A))^2$\\
+    $$Cond_2(O^T O) = (Cond_2(O))^2$$
+    $$ Cond_2(I)=(Cond_2(O))^2$$
+    $$(Cond_2(O))^2=1 $$
+    Por lo tanto:
+    $$Cond_2(O) = 1$$
+    
+	\item Muestra que el Cond(A) con respecto a la norma 2 es 1 si y solo si A es un múltiplo escalar de una matriz ortogonal.
+	\\\\
+	
+	Si para cada $A = aO$ (donde $a$ es una escalar y $O$ es una matriz ortogonal), entonces:
+	$$Cond_2(A) = ||A||_2||A^{-1}||_2$$ 
+	$$ = a||O||_2\frac{1}{a}||O^{-1}||_2 $$
+	$$= ||O||_2||O^{-1}||_2 = 1$$
+
+\end{enumerate}

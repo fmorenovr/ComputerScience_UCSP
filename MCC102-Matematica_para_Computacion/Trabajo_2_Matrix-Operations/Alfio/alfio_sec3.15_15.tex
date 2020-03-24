@@ -1,0 +1,65 @@
+Sea una matriz no singular $A \in R^{n, n}$. Determine las condiciones en las que la relación
+$\frac{\|y\|_2}{\|x\|_2}$, con x e y (tal como se muestra en la ecuación 3.70), aproximen $\|A^{-1}\|_2$.\\
+
+\noindent \textcolor{red}{\bf Solución:}
+
+La ecuación (3.70) denota lo siguiente:\\
+
+Sea una matriz A definida como $Ay=d$, tal que $A = R^T R$ se tiene:
+$$
+  R^T x = d, Ry=d ...(1)
+$$
+
+Tomando esa ecuación como punto de partida:
+
+Sea $A = U \Sigma V^T$, donde $U \Sigma V^T$ es Singular Value Descomposition de A.
+
+Sea $u_i$ y $v_i$ las i-esimas columnas de U y V respectivamente.
+
+Expandiendo el vector d en (3.70) en base a $v_i$ tenemos:\\
+
+$d=\sum_{i=1}^{n} d_i v_i$ y también $x =\sum_{i=1}^{n} (d_i/\sigma_i) u_i$, $y=\sum_{i=1}^{n} (d_i/\sigma_i ^2)v_i$.\\
+
+Donde $\sigma_1$, $\sigma_2$, ... ,$\sigma_n$ son los valores singulares de A.\\
+
+Entonces la relación es:
+$$
+  \frac{\|y\|_2}{\|x\|_2} = \sqrt{\frac{\sum_{i=1}^{n} (d_i/\sigma_i) u_i}{\sum_{i=1}^{n} (d_i/\sigma_i ^2)v_i}} ...(2)
+$$
+
+De la ecuación (1), tenemos que:\\
+El valor de y:
+$$
+  \|y\|_2 = \sqrt{\|R^{-1}\| \|d\|}
+$$
+El valor de x:
+$$
+  \|x\|_2 = \sqrt{\|(R^T)^{-1}\| \|d\|}
+$$
+
+Entonces de la ecuación (2) tenemos:
+$$
+  \frac{\|y\|_2}{\|x\|_2} = \sqrt{\frac{\|R^{-1}\|}{\|(R^T)^{-1}\|}}
+$$
+
+Multiplicando por $\|R^{-1}\|$:
+
+$$
+  \frac{\|y\|_2}{\|x\|_2} = \sqrt{\frac{\|R^{-1}\| \|R^{T}\|}{\|(R^T)^{-1}\| \|R^{T}\|}} = \sqrt{\frac{\|R^{-1}\| \|R^{T}\|}{K(R^{T})}}
+$$
+Pero como $K(R) = K(A)$:
+$$
+  \frac{\|y\|_2}{\|x\|_2} = \sqrt{\frac{(\frac{\|y\|_2}{\|x\|_2})}{K(A^T)}} 
+$$
+Entonces:
+
+$$
+  (\frac{\|y\|_2}{\|x\|_2})^2 = \frac{(\frac{\|y\|_2}{\|x\|_2})}{K(A^T)}
+$$
+Como A es simétrica, resulta:
+
+$$
+  \frac{\|y\|_2}{\|x\|_2} = \frac{1}{K(A)} \leq \|A^{-1}\|
+$$
+
+Y este resultado es igual a $\sigma_n ^{-1}$ el cual aproxima a $\|A^{-1}\|_2$.

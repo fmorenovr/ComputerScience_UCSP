@@ -1,0 +1,94 @@
+Dado los vectores:
+\[
+    v_1 = [1, 1, 1, -1]^T   \quad v_2 = [2, -1, -1, 1]^T
+\]
+\[
+    v_3 = [0, 3, 3, -3]^T   \quad v_4 = [-1, 2, 2, 1]^T
+\]
+Generar un sistema ortonormal usando el algoritmo de Gram-Schmidt, para sus versiones Estandard y Modificada, y comparar
+los resultados obtenidos. ¿Cual es la dimensión del espacio generado por el vector dado?.\\\\
+
+\noindent \textcolor{red}{\bf Solución:}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Método Gram-Schmidt Standard:
+\begin{equation}
+    U_1 = v_1 =  [1, 1, 1, -1]^\intercal 
+\end{equation}
+\begin{equation}
+    U_2 = v_2 - \frac{<v_2,U_1>}{\Vert{U_1}\Vert^2}U_1 = [2.25, -0.75, -0.75, 0.75]^\intercal 
+\end{equation}
+\begin{equation}
+    U_3 = v_3 - \frac{<v_3,U_1>}{\Vert{U_1}\Vert^2}U_1 - \frac{<v_3,U_2>}{\Vert{U_2}\Vert^2}U_2 = U_3 = 
+\end{equation}
+\begin{equation}
+    U_4 = v_4 - \frac{<v_4,U_1>}{\Vert{U_1}\Vert^2} U_1 
+              - \frac{<v_4,U_2>}{\Vert{U_2}\Vert^2} U_2 
+              - \frac{<v_4,U_3>}{\Vert{U_3}\Vert^2} U_3 = [0, 1, 1, 2]^\intercal 
+\end{equation}
+
+La dimensión del espacio generado es $3$.
+
+Podemos hacer a los vectores ortonormales:
+\begin{equation}
+    U'_1 = \frac{U_1}{\Vert U_1 \Vert} =  \frac{[1, 1, 1, -1]^\intercal }{2} = [0.5, 0.5, 0.5,-0.5]^\intercal 
+\end{equation}
+\begin{equation}
+    U'_2 =  \frac{U_2}{\Vert U_2 \Vert} =  \frac{[2.25, -0.75, -0.75, 0.75]^\intercal }{2.5981} = [-0.86603, -0.28868, -0.28868, 0.28868]^\intercal 
+\end{equation}
+\begin{equation}
+    U'_3 = [0, 0, 0, 0]^\intercal 
+\end{equation}
+\begin{equation}
+    U'_4 = \frac{U_4}{\Vert U_4 \Vert}  = \frac{[0, 1, 1, 2]^\intercal}{\sqrt{6}}=[0, 0.40825, 0.40285, 0.81650]^\intercal 
+\end{equation}
+
+\item Método de Gram Schmith modificado:
+\begin{equation}
+    u_1 = \frac{v_1}{\sqrt{v_1^\intercal v_1}} = [0.5, 0.5, 0.5, -0.5]^\intercal
+\end{equation}
+Hacemos $u_j^{(1)}=v_j-(v_j^T u_1)u_1$ para $j=2;3$ y $4$
+\begin{equation}
+    u_2^{(1)}=v_2-(v_2^\intercal u_1)u_1 = [2.5, -0.5, -0.5, 1.5]^\intercal
+\end{equation}
+\begin{equation}
+    u_3^{(1)}=v_3-(v_3^\intercal u_1)u_1 = [-4.5,  -1.5,  -1.5,  -7.5]^\intercal
+\end{equation}
+\begin{equation}
+    u_4^{(1)}=v_4-(v_4^\intercal u_1)u_1 = [-2, 1, 1, 0]^\intercal
+\end{equation}
+\begin{equation}
+    u_2=\frac{u_2^{(1)}}{\sqrt{(u_2^{(1)})^T u_2^{(1)}}} = [0.8333, -0.1666, -0.1666, 0.5]^\intercal
+\end{equation}
+Haciendo $u_j^{(2)}=u_j^{(1)}-((u_j^{(1)})^T u_2)u_2$ para $j=3$ y $4$.
+\begin{equation}
+    u_3^{(2)}=u_3^{(1)}-((u_3^{(1)})^T u_2)u_2 = [2.5,  5.5,  5.5,  -0.5]^\intercal
+\end{equation}
+\begin{equation}
+    u_4^{(2)}=u_4^{(1)}-((u_4^{(1)})^T u_2)u_2 = [0,  3,  3,  2]^\intercal
+\end{equation}
+\begin{equation}
+    u_3=\frac{u_3^{(2)}}{\sqrt{(u_3^{(2)})^T u_3^{(2)}}} = [0.305424,  0.671932,  0.671932,  -0.061085]^\intercal
+\end{equation}
+Finalmente:
+\begin{equation}
+    u_4^=u_4^{(3)}-((u_4^{(3)})^T u_3)u_3 = [-0.189929, -0.044182, -0.044182, -0.092764]^\intercal
+\end{equation}
+Entonces, los vectores $u_j$ ortogonales generados son:
+\begin{equation}
+    u_1 = [0.5,  0.5,  0.5,  -0.5]^\intercal
+\end{equation}
+\begin{equation}
+    u_2 = [0.8333, -0.1666, -0.1666, 0.5]^\intercal
+\end{equation}
+\begin{equation}
+    u_3 = [0.305424,  0.671932, 0.671932,  -0.061085]^\intercal
+\end{equation}
+\begin{equation}
+    u_4 = [-0.189929,  -0.044182,  -0.044182, -0.092764]^\intercal
+\end{equation}
+En donde sólo $u_4$ no es unitario probándose que el sistema de vectores ortogonales es 3.
+
+\end{enumerate}
+

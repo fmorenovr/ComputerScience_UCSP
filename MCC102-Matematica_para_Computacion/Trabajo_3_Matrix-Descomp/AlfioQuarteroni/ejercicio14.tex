@@ -1,0 +1,21 @@
+Probar la recurrencia siguiente, que se obtiene del método del gradiente conjugado:\\
+
+$$Ar_k = -\frac{1}{\alpha_k}r_{k+1}+(\frac{1}{\alpha_k}-\frac{\beta_{k-1}}{\alpha_{k-1}})r_k+$$
+
+Para poder obtener la recurrencia empecemos por la expresión recursiva de $r_k$:\\
+$$r_{k+1}=r_k+\alpha_kAp_k$$
+De la expresión para la dirección conjugada de $p_k$:
+$$p_k = r_k - \beta_kp_{k-1}$$
+Reemplazando en la primera expresión tenemos que:
+$$r_{k+1}=r_k-\alpha_kA(r_k-\beta_{k-1}p_{k-1})$$
+$$\alpha_kAr_k=-r_{k+1}+r_k+\alpha_k\beta_{k-1}Ap_{k-1}$$
+$$Ar_k=-\frac{1}{\alpha_k}r_{k+1}+\frac{1}{\alpha_kr}r_k+\beta_{k-1}Ap_{k-1}$$
+
+De la recurrencia para el residual podemos tener lo siguiente:
+$$r_{k}=r_{k-1}-\alpha_{k-1}Ap_{k-1}$$
+$$Ap_{k-1}=\frac{r_{k-1}-r_k}{\alpha_{k}}$$
+
+Reemplazando el la expresión anteiore tenemos:
+$$Ar_{k}=-\frac{1}{\alpha_{k}}r_{k+1}+\frac{1}{\alpha_{k}}r_{k}+\beta_{k-1}(\frac{r_{k-1}-r_k}{\alpha_{k-1}})$$
+Finalmente:
+$$Ar_{k}=-\frac{1}{\alpha_{k}}r_{k+1}+(\frac{1}{\alpha_{k}}-\frac{\beta_{k-1}}{\alpha_{k-1}})r_k+\frac{\beta_{k-1}}{\alpha_{k-1}}r_{k-1}$$

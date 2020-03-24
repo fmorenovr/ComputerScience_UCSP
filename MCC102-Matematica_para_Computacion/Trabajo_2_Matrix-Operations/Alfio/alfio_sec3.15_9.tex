@@ -1,0 +1,49 @@
+Probar que, si A es una matriz simétrica y definida positiva, solucionar el sistema lineal $Ax = b$ que equivale a calcular $x = \sum_{i = 1}^{n}(c_{i}/\lambda_{i}v_{i})$, donde $\lambda_{i}$ son los autovalores de A y $v_{i}$ son los autovectores correspondientes.
+
+\noindent \textcolor{red}{\bf Solución:}
+
+Sea A una matriz definida positiva simétrica $n \times n$, es decir tiene autovalores autovalores son positivos $n \times 1$. Por definición: 
+\begin{equation}
+    A v = \lambda v     
+\end{equation}
+Donde $v$ es el autovector de $A$ asociado al autovalor $\lambda$  de $A$. Podemos hacer, para el $k$-ésimo autovalor y autovector:
+\begin{equation}
+    v_{k} \frac{1}{\lambda_{k}} = A^{-1}v_{k}    
+\end{equation}
+Si sumamos las $n$ ecuaciones de los $n$ autovalor y autovector:
+\begin{equation}
+    A^{-1}(v_{1} + v_{2} + \dots + v_{n}) =  \frac{1}{\lambda_{1}}v_{1} + \dots + \frac{1}{\lambda_{n}}v_{n} = \sum_{i = 1}^{n}\frac{1}{\lambda_{i}}v_{i}
+\end{equation}
+Como A es una matriz simétrica, entonces podemos hacer la descomposición:
+\begin{equation}
+    A = V^{T}DV
+\end{equation}
+Donde V es la matriz de autovectores de A y D es $diag(\lambda _{1}, ... \lambda _{n})$. Los autovectores de V son linealmente independiente(ortogonales). 
+\[
+    Av_{i} = \lambda_{i}v_{i} 
+\]
+\[
+    Av_{i}^{T}v_{i} = \lambda_{i}v_{i}v_{i}^{T} 
+\]
+\[
+    Av_{i}^{T}v_{i}x = \lambda_{i}v_{i}v_{i}^{T}x
+\]
+Como el autovector $v_{i}^{T}$ es de dimensión $1xn$ y $x$ es un vector $nx1$ el producto de estos vectores dan como producto un escalar que al multiplicarlo por $\lambda_{i}$ dará como resultado otro escalar al cual denominaremos $c_i$.
+\[
+    Ax = c_{i}v_{i}
+\]
+Entonces, el sistema lineal $Ax = b$  se puede expresar como:
+\begin{equation}
+    Ax = b = c_{1}v_{1} + \dots + c_{n}v_{n}
+\end{equation}
+Despejando $x$:
+\begin{equation}
+    x = A^{-1}b = A^{-1}(c_{1}v_{1} + \dots + c_{n}v_{n}) = c_{1}(A^{-1}v_{1}) + \dots + c_{n}(A^{-1}v_{n})
+\end{equation}
+Remplazando $A^{-1}v_{n}$:
+\begin{equation}
+    x = c_{1}(\frac{1}{\lambda_{1}}v_{1}) + \dots + c_{n}(\frac{1}{\lambda_{n}}v_{n}
+\end{equation}
+\begin{equation}
+    x = \sum_{i = 1}^{n} \frac{c_{i}}{\lambda_{i}}v_{i}
+\end{equation}

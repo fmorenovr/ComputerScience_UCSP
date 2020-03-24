@@ -1,0 +1,1 @@
+/usr/bin/c++   -fPIC -O3 -DNDEBUG  -rdynamic CMakeFiles/fastwinding.dir/main.cpp.o CMakeFiles/fastwinding.dir/utils/array.cpp.o CMakeFiles/fastwinding.dir/utils/solidAngle.cpp.o  -o fastwinding tbb/libtbb_static.a -lpthread -lGL glad/libglad.a glfw/src/libglfw3.a -lrt -lm -ldl -lX11 -lpthread 

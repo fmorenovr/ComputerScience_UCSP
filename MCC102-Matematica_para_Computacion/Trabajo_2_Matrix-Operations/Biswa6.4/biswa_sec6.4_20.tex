@@ -1,0 +1,107 @@
+\begin{enumerate}
+
+\item Busca la factorización QR de 
+    \[
+        A =
+            \left( {\begin{array}{cc}
+                1 & 1\\
+                10^{-5} & 0 \\
+                0 & 10^{-5}\\
+            \end{array} } \right)
+        \]
+    \textbf{solución}
+    $$U_{1}' = V_{1}$$
+    \[
+        U_{1}' =
+            \left( {\begin{array}{c}
+                1\\
+                10^{-5} \\
+                0 \\
+            \end{array} } \right)
+        \]
+    
+     \[
+        U_{1} =
+            \left( {\begin{array}{c}
+                \frac{1}{\sqrt{1+10^{-10}}}\\
+                \frac{10^{-5}}{\sqrt{1+10^{-10}}}\\
+                0 \\
+            \end{array} } \right)
+        \]
+    $$U'_{2} = V_{2} - \infty_{12}\left( {\begin{array}{c}
+                \frac{1}{\sqrt{1+10^{-10}}}\\
+                \frac{10^{-5}}{\sqrt{1+10^{-10}}}\\
+                0 \\
+            \end{array} } \right)$$
+    
+    $$U'_{2} = \left( {\begin{array}{c}
+                1\\
+                0\\
+                10^{-5} \\
+            \end{array} } \right) - \infty_{12}\left( {\begin{array}{c}
+                \frac{1}{\sqrt{1+10^{-10}}}\\
+                \frac{10^{-5}}{\sqrt{1+10^{-10}}}\\
+                0 \\
+            \end{array} } \right)$$
+    
+    $$U'_{2} = \left( {\begin{array}{c}
+                1\\
+                0\\
+                10^{-5} \\
+            \end{array} } \right) - \frac{1}{\sqrt{1+10^{-10}}}\left( {\begin{array}{c}
+                \frac{1}{\sqrt{1+10^{-10}}}\\
+                \frac{10^{-5}}{\sqrt{1+10^{-10}}}\\
+                0 \\
+            \end{array} } \right)$$
+            
+    $$U'_{2} = \left( {\begin{array}{c}
+                1\\
+                0\\
+                10^{-5} \\
+            \end{array} } \right) - \left( {\begin{array}{c}
+                \frac{1}{1+10^{-10}}\\
+                \frac{10^{-5}}{1+10^{-10}}\\
+                0 \\
+            \end{array} } \right)$$
+    
+    $$U'_{2} = \left( {\begin{array}{c}
+                \frac{10^{-10}}{1+10^{-10}}\\
+                \frac{-10^{-5}}{1+10^{-10}}\\
+                10^{-5} \\
+            \end{array} } \right)$$
+    
+    $$U_{2} =\frac{ \left( {\begin{array}{c}
+                \frac{10^{-10}}{1+10^{-10}}\\
+                \frac{-10^{-5}}{1+10^{-10}}\\
+                10^{-5} \\
+            \end{array} } \right)}{Nor(U'_{2})}$$
+    
+    $$U_{2} =\frac{ \left( {\begin{array}{c}
+                \frac{10^{-10}}{1+10^{-10}}\\
+                \frac{-10^{-5}}{1+10^{-10}}\\
+                10^{-5} \\
+            \end{array} } \right)}{\frac{\sqrt{10^{-30}+30^{-20}+20^{-10}}}{1+10^{-10}}}$$
+    
+    $$U_{2} =\left( {\begin{array}{c}
+                \frac{10^{-10}(1+10^{-10})}{(1+10^{-10})\sqrt{10^{-30}+30^{-20}+20^{-10}}}\\
+                \frac{-10^{-5}(1+10^{-10})}{(1+10^{-10})\sqrt{10^{-30}+30^{-20}+20^{-10}}}\\
+                \frac{10^{-5}(1+10^{-10})}{\sqrt{10^{-30}+30^{-20}+20^{-10}}} \\
+            \end{array} } \right)$$
+            
+    \[
+        Q =
+            \left( {\begin{array}{cc}
+                \frac{1}{\sqrt{1+10^{-10}}} & \frac{10^{-10}(1+10^{-10})}{(1+10^{-10})\sqrt{10^{-30}+30^{-20}+20^{-10}}}\\
+                \frac{10^{-5}}{\sqrt{1+10^{-10}}} & \frac{-10^{-5}(1+10^{-10})}{(1+10^{-10})\sqrt{10^{-30}+30^{-20}+20^{-10}}}\\
+                0 & \frac{10^{-5}(1+10^{-10})}{\sqrt{10^{-30}+30^{-20}+20^{-10}}}\\
+            \end{array} } \right)
+        \]
+    \[
+        R =
+            \left( {\begin{array}{cc}
+                \sqrt{1+10^{-10}} & \frac{1}{\sqrt{1+10^{-10}}}\\
+                0 & \frac{\sqrt{10^{-30}+30^{-20}+20^{-10}}}{1+10^{-10}}\\
+            \end{array} } \right)
+        \]
+        
+\end{enumerate}

@@ -1,0 +1,112 @@
+\begin{enumerate}[]
+    \item Calcule la factorización de Cholesky de: 
+        \begin{equation}
+            A = \begin{pmatrix}
+                1 & 1     & 1     \\ 
+                1 & 1.001 & 1.001 \\ 
+                1 & 1.001 & 2
+            \end{pmatrix}
+        \end{equation}
+        usando:
+        \begin{enumerate}[]
+            \item Eliminación Gaussiana sin pivote.
+            \item Algoritmo de Cholesky.
+        \end{enumerate}
+    \item En la parte a) verificar que $\max |a^{(k)}_{ij}| \leq \max |a^{(k-1)}_{ij}|, \quad k=1,2$.
+    \item ¿Cuál es el factor de crecimiento?
+\end{enumerate}
+
+\textbf{Solución:}
+
+\begin{enumerate}[]
+    \item Calcule la factorización de Cholesky de: 
+        \begin{enumerate}[]
+            
+            % Parte (i)
+            % .....................................
+            \item Realizamos la eliminación Gaussiana sin pivote:
+            
+            \begin{equation}
+                \begin{pmatrix}
+                    1 & 1     & 1     \\ 
+                    1 & 1.001 & 1.001 \\ 
+                    1 & 1.001 & 2
+                \end{pmatrix}
+                \rightarrow 
+                \begin{pmatrix}
+                    1 & 1     & 1     \\ 
+                    0 & 0.001 & 0.001 \\ 
+                    0 & 0.001 & 1
+                \end{pmatrix}
+                \rightarrow 
+                \begin{pmatrix}
+                    1 & 1     & 1     \\ 
+                    0 & 0.001 & 0.001 \\ 
+                    0 & 0     & 0.999
+                \end{pmatrix}
+            \end{equation}
+
+            % Parte (ii)
+            % .....................................
+            \item Siguiendo el algoritmo de Cholesky.
+            
+            Fila 1:
+            \begin{equation}
+                h_{11} = \sqrt{1} = 1
+            \end{equation}
+            
+            Fila 2:
+            \begin{equation}
+                h_{21} = \frac{a_{21}}{h_{11}} = \frac{1}{1} = 1
+            \end{equation}
+            \begin{equation}
+                h_{22} = \sqrt{a_{22} - h_{21}^2} = \sqrt{ 1.001 - 1} = 0.0316
+            \end{equation}
+            
+            Fila 3:
+            \begin{equation}
+                h_{31} = \frac{a_{31}}{h_{11}} = \frac{1}{1} = 1 
+            \end{equation}
+            \begin{equation}
+                h_{32} = \frac{1}{ h_{22} } \left( a_{32} - h_{21} h_{31} \right) 
+                       = \frac{1}{ 0.0316 } \left(  1.001 - 1 \cdot 1 \right) = 0.0316
+            \end{equation}
+            \begin{equation}
+                h_{33} = \sqrt{a_{33} - \left(h_{31}^2 + h_{31}^2\right)} = \sqrt{2 - \left(1^2 + 0.0316^2\right)} = \sqrt{0.999} = 0.9995
+            \end{equation}
+            
+            Entonces, la factorización de Cholesky es:
+            \begin{equation}
+                A = \begin{pmatrix}
+                    1 & 0      & 0      \\ 
+                    1 & 0.0316 & 0      \\ 
+                    1 & 0.0316 & 0.9995
+                \end{pmatrix} \begin{pmatrix}
+                    1 & 1      & 1      \\ 
+                    0 & 0.0316 & 0.0316 \\ 
+                    0 & 0      & 0.9995
+                \end{pmatrix}
+            \end{equation}
+            
+        \end{enumerate}
+        
+    \item En la parte a) verificar que $\max |a^{(k)}_{ij}| \leq \max |a^{(k-1)}_{ij}|, \quad k=1,2$.
+    
+    En el procedimiento realizado para la factorización de Cholesky se obtiene: $\max |a^{(0)}_{ij}| = 2$, $\max |a^{(1)}_{ij}| = 1$, $\max |a^{(2)}_{ij}| = 1$, $\max |a^{(3)}_{ij}| = 1$. Es decir:
+    \begin{equation}
+        \max |a^{(2)}_{ij}| \leq \max |a^{(1)}_{ij}| \leq \max |a^{(0)}_{ij}|
+    \end{equation}
+    
+    \item ¿Cuál es el factor de crecimiento?
+    
+    El factor de crecimiento es definido como:
+    \begin{equation}
+        \rho = \frac{\max \left( \alpha, \alpha_1, \alpha_2, \dots, \alpha_{n-1} \right) }{max(a_{ij})}
+    \end{equation}
+    donde $\alpha = \underset{i,j}{\max} |a_{ij}|$ y $\alpha_k = \underset{i,j}{\max} |a_{ij}^{(k)}|$. Entonces en el problema: $\alpha = 2$, $\alpha_1 = 1$, $\alpha_2 = 1$, $\alpha_3 = 1$. Reemplazando: 
+    \begin{equation}
+        \rho = \frac{\max \left( 2, 1, 1, 1 \right) }{2} = 1
+    \end{equation}
+    
+\end{enumerate}
+

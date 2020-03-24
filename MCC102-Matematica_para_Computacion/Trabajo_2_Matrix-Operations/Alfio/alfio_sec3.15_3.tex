@@ -1,0 +1,39 @@
+Probar que $K(A) \leq  K(A)K(B)$, para cualquier matriz cuadrada no singular $A$, $B \in \Re^{nxn}$\\
+
+\noindent \textcolor{red}{\bf Solución:}\\
+      Sean las matrices $X$ e $Y$, la norma matricial tiene las siguientes propiedades:
+      \begin{enumerate}
+          \item  $\quad \Vert{X}\Vert > 0$
+      \item 
+        \quad $\Vert{\alpha X}\Vert > \vert{\alpha}\vert \Vert{X}\Vert$
+      
+      \item 
+          \quad $\Vert{X + Y}\Vert \leq \Vert{X}\Vert + \Vert{Y}\Vert$
+       
+     \item  
+         \quad $\Vert{XY}\Vert \leq \Vert{X}\Vert \Vert{Y}\Vert$
+      
+      \end{enumerate}
+      
+      
+
+      Se define la matriz condicionante $K(A)$ como $K(A) = \Vert{A}\Vert \Vert{A^{-1}}\Vert$\\
+      Como las matrices $A$ y $B$ son no singulares, entonces calcularemos el numero condicionante de su producto:
+      \[
+          K(AB) =  \Vert{AB}\Vert \Vert{(AB)^{-1}}\Vert 
+      \]
+      Utilizando la $4ta$ propiedad de la norma:\\
+      \[
+        K(AB) =  \Vert{AB}\Vert \Vert{(AB)^{-1}}\Vert \leq \Vert{A}\Vert \Vert{B}\Vert \Vert{B^{-1}}\Vert \Vert{A^{-1}}\Vert
+      \]
+      Esto es:
+      \[
+        K(AB) =  \Vert{AB}\Vert \Vert{(AB)^{-1}}\Vert \leq \Vert{A}\Vert \Vert{A^{-1}}\Vert \Vert{B}\Vert \Vert{B^{-1}}\Vert 
+      \]
+      \[
+        K(AB) =  \Vert{AB}\Vert \Vert{(AB)^{-1}}\Vert \leq \Vert{A}\Vert \Vert{A^{-1}}\Vert \Vert{B}\Vert \Vert{B^{-1}}\Vert = K(A)K(B)
+      \]
+      Por tanto:
+      \[
+        K(AB) \leq K(A)K(B)
+      \]

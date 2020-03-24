@@ -1,0 +1,45 @@
+\providecommand{\norm}[1]{\lVert#1\rVert}
+Para una matriz cuadrada $A \in R^{nxn}$ probar las siguientes relaciones
+$$
+    \frac{1}{n}K_2(A) \leq K_1(A) \leq nK_2(A),\frac{1}{n}K_{\infty}(A) \leq K_2 \leq nK_{\infty}(A),\\
+    \frac{1}{n^2}K_1(A) \leq K_{\infty} \leq nK_1(A),
+$$
+
+Nos permiten concluir que si una matriz esta mal condicionada en una cierta norma  sigue siendo así incluso en otra norma hasta un factor dependa de n.\\
+
+\noindent \textcolor{red}{\bf Solución:}\\
+Si Existe $n \in R^+  $ para la  matriz cuadrada $A \in R^{nxn}$,
+\begin{enumerate}[label=(\alph*)]
+    \item Para $ \norm{A}_1 \leq \sqrt{n} \norm{A}_2 $  también cumple que $\norm{A^{-1}}_1 \leq \sqrt{n} \norm{A^{-1}}_2$, si hay una multiplicación entre ambas desigualdades tenemos:\\
+\begin{align*}
+    \norm{A}_1 \norm{A^{-1}}_1 &\leq \sqrt{n} \sqrt{n} \norm{A}_2 \norm{A^{-1}}_2\\
+    \norm{A}_1 \norm{A^{-1}}_1 &\leq n \norm{A}_2 \norm{A^{-1}}_2\\
+    K_1(A) &\leq nK_2(A)\\
+    \frac{1}{n} K_2(A) &\leq K_1(A)\\
+\end{align*}
+   \[
+        \therefore \frac{1}{n}K_2(A) \leq K_1 \leq  n K_2(A)
+    \]
+    \item Para $ \norm{A}_2 \leq \sqrt{n} \norm{A}_{\infty} $  también cumple que $\norm{A^{-1}}_2 \leq \sqrt{n} \norm{A^{-1}}_{\infty}$, si hay una multiplicación entre ambas desigualdades tenemos:\\
+\begin{align*}
+    \norm{A}_2 \norm{A^{-1}}_2 &\leq \sqrt{n} \sqrt{n} \norm{A}_{\infty} \norm{A^{-1}}_{\infty}\\
+    \norm{A}_2 \norm{A^{-1}}_2 &\leq n \norm{A}_{\infty} \norm{A^{-1}}_{\infty}\\
+    K_2(A) &\leq nK_{\infty}(A)\\
+    \frac{1}{n} K_{\infty}(A) &\leq K_{2}(A)\\
+\end{align*}
+
+\item Para $ \norm{A}_{\infty} \leq n \norm{A}_{1} $  también cumple que $\norm{A^{-1}}_{\infty} \leq n \norm{A^{-1}}_{1}$, si hay una multiplicación entre ambas desigualdades tenemos:
+\begin{align*}
+    \norm{A}_{\infty} \norm{A^{-1}}_{\infty}2 &\leq n n \norm{A}_{1} \norm{A^{-1}}_{1}\\
+    \norm{A}_{\infty}2 \norm{A^{-1}}_{\infty} &\leq n^2 \norm{A}_{1} \norm{A^{-1}}_{1}\\
+    K_{\infty}(A) &\leq n^2K_{1}(A)\\
+    \frac{1}{n^2} K_{\infty}(A) &\leq K_{1}(A)\\
+\end{align*}
+$$
+  \therefore  \frac{1}{n^2}K_1(A) \leq K_{\infty} \leq nK_1(A)
+$$
+$$
+\therefore \frac{1}{n}K_{\infty}(A) \leq K_2 \leq nK_{\infty}(A)
+$$
+
+\end{enumerate}

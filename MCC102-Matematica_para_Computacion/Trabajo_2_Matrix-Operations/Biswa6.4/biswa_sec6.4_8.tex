@@ -1,0 +1,772 @@
+a) Resuelva cada sistema del Ejercicio 7 usando pivoteo parcial pero sin factorización explícita.
+%====================================================================================
+\\
+\\
+\noindent \textcolor{red}{\bf Solución:}\\    
+a.1) Para el sistema de ecuación:\\
+\begin{equation*}
+    \begin{pmatrix}
+        1 & 1/2 & 1/3 \\
+        1/2 & 1/3 & 1/4 \\
+        1/3 & 1/4 & 1/5
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{pmatrix}    
+    =    
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+    \begin{matrix}
+        A=\begin{pmatrix}
+            1 & 1/2 & 1/3 \\
+            1/2 & 1/3 & 1/4 \\
+            1/3 & 1/4 & 1/5
+        \end{pmatrix}
+        & , &
+        X=\begin{pmatrix}
+            x_1 \\
+            x_2 \\
+            x_3
+        \end{pmatrix} 
+        & , &
+        b=\begin{pmatrix}
+            1 \\
+            1 \\
+            1
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+Tomando: $m_{21}=-\frac{a_{21}}{a_{11}}=-1/2$ y $m_{31}=-\frac{a_{31}}{a_{11}}=-1/3$
+
+\begin{equation*}
+    \begin{matrix}
+        A^{(1)}= \begin{pmatrix}
+            1 & 1/2 & 1/3 \\
+            0 & 0,08333 & 0,08333 \\
+            0 & 0,08333 & 0,08888
+        \end{pmatrix}
+        & , &
+        b^{(1)}=\begin{pmatrix}
+            1 \\
+            0,5 \\
+            0,66666
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+Tomando: $m_{32}=-\frac{a_{32}}{a_{22}}=-1$
+
+\begin{equation*}
+    \begin{matrix}
+        A^{(2)}= \begin{pmatrix}
+            1 & 1/2 & 1/3 \\
+            0 & 0,08333 & 0,08333 \\
+            0 & 0 & 0,00555
+        \end{pmatrix}
+        & , &
+        b^{(2)}=\begin{pmatrix}
+            1 \\
+            0,5 \\
+            0,16666
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+Obteniendo el sistema de ecuaciones resultante:
+\begin{align*}
+    1x_1+0,5x_2+0,33333x_3 &= 1 \\
+    0,08333x_2+0,08333x_3 &= 0,5 \\
+    0,00555x_3 &= 0,16666
+\end{align*}
+
+Y sus respuestas son: $x_3=30,02882$ , $x_2=-24,02859$ y $x_1=3,00479$\\
+
+%====================================================================================
+a.2) Para el sistema de ecuación:\\
+\begin{equation*}
+    \begin{pmatrix}
+        100 & 99 & 98 \\
+        98 & 55 & 11 \\
+        0 & 1 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{pmatrix}    
+    =    
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+    \begin{matrix}
+        A=\begin{pmatrix}
+            100 & 99 & 98 \\
+            98 & 55 & 11 \\
+            0 & 1 & 1
+        \end{pmatrix}
+        & , &
+        X=\begin{pmatrix}
+            x_1 \\
+            x_2 \\
+            x_3
+        \end{pmatrix} 
+        & , &
+        b=\begin{pmatrix}
+            1 \\
+            1 \\
+            1
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+Tomando: $m_{21}=-\frac{a_{21}}{a_{11}}=-0,98$
+
+\begin{equation*}
+    \begin{matrix}
+        A^{(1)}= \begin{pmatrix}
+            100 & 99 & 98 \\
+            0 & -42,02 & -85,04 \\
+            0 & 1 & 1
+        \end{pmatrix}
+        & , &
+        b^{(1)}=\begin{pmatrix}
+            1 \\
+            0,02 \\
+            1
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+Tomando: $m_{32}=-\frac{a_{32}}{a_{22}}=0.0238$
+
+\begin{equation*}
+    \begin{matrix}
+        A^{(2)}= \begin{pmatrix}
+            100 & 99 & 98 \\
+            0 & -42,02 & -85,04 \\
+            0 & 0 & -1,02395
+        \end{pmatrix}
+        & , &
+        b^{(2)}=\begin{pmatrix}
+            1 \\
+            0,02 \\
+            1,00048
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+Obteniendo el sistema de ecuaciones resultante:
+\begin{align*}
+    100x_1+99x_2+98x_3 &= 1 \\
+    -42,02x_2+-85,04x_3 &= 0,02 \\
+    -1,02395x_3 &= 1,00048
+\end{align*}
+
+Y sus respuestas son: $x_3=-0,97707$ , $x_2=1,97691$ y $x_1=-0,98961$\\
+
+%====================================================================================
+a.3) Para el sistema de ecuación:\\
+\begin{equation*}
+    \begin{pmatrix}
+        1 & 0 & 1 \\
+        -1 & 1 & 1 \\
+        -1 & -1 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{pmatrix}    
+    =    
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+    \begin{matrix}
+        A=\begin{pmatrix}
+            1 & 0 & 1 \\
+            -1 & 1 & 1 \\
+            -1 & -1 & 1
+        \end{pmatrix}
+        & , &
+        X=\begin{pmatrix}
+            x_1 \\
+            x_2 \\
+            x_3
+        \end{pmatrix} 
+        & , &
+        b=\begin{pmatrix}
+            1 \\
+            1 \\
+            1
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+Tomando: $m_{21}=-\frac{a_{21}}{a_{11}}=1$
+
+\begin{equation*}
+    \begin{matrix}
+        A^{(1)}= \begin{pmatrix}
+            1 & 0 & 1 \\
+            0 & 1 & 2 \\
+            0 & -1 & 2
+        \end{pmatrix}
+        & , &
+        b^{(1)}=\begin{pmatrix}
+            1 \\
+            2 \\
+            2
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+Tomando: $m_{32}=-\frac{a_{32}}{a_{22}}=1$
+
+\begin{equation*}
+    \begin{matrix}
+        A^{(2)}= \begin{pmatrix}
+            1 & 0 & 1 \\
+            0 & 1 & 2 \\
+            0 & 0 & 4
+        \end{pmatrix}
+        & , &
+        b^{(2)}=\begin{pmatrix}
+            1 \\
+            2 \\
+            4
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+Obteniendo el sistema de ecuaciones resultante:
+\begin{align*}
+    x_1+x_3 &=1 \\
+    x_2+2x_3 &=2 \\
+    4x_3 &=4
+\end{align*}
+
+Y sus respuestas son: $x_3=1$ , $x_2=0$ y $x_1=0$\\
+
+%====================================================================================
+a.4) Para el sistema de ecuación:\\
+\begin{equation*}
+    \begin{pmatrix}
+        0,0003 & 1,566 & 1,234 \\
+        1,566 & 2,0 & 1,018 \\
+        1,234 & 1,018 & -3,0
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{pmatrix}    
+    =    
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+    \begin{matrix}
+        A=\begin{pmatrix}
+            0,0003 & 1,566 & 1,234 \\
+            1,566 & 2,0 & 1,018 \\
+            1,234 & 1,018 & -3,0
+        \end{pmatrix}
+        & , &
+        X=\begin{pmatrix}
+            x_1 \\
+            x_2 \\
+            x_3
+        \end{pmatrix} 
+        & , &
+        b=\begin{pmatrix}
+            1 \\
+            1 \\
+            1
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+Por el pivoteo parcial cambiamos las filas 1ra y 2da:\\
+\begin{equation*}
+    \begin{matrix}
+        A\equiv \begin{pmatrix}
+            1,566 & 2,0 & 1,018 \\
+            0,0003 & 1,566 & 1,234 \\
+            1,234 & 1,018 & -3,0
+        \end{pmatrix}
+        & , &
+        b\equiv \begin{pmatrix}
+            1 \\
+            1 \\
+            1
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+Tomando: $m_{21}=-\frac{a_{21}}{a_{11}}=-0,000196$ y $m_{31}=-\frac{a_{21}}{a_{11}}=-0,78799$
+
+\begin{equation*}
+    \begin{matrix}
+        A^{(1)}= \begin{pmatrix}
+            1,566 & 2,0 & 1,018 \\
+            0 & 1,56562 & 1,2338 \\
+            0 & -0,55799 & -3,80218
+        \end{pmatrix}
+        & , &
+        b^{(1)}=\begin{pmatrix}
+            1 \\
+            1,0019157 \\
+            0,21201
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+Tomando: $m_{32}=-\frac{a_{32}}{a_{22}}=0,3564$
+
+\begin{equation*}
+    \begin{matrix}
+        A^{(2)}= \begin{pmatrix}
+            1,566 & 2,0 & 1,018 \\
+            0 & 1,56562 & 1,2338 \\
+            0 & 0 & -3,36245
+        \end{pmatrix}
+        & , &
+        b^{(2)}=\begin{pmatrix}
+            1 \\
+            1,0019157 \\
+            0,56909
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+Obteniendo el sistema de ecuaciones resultante:
+\begin{align*}
+    1,566x_1+2,0x2+1,018x_3 &=1 \\
+    1,56562x_2+1,2338x_3 &=1,0019157 \\
+    -3,36245x_3 &=0,56909
+\end{align*}
+
+Y sus respuestas son: $x_3=-0,16925 $ , $x_2=0,77333 $ y $x_1=-0,23905 $
+
+%====================================================================================
+a.5) Para el sistema de ecuación:\\
+\begin{equation*}
+    \begin{pmatrix}
+        1 & -1 & 0 \\
+        -1 & 2 & 0 \\
+        0 & -1 & 2
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{pmatrix}    
+    =    
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+    \begin{matrix}
+        A=\begin{pmatrix}
+            1 & -1 & 0 \\
+            -1 & 2 & 0 \\
+            0 & -1 & 2
+        \end{pmatrix}
+        & , &
+        X=\begin{pmatrix}
+            x_1 \\
+            x_2 \\
+            x_3
+        \end{pmatrix} 
+        & , &
+        b=\begin{pmatrix}
+            1 \\
+            1 \\
+            1
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+
+Tomando: $m_{21}=-\frac{a_{21}}{a_{11}}=1$
+
+\begin{equation*}
+    \begin{matrix}
+        A^{(1)}= \begin{pmatrix}
+            1 & -1 & 0 \\
+            0 & 1 & 0 \\
+            0 & -1 & 2
+        \end{pmatrix}
+        & , &
+        b^{(1)}=\begin{pmatrix}
+            1 \\
+            2 \\
+            1
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+Tomando: $m_{32}=-\frac{a_{32}}{a_{22}}=1$
+
+\begin{equation*}
+    \begin{matrix}
+        A^{(2)}= \begin{pmatrix}
+            1 & -1 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 2
+        \end{pmatrix}
+        & , &
+        b^{(2)}=\begin{pmatrix}
+            1 \\
+            2 \\
+            3
+        \end{pmatrix}
+    \end{matrix}
+\end{equation*}
+
+Obteniendo el sistema de ecuaciones resultante:
+\begin{align*}
+    x_1-x2 &=1 \\
+    x_2 &=2 \\
+    2x_3 &=3
+\end{align*}
+
+Y sus respuestas son: $x_3=1,5 $ , $x_2=2 $ y $x_1=3$\\
+
+b) Calcular el vector residual en cada caso
+
+b.1) Para el sistema
+\begin{equation*}
+    \begin{pmatrix}
+        1 & 1/2 & 1/3 \\
+        1/2 & 1/3 & 1/4 \\
+        1/3 & 1/4 & 1/5
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{pmatrix}    
+    =    
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+Y su vector solución es:
+
+\begin{equation*}
+    X=
+    \begin{pmatrix}
+        3,00479 \\
+        -24,02859 \\
+        30,02882
+    \end{pmatrix}    
+\end{equation*}
+
+El vector residual $R$ está definido de la siguiente manera:
+$$ R=AX-b$$
+Y para la presente solución es
+
+\begin{equation*}
+    R=
+    \begin{pmatrix}
+        1 & 1/2 & 1/3 \\
+        1/2 & 1/3 & 1/4 \\
+        1/3 & 1/4 & 1/5
+    \end{pmatrix}
+    \begin{pmatrix}
+        3,00479 \\
+        -24,02859 \\
+        30,02882
+    \end{pmatrix}    
+    -   
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+    R=
+    \begin{pmatrix}
+        0,000102 \\
+        0,00007 \\
+        0,000213
+    \end{pmatrix}
+\end{equation*}
+\\
+b.2) Para el sistema
+\begin{equation*}
+    \begin{pmatrix}
+        100 & 99 & 98 \\
+        98 & 55 & 11 \\
+        0 & 1 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{pmatrix}    
+    =    
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+Y su vector solución es:
+
+\begin{equation*}
+    X=
+    \begin{pmatrix}
+         \\
+         \\
+        
+    \end{pmatrix}    
+\end{equation*}
+
+El vector residual $R$ para la presente solución es:
+
+\begin{equation*}
+    R=
+    \begin{pmatrix}
+        100 & 99 & 98 \\
+        98 & 55 & 11 \\
+        0 & 1 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        -0,98961 \\
+        1,97691 \\
+        -0,97707
+    \end{pmatrix}    
+    -   
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+    R=
+    \begin{pmatrix}
+        0,00023 \\
+        0,0005 \\
+        -0,00016
+    \end{pmatrix}
+\end{equation*}
+
+b.2) Para el sistema
+\begin{equation*}
+    \begin{pmatrix}
+        1 & 0 & 1 \\
+        -1 & 1 & 1 \\
+        -1 & -1 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{pmatrix}    
+    =    
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+Y su vector solución es:
+
+\begin{equation*}
+    X=
+    \begin{pmatrix}
+        0 \\
+        0 \\
+        1
+    \end{pmatrix}    
+\end{equation*}
+
+El vector residual $R$ para la presente solución es:
+
+\begin{equation*}
+    R=
+    \begin{pmatrix}
+        1 & 0 & 1 \\
+        -1 & 1 & 1 \\
+        -1 & -1 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+        0 \\
+        0 \\
+        1
+    \end{pmatrix}    
+    -   
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+    R=
+    \begin{pmatrix}
+        0 \\
+        0 \\
+        0
+    \end{pmatrix}
+\end{equation*}
+
+b.4) Para el sistema
+\begin{equation*}
+    \begin{pmatrix}
+        0,0003 & 1,566 & 1,234 \\
+        1,566 & 2,0 & 1,018 \\
+        1,234 & 1,018 & -3,0
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{pmatrix}    
+    =    
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+Y su vector solución es:
+
+\begin{equation*}
+    X=
+    \begin{pmatrix}
+        -0,23905 \\
+        0,77333 \\
+        -0,16925
+    \end{pmatrix}    
+\end{equation*}
+
+El vector residual $R$ para la presente solución es:
+
+\begin{equation*}
+    R=
+    \begin{pmatrix}
+        0,0003 & 1,566 & 1,234 \\
+        1,566 & 2,0 & 1,018 \\
+        1,234 & 1,018 & -3,0
+    \end{pmatrix}
+    \begin{pmatrix}
+        -0,23905 \\
+        0,77333 \\
+        -0,16925
+    \end{pmatrix}    
+    -   
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+    R=
+    \begin{pmatrix}
+        0,002108 \\
+        0,000012 \\
+        0,000012
+    \end{pmatrix}
+\end{equation*}
+
+b.4) Para el sistema
+\begin{equation*}
+    \begin{pmatrix}
+        1 & -1 & 0 \\
+        -1 & 2 & 0 \\
+        0 & -1 & 2
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3
+    \end{pmatrix}    
+    =    
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+Y su vector solución es:
+
+\begin{equation*}
+    X=
+    \begin{pmatrix}
+        3 \\
+        2 \\
+        1,5
+    \end{pmatrix}    
+\end{equation*}
+
+El vector residual $R$ para la presente solución es:
+
+\begin{equation*}
+    R=
+    \begin{pmatrix}
+        1 & -1 & 0 \\
+        -1 & 2 & 0 \\
+        0 & -1 & 2
+    \end{pmatrix}
+    \begin{pmatrix}
+        
+    \end{pmatrix}    
+    -   
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1
+    \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+    R=
+    \begin{pmatrix}
+        0 \\
+        0 \\
+        0
+    \end{pmatrix}
+\end{equation*}

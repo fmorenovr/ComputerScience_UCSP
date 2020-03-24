@@ -1,0 +1,101 @@
+\textbf{Probar que:\\}
+    
+    \[
+        A = \begin{bmatrix}
+            4 & -1 & -1 & 0\\
+            -1 & 4 & 0 & -1\\
+            -1 & 0 & 4 & -1\\
+            0 & -1 & -1 & 4\\
+        \end{bmatrix}
+    \]
+    
+    es positiva definida con y sin encontrar la factorización de \textit{Cholesky}.\\\\
+    
+    \textbf{Solución}\\
+    
+    \textbf{Sin usar Cholesky:}\\
+    
+    Para que una matriz sea definida positiva, tenemos que probar dos cosas: que sea simétrica y que sus autovalores sean positivos. Como se puede ver, la matriz $A$ es simétrica y sus autovalores son: $\lambda_1 = 2, \lambda_2 = 4, \lambda_3 = 4, \lambda_4 = 6$, todos sus valores positivos. Luego podemos decir que la matriz es positiva definida.\\
+        
+    \textbf{Cholesky}\\
+    
+    Debemos encontrar una matriz $H$ tal que $A = H H^T$.
+    Para encontrar la matriz usamos las siguientes formulas:
+        
+        \begin{equation*}
+            \begin{split}
+                l_{kk} = \sqrt{a_{kk} - \sum_{j=1}^{k-1} l_{kj} ^ 2}\\
+                l_{ki} = \frac{a_{ki} - \sum_{j=1}^{i-1} l_{ij} l_{kj} }{l_{ii}}
+            \end{split}
+        \end{equation*}
+        
+        Luego la matriz $H$ será:
+        
+        \[
+        H = \begin{bmatrix}
+            2 & 0 & 0 & 0\\
+            -0.5 & 1.936492 & 0 & 0\\
+            -0.5 & -0.129099 & 1.932184 & 0 \\
+            0 & -0.516398 & -0.552052 & 1.85164\\
+        \end{bmatrix}
+       \]
+    
+    Si multiplicamos $H$ con $H^T$ obtenemos $A$.
+ 
+    \textbf{Resolver el sistema}
+    
+    \[
+        Ax = \begin{bmatrix}
+            2\\
+            2\\
+            2\\
+            2\\
+        \end{bmatrix}
+    \]
+    \\\\
+    
+    \textbf{Solución}\\
+    
+    Usando $H$ del punto (b), tenemos que:
+    \[
+        \begin{bmatrix}
+            2 & 0 & 0 & 0\\
+            -0.5 & 1.936492 & 0 & 0\\
+            -0.5 & -0.129099 & 1.932184 & 0 \\
+            0 & -0.516398 & -0.552052 & 1.85164\\
+        \end{bmatrix} * 
+        \begin{bmatrix}
+            y_1\\ y_2\\ y_3\\ y_4\\
+        \end{bmatrix} = 
+        \begin{bmatrix}
+            2 \\ 2 \\ 2 \\ 2 \\
+        \end{bmatrix}
+    \]
+    
+    Luego:
+    $$
+    y_1 = 1, \quad y_2 \approx 1.2909942, \quad y_3 \approx 1.380130497, \quad y_4 \approx 1.85163997
+    $$
+    
+    Multiplicando ahora $H^T x^T = y$
+    
+    \[
+        \begin{bmatrix}
+            2 & -0.5 & -0.5 & 0\\
+            0 & 1.936492 & -0.129099 & -0.516398\\
+            0 & 0 & 1.932184 & -0.552052 \\
+            0 & 0 & 0 & 1.85164\\
+        \end{bmatrix} * 
+        \begin{bmatrix}
+            x_1\\ x_2\\ x_3\\ x_4\\
+        \end{bmatrix} = 
+        \begin{bmatrix}
+            1 \\ 1.2909942 \\ 1.380130497 \\ 1.85163997 \\
+        \end{bmatrix}
+    \]
+    
+    Finalmente tenemos que:
+    
+    $$
+    x_1 = 1, \quad x_2 = 1, \quad x_3 = 1, \quad x_4 = 1
+    $$

@@ -1,0 +1,157 @@
+==============
+  Anillos CAM 1 (.mp4)
+==============
+
+Re-projection error reported by calibrateCamera: 0.323429
+
+Camera Matrix: 
+[709.4716628807167, 0, 351.4013969361649;
+ 0, 708.3681177131259, 267.4135206313173;
+ 0, 0, 1]
+ 
+DistCoeffs: 
+[-0.4101241485037735;
+ 0.171986791017039;
+ -0.009834376210042779;
+ -0.004810115022994371;
+ -0.0002532676270437264]
+
+<BoardSize_Width>5</BoardSize_Width> 
+<BoardSize_Height>4</BoardSize_Height>
+
+<!-- The size of a square in some user defined metric system (pixel, millimeter)-->
+<Square_Size>16</Square_Size>
+
+==============
+  Circulos CAM 1 (.mp4)
+==============
+
+Re-projection error reported by calibrateCamera: 0.53702
+
+Camera Matrix: 
+[692.3860785658198, 0, 324.5863403004979;
+ 0, 692.9770200510819, 255.3832720933052;
+ 0, 0, 1]
+
+DistCoeffs: 
+[-0.4192675575964989;
+ 0.4179720847122807;
+ -0.002630045867634496;
+ 0.00215627381178252;
+ -0.2254867947805229]
+
+
+<BoardSize_Width>4</BoardSize_Width> 
+<BoardSize_Height>11</BoardSize_Height>
+
+<!-- The size of a square in some user defined metric system (pixel, millimeter)-->
+<Square_Size>38</Square_Size>
+
+
+==============
+  ChessBoard CAM 1 (.mp4) 640x360
+==============
+
+Re-projection error reported by calibrateCamera: 0.35723
+
+Camera Matrix: 
+[665.2450383778171, 0, 325.603768229559;
+ 0, 664.6447477543966, 251.9487468997013;
+ 0, 0, 1]
+
+DistCoeffs: 
+[-0.3646640115951315;
+ 0.2072165351555635;
+ -0.004419664407953265;
+ 0.0006369008311594451;
+ -0.150825922438222]
+
+
+Parametros:
+
+<BoardSize_Width>6</BoardSize_Width> 
+<BoardSize_Height>8</BoardSize_Height>
+
+<!-- The size of a square in some user defined metric system (pixel, millimeter)-->
+<Square_Size>16</Square_Size>
+
+==============
+  Anillos CAM 2 (.avi)
+==============
+
+Re-projection error reported by calibrateCamera: 0.348439
+
+Camera Matrix: 
+[255.8385039893901, 0, 312.3261142683546;
+ 0, 256.7572484359887, 199.4131828877674;
+ 0, 0, 1]
+
+DistCoeffs: 
+[0.02102649480697403;
+ -0.01417513848259703;
+ 0.005505204136229279;
+ -0.003345851525221217;
+ 0.0006610371640134293]
+
+
+
+<BoardSize_Width>5</BoardSize_Width> 
+<BoardSize_Height>4</BoardSize_Height>
+
+<!-- The size of a square in some user defined metric system (pixel, millimeter)-->
+<Square_Size>16</Square_Size>
+
+
+==============
+  Circulos CAM 2 (.mp4) 640x360
+==============
+
+Re-projection error reported by calibrateCamera: 0.449519
+
+Camera Matrix: 
+[497.3848627129802, 0, 320.0362475738945;
+ 0, 498.4529799964733, 177.6429976795606;
+ 0, 0, 1]
+ 
+DistCoeffs: 
+[0.001155308534724314;
+ 0.06408305721855598;
+ 0.002553474549915946;
+ -0.0004774483443277188;
+ -0.1692231361367178]
+
+<BoardSize_Width>4</BoardSize_Width> 
+<BoardSize_Height>11</BoardSize_Height>
+
+<!-- The size of a square in some user defined metric system (pixel, millimeter)-->
+<Square_Size>38</Square_Size>
+
+==============
+  ChessBoard CAM 2 (.avi) 640x480
+==============
+
+Re-projection error reported by calibrateCamera: 0.53702
+
+Camera Matrix: 
+[692.3860785658198, 0, 324.5863403004979;
+ 0, 692.9770200510819, 255.3832720933052;
+ 0, 0, 1]
+
+DistCoeffs: 
+[-0.4192675575964989;
+ 0.4179720847122807;
+ -0.002630045867634496;
+ 0.00215627381178252;
+ -0.2254867947805229]
+
+
+Parametros:
+
+<BoardSize_Width>8</BoardSize_Width> 
+<BoardSize_Height>6</BoardSize_Height>
+
+<!-- The size of a square in some user defined metric system (pixel, millimeter)-->
+<Square_Size>16</Square_Size>
+
+
+

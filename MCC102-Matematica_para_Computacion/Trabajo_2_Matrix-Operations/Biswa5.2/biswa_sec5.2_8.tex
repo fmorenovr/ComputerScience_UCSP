@@ -1,0 +1,66 @@
+Desarrollar un algoritmo que calcule la factorización
+\[A=LU\]
+donde U es la unidad triangular superior y L es triangular inferior. Se conoce como Cout reduction. Consejo:Derive el algorimo de la ecuación A= LU
+
+\textbf{Solución:}
+
+Teniendo en cuenta que A se puede factorizar como el producto de una matriz triangular inferior $L$ con una matriz triangular superior $U$.
+\[A=LU\]
+En este caso, el sistema de ecuaciones da: $Ax = B$
+Entonces remplazandolo tenemos:
+\[LUx=b\]
+Si denominamos z a la matriz columna de n filas reultado del producto $Ux$, tenemos que la ecuación  $LUx=b$ se puede escribir del siguiente modo:
+\[Lz = b\]
+A partir de las ecuaciones $LUx = b$ y $Lz=b$ es posible plantear un algoritmo para resolver el sistema de ecuaciones empleando dos etapas:
+- Primero obtenemos $z$ aplicando el algoritmo de sustitución progresiva en la ecuación $Lz=b$\\
+- Posteriormente obtenemos los valores de $x$ aplicando el algoritmo de sustitución regresiva a la ecuación $Ux = z$\\
+El análisis anterior nos muestra lo fácil que es resolver estos dos sistemas de ecuaciones triangulares y lo útil que resultaría disponer de un método que nos permita llevar a cabo la factorización $A= LU$. si disponemos de una matriz $a$ de $m x n$, estamos interesados en encontrar aquellas matrices:\\
+
+\[ L =
+\left(
+\begin{array}{lcrcr}
+l_{11} & 0 & 0 & ... & 0 \\
+l_{21} & l_{22} & 0 & ... & 0 \\
+l_{31} & l_{32} & l_{33} & ... &0 \\
+: & : & : &  : & :\\
+l_{n1} & l_{n2} & l_{n3} & ... &l_{nn} \\
+\end{array}
+\right)
+\]
+\[ U =
+\left(
+\begin{array}{lcrcr}
+u_{11} & u_{12} & u_{13} & ... & u_{14} \\
+0 & u_{22} & u_{23} & ... & u_{2n} \\
+0 & 0 & u_{33} & ... &u_{3n} \\
+: & : & : &  : & :\\
+0 & 0 & 0 & ... &u_{nn} \\
+\end{array}
+\right)
+\]
+Tales que cumplan la ecuación $A=LU$. cuando esto es posible decimos que $A$ tien una descomposición $LU$. Se puede ver que la ecuación anterior no determina de forma única a $L$ y a $U$. Para cada $i$ podemos asignar un valor distinto de cero a $l_{ii}$ o $u_{ii}$ (aunque no ambos). Por ejemplo, una elección simple es fijar $l_{ii} = 1$ para $i=1,2,...,n$ haciendo de esto modo que $L$ sea una matriz triangular inferior unitaria. Otra elección es hacer $U$ una matriz triangular superior unitaria (tomando $U_{ii} = 1$ para cada $i$).\\
+Para deducir un algoritmo que nos permita la factorización $LU$ de $A$ partiremos de la fórmula para la multiplicación de matrices:\\
+\[a_{ij} = \sum_{s=1}^{n} l_{is}u_{sj} = \sum_{s=1}^{min(i,j)} l_{is}u_{sj}\]
+En donde nos hemos valido del hecho de que $l_{is} = 0$ para $s>i$ y $u_{sj}=0$ para $s>j$.
+En este proceso, cada paso determina una nueva fila de $U$ y una nueva columna de $L$. En el paso $k$, podemos suponer que ya se calcularon las filas $1,2,...,k-1$ de $U$, al igual que las columnas $1,2,...,k-1$ de $L$. Haciendo $i=j=k$ en la ecuación aterior obtenemos:
+\[a_{kk} = l_{kk}u_{kk} \sum_{s=1}^{k-1}l_{ks}  u_{sk}\]
+Si especificamos una valor para $l_{kk}$ (o para $u_{kk}$), a partir de la ecuación anterior es posible determinar un valor para el otro término. Conocidas $u_{kk}$ y $l_{kk}$ y apartir de la ecuación $a_{ij} = \sum_{s=1}^{n} l_{is}u_{sj} = \sum_{s=1}^{min(i,j)} l_{is}u_{sj}$ podemos escribir las expresiones para la k-ésima fila $(i=k)$ y para la k-ésima columna $(j=k)$, respectivamente:
+\[a_{kj} = l_{kk} u_{kj} + \sum_{s=1}^{k-1} l_{ks} u_{sj}  (k+1 \leq j \leq n)\]  
+\[a_{ik} = l_{ik} u_{kk} + \sum_{s=1}^{k-1} l_{is} u_{sk}  (k+1 \leq i \leq n)\]  
+Esta última ecuación se puede emplear para encontrar los elementos $U_{kj}$ y $l_{ik}$
+el algoritmo basado en el análisis anterior se denomina factorización de Doolittle cuando se toman los términos $l_{ii}=1$ para $1\leq i \leq n$ (L triangular inferior unitaria ) y factorización de Crout cuando se toman los términos $u_{ii} = 1$ (U triangular superior unitaria).\\
+A continuación la implementación del algoritmo:\\\\
+input $n,(a_{ij})$
+\begin{algorithmic}	
+	%input $n,(a_{ij})$
+    \State{$n,(a_{ij})$}
+	\For {k=1,2,...,n} 
+		\State{Especificar un valor para $l_{kk}$ o $u_{kk}$ }
+		\State{Calcular el otro término mediante:}
+		\State{$l_{kk}u_{kk} = a_{kk} - \sum_{s=1}^{k-1} l_{ks} u_{sk}$}
+		\For {$j=k+1, k+2, ... , n$}
+			\State{$u_{kj} \longleftarrow ((a_{kj} - \sum_{s=1}^{k-1} l_{ks} u_{sk}) / l_{kk}$}
+		\EndFor
+	\EndFor
+	\State output{ $(l_{ij}),(u_{ij})$}
+\end{algorithmic}

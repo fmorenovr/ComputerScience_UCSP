@@ -1,0 +1,70 @@
+Considere el sistema lineal $Ax=b$ con:\\\\
+\begin{center}
+A = 
+\[
+\begin{bmatrix}
+    62 & 24 &  1 &  8 & 15 \\
+    23 & 50 &  7 & 14 & 16 \\
+     4 &  6 & 58 & 20 & 22 \\
+    10 & 12 & 19 & 66 &  3 \\
+    11 & 18 & 25 &  2 & 54
+\end{bmatrix}
+, b = 
+\begin{bmatrix}
+    110 \\
+    110 \\
+    110 \\
+    110 \\
+    110
+\end{bmatrix}
+\]
+\end{center}
+
+\begin{itemize}
+
+\item \textbf{Verificar si los métodos de Jacobi y Gauss-Seidel pueden ser aplicados para resolver el sistema.}\\
+Como A no es diagonal dominante o simétrica definida positiva, entonces es necesario calcular el radio espectral de las matrices de iteracion de Jacobi y Gauss-Seidel:
+
+\begin{align}
+    B_j  &= -D^{-1}(L+U)  \Rightarrow \rho(B_j) &= 0.9280 \\
+    B_gs &= -(D+L)^{-1}U  \Rightarrow \rho(B_gs)&= 0.3066
+\end{align}~\\
+Como ambos radios espectrales son menores a $1$, entonces el sistema converge con ambos métodos.
+
+\item \textbf{Verificar si el método estacionario de Richardson con parámetro óptimo puede ser aplicado con $P=I$ y $P=D$, donde $D$ es la parte diagonal de A y calcule los valores de $\alpha_{opt}$ y  $\phi_{opt}$.}\\
+\begin{align}
+    R_p = I - P^{-1}A \Rightarrow R_{(\alpha_k)} = I - \alpha_k P^{-1}A
+\end{align}
+Para el método estacionario de Richardson:
+\begin{align}
+(\alpha_k = \alpha) \Rightarrow R_{\alpha} = I - \alpha P^{-1} A  
+\end{align}
+La iteración $k+1$ del sistema tiene la siguiente forma.
+\begin{align}
+    x^{k+1} &= x^k + \alpha P^{-1} r^k
+\end{align}
+Sabiendo que $\alpha_{opt} = \frac{2}{\lambda_1 + \lambda_n}$ y $P^{-1}A$ tiene autovalores reales positivos, es decir:
+\begin{align}
+    \lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_0 \geq 0
+\end{align}
+Luego, el sistema converge si y solo si $0 < \alpha < \lambda_1$ y el radio espectral de la matriz iterativa $R_{\alpha}$ es el mínimo si $\alpha = \alpha_{opt}$ con:
+\begin{align}
+    \rho_{opt} &= min(\rho_{R_{\alpha}}) = \frac{\lambda_1 - \lambda_n}{\lambda_1 + \lambda_n}
+\end{align}~\\\\
+Caso 1: $P = I$\\\\
+\begin{align}
+    P^{-1}A = I^{-1}A = A \Rightarrow \lambda(A) &= \{110;66.2;58.1;31.8;23.7\} \\
+    \alpha_{opt} &= 0.00149 \\
+    \rho_{opt} &= 0.6452
+\end{align}
+Los autovalores de A son reales positivos y $\phi_{opt} < 1$, por lo que el método puede ser aplicado.\\\\
+
+Caso 2: $P = D$\\\\
+\begin{align}
+    P^{-1}A = D^{-1}A \Rightarrow \lambda(D^{-1}A) &= \{1.92;1.12;0.95;0.577;0.422\} \\
+    \alpha_{opt} &= 0.8510 \\
+    \rho_{opt} &= 0.0.6407
+\end{align}
+Los autovalores de A son reales positivos y $\phi_{opt} < 1$, por lo que el método puede ser aplicado.
+
+\end{itemize}

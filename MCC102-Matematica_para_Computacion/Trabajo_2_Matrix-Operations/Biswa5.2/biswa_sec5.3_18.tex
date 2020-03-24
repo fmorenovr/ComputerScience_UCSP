@@ -1,0 +1,888 @@
+Para cada una de las siguientes matrices, encontrar:
+\begin{enumerate}[]
+    \item Las matrices de permutación $P_1$ y $P_2$ y las matrices elementales $M_1$ y $M_2$ tal que $MA = M_2P_2M_1P_1A$ es una matriz triangular superior.
+    
+    \item Las matrices de permutación $P_1$, $P_2$, $Q_1$, $Q_2$ y las matrices elementales $M_1$ y $M_2$ tal que $MAQ = M_2(P_2(M_1P_1 A Q_1)Q_2)$ es una matriz triangular superior.
+    
+    \begin{enumerate}[]
+            \item 
+            $A = \begin{pmatrix}
+                1 & \frac{1}{2} & \frac{1}{3} \\ 
+                \frac{1}{2} & \frac{1}{3} & \frac{1}{4} \\
+                \frac{1}{3} & \frac{1}{4} & \frac{1}{5} \\
+            \end{pmatrix}$
+            \\\\
+            \item
+            $A = \begin{pmatrix}
+                100 & 99 & 98 \\ 
+                98 & 55 & 11 \\
+                0 & 1 & 1 \\
+            \end{pmatrix}$
+            \\\\
+            \item
+            $A = \begin{pmatrix}
+                1 & 0 & 1 \\ 
+                -1 & 1 & 1 \\
+                -1 & -1 & 1 \\
+            \end{pmatrix}$
+            \\\\
+            \item
+            $A = \begin{pmatrix}
+                0.0003 & 1.566 &  1.234 \\ 
+                1.5660 & 2.000 &  1.018 \\
+                1.2340 & 1.018 & -3.000 \\
+            \end{pmatrix}$
+            \\\\
+            \item
+            $A = \begin{pmatrix}
+                1 & -1 & 0 \\ 
+                -1 & 2 & 0 \\
+                0 & -1 & 2 \\
+            \end{pmatrix}$
+        \end{enumerate}
+    
+    \item Expresa cada descomposición en la forma $PAQ = LU$ (Note que para la eliminación de Gauss sin y con pivoteo parcial, $Q=I$).
+    
+    \item Calcule el factor de crecimiento en cada caso.
+\end{enumerate}
+
+\noindent \textcolor{red}{\bf Solución:}\\    
+\begin{enumerate}[]
+    \item 
+    $A = \begin{pmatrix}
+            1 & \frac{1}{2} & \frac{1}{3} \\ 
+            \frac{1}{2} & \frac{1}{3} & \frac{1}{4} \\
+            \frac{1}{3} & \frac{1}{4} & \frac{1}{5} \\
+        \end{pmatrix}$
+    
+    \begin{enumerate}[]
+        \item Pivoteo parcial\\
+        El máximo valor de la primera columna en la matriz $A$ es $a_{11}$; por lo tanto, se tiene $P_1$ y $M_1$\\
+        \\
+        $P_1 = I$; 
+        $M_1 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            -\frac{1}{2} & 1 & 0 \\
+            -\frac{1}{3} & 0 & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(1)}= M_1P_1A = \begin{pmatrix}
+            1 & \frac{1}{2} & \frac{1}{3} \\ 
+            0 & \frac{1}{12} & \frac{1}{12} \\
+            0 & \frac{1}{12} & \frac{4}{45} \\
+        \end{pmatrix}$
+        \\\\\\
+        El máximo valor de la segunda columna en la matriz $A^{(1)}$, por debajo de la primera fila es $a_{22}$; por lo tanto, se tiene $P_2$ y $M_2$\\
+        \\
+        $P_2 = I$; 
+        $M_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 1 & 0 \\
+            0 & -1 & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(2)}= M_2P_2A^{(1)} = \begin{pmatrix}
+            1 & \frac{1}{2} & \frac{1}{3} \\ 
+            0 & \frac{1}{12} & \frac{1}{12} \\
+            0 & 0 & \frac{1}{180} \\
+        \end{pmatrix}$
+        \\\\\\
+        $\xrightarrow{}$ Se verifica que $MA = M_2P_2M_1P_1A$ es una matriz triangular superior\\
+        
+        \item Pivoteo completo\\
+        El máximo valor de todas las columnas y filas de la matriz $A$ es $a_{11}$; por lo tanto, se tiene $P_1$, $Q_1$ y $M_1$\\
+        \\
+        $P_1 = Q_1 = I$
+        $\xrightarrow{}$ $P_1AQ_1 = A$; 
+        $M_1 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            -\frac{1}{2} & 1 & 0 \\
+            -\frac{1}{3} & 0 & 1 \\
+        \end{pmatrix} $ \\\\
+        $\xrightarrow{}$
+        $A^{(1)}= M_1P_1AQ_1 = \begin{pmatrix}
+            1 & \frac{1}{2} & \frac{1}{3} \\ 
+            0 & \frac{1}{12} & \frac{1}{12} \\
+            0 & \frac{1}{12} & \frac{4}{45} \\
+        \end{pmatrix}$
+        \\\\\\
+        El máximo valor de las columnas y filas de la matriz $A^{(1)}$, por debajo de la primera fila es $a_{33}$; por lo tanto, se tiene $P_2$, $Q_2$ y $M_2$\\
+        \\
+        $P_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 0 & 1 \\
+            0 & 1 & 0 \\
+        \end{pmatrix} $;
+        $Q_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 0 & 1 \\
+            0 & 1 & 0 \\
+        \end{pmatrix} $
+        $\xrightarrow{}$ $P_2A^{(1)}Q_2 = \begin{pmatrix}
+            1 & \frac{1}{3} & \frac{1}{2} \\ 
+            0 & \frac{4}{45} & \frac{1}{12} \\
+            0 & \frac{1}{12} & \frac{1}{12} \\
+        \end{pmatrix}$
+        \\\\\\
+        $M_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 1 & 0 \\
+            0 & -\frac{15}{16} & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(2)}= M_2P_2A^{(1)}Q_2 = \begin{pmatrix}
+            1 & \frac{1}{3} & \frac{1}{2} \\ 
+            0 & \frac{4}{45} & \frac{1}{12} \\
+            0 & 0 & \frac{1}{192} \\
+        \end{pmatrix}$
+        \\\\\\
+        $\xrightarrow{}$ Se verifica que $MAQ = M_2(P_2(M_1P_1AQ_1)Q_2$ es una matriz triangular superior\\
+        
+        \item
+        \begin{enumerate}[]
+            \item Para el caso de pivoteo parcial
+            \begin{align*}
+                PA &= LU\\
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 1 & 0 \\
+                0 & 0 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & \frac{1}{2} & \frac{1}{3} \\ 
+                \frac{1}{2} & \frac{1}{3} & \frac{1}{4} \\
+                \frac{1}{3} & \frac{1}{4} & \frac{1}{5} \\
+                \end{pmatrix} &= 
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                \frac{1}{2} & 1 & 0 \\
+                \frac{1}{3} & 1 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & \frac{1}{2} & \frac{1}{3} \\ 
+                0 & \frac{1}{12} & \frac{1}{12} \\
+                0 & 0 & \frac{1}{180} \\
+                \end{pmatrix}
+            \end{align*}
+            \\
+            
+            \item Para pivoteo completo
+            \begin{align*}
+                PAQ &= LU\\
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 0 & 1 \\
+                0 & 1 & 0 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & \frac{1}{2} & \frac{1}{3} \\ 
+                \frac{1}{2} & \frac{1}{3} & \frac{1}{4} \\
+                \frac{1}{3} & \frac{1}{4} & \frac{1}{5} \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 0 & 1 \\
+                0 & 1 & 0 \\
+                \end{pmatrix} &= 
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                \frac{1}{3} & 1 & 0 \\
+                \frac{1}{2} & \frac{15}{16} & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & \frac{1}{3} & \frac{1}{2} \\ 
+                0 & \frac{4}{45} & \frac{1}{12} \\
+                0 & 0 & \frac{1}{192} \\
+                \end{pmatrix}
+            \end{align*}
+            \\
+        \end{enumerate}
+        
+        \item Factor de crecimiento
+        \begin{enumerate}[]
+            \item Para el caso del pivoteo parcial
+            \begin{align*}
+                \rho &=  \frac{max |a_{ij}^{(2)}|}{max |a_{ij}|}\\
+                &=  \frac{1}{1}\\
+                &=  1\\
+            \end{align*}
+            
+             \item Para pivoteo completo
+             \begin{align*}
+                \rho &=  \frac{max |a_{ij}^{(2)}|}{max |a_{ij}|}\\
+                &=  \frac{1}{1}\\
+                &=  1\\
+            \end{align*}
+        \end{enumerate}
+        
+    \end{enumerate}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item 
+    $A = \begin{pmatrix}
+            100 & 99 & 98 \\ 
+            98 & 55 & 11 \\
+            0 & 1 & 1 \\
+        \end{pmatrix}$
+    
+    \begin{enumerate}[]
+        \item Pivoteo parcial\\
+        El máximo valor de la primera columna en la matriz $A$ es $a_{11}$; por lo tanto, se tiene $P_1$ y $M_1$\\
+        \\
+        $P_1 = I$; 
+        $M_1 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            -\frac{98}{100} & 1 & 0 \\
+            0 & 0 & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(1)}= M_1P_1A = \begin{pmatrix}
+            100 & 99 & 98 \\ 
+            0 & -\frac{2101}{50} & -\frac{2126}{25} \\
+            0 & 1 & 1 \\
+        \end{pmatrix}$
+        \\\\\\
+        El máximo valor de la segunda columna en la matriz $A^{(1)}$, por debajo de la primera fila es $a_{22}$; por lo tanto, se tiene $P_2$ y $M_2$\\\\
+        $P_2 = I$; 
+        $M_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 1 & 0 \\
+            0 & \frac{50}{2101} & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(2)}= M_2P_2A^{(1)} = \begin{pmatrix}
+             100 & 99 & 98 \\ 
+            0 & -\frac{2101}{50} & -\frac{2126}{25} \\
+            0 & 0 & -\frac{2151}{2101} \\
+        \end{pmatrix}$
+        \\\\\\
+        $\xrightarrow{}$ Se verifica que $MA = M_2P_2M_1P_1A$ es una matriz triangular superior\\
+        
+        \item Pivoteo completo\\
+        El máximo valor de todas las columnas y filas de la matriz $A$ es $a_{11}$; por lo tanto, se tiene $P_1$, $Q_1$ y $M_1$\\
+        \\
+        $P_1 = Q_1 = I$
+        $\xrightarrow{}$ $P_1AQ_1 = A$; 
+        $M_1 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            -\frac{98}{100} & 1 & 0 \\
+            0 & 0 & 1 \\
+        \end{pmatrix} $ \\\\
+        $\xrightarrow{}$
+        $A^{(1)}= M_1P_1AQ_1 = \begin{pmatrix}
+            100 & 99 & 98 \\ 
+            0 & -\frac{2101}{50} & -\frac{2126}{25} \\
+            0 & 1 & 1 \\
+        \end{pmatrix}$
+        \\\\\\
+        El máximo valor de las columnas y filas de la matriz $A^{(1)}$, por debajo de la primera fila es $a_{32}$; por lo tanto, se tiene $P_2$, $Q_2$ y $M_2$\\
+        \\
+        $P_2 = I $;
+        $Q_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 0 & 1 \\
+            0 & 1 & 0 \\
+        \end{pmatrix} $
+        $\xrightarrow{}$ $P_2A^{(1)}Q_2 = \begin{pmatrix}
+            100 & 99 & 98 \\ 
+            0 & -\frac{2126}{25} & -\frac{2101}{50} \\
+            0 & 1 & 1 \\
+        \end{pmatrix}$
+        \\\\\\
+        $M_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 1 & 0 \\
+            0 & \frac{25}{2126} & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(2)}= M_2P_2A^{(1)}Q_2 = \begin{pmatrix}
+            100 & 99 & 98 \\ 
+            0 & -\frac{2126}{25} & -\frac{2101}{50} \\
+            0 & 1 & \frac{2151}{4252} \\
+        \end{pmatrix}$
+        \\\\\\
+        $\xrightarrow{}$ Se verifica que $MAQ = M_2(P_2(M_1P_1AQ_1)Q_2$ es una matriz triangular superior\\
+        
+        \item
+        \begin{enumerate}[]
+            \item Para el caso de pivoteo parcial
+            \begin{align*}
+                PA &= LU\\
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 1 & 0 \\
+                0 & 0 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                100 & 99 & 98 \\ 
+                98 & 55 & 11 \\
+                0 & 1 & 1 \\
+                \end{pmatrix} &= 
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                \frac{98}{100} & 1 & 0 \\
+                0 & -\frac{50}{2101} & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                100 & 99 & 98 \\ 
+                0 & -\frac{2101}{50} & -\frac{2126}{25} \\
+                0 & 0 & -\frac{2151}{2101} \\
+                \end{pmatrix}
+            \end{align*}
+            \\
+            
+            \item Para pivoteo completo
+            \begin{align*}
+                PAQ &= LU\\
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 1 & 0 \\
+                0 & 0 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                100 & 99 & 98 \\ 
+                98 & 55 & 11 \\
+                0 & 1 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 0 & 1 \\
+                0 & 1 & 0 \\
+                \end{pmatrix} &= 
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                \frac{98}{100} & 1 & 0 \\
+                0 & -\frac{25}{2126} & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                100 & 98 & 99 \\ 
+                0 & -\frac{2126}{25} & -\frac{2101}{50} \\
+                0 & 0 & \frac{2151}{4252} \\
+                \end{pmatrix}
+            \end{align*}
+            \\
+        \end{enumerate}
+        
+        \item Factor de crecimiento
+        \begin{enumerate}[]
+            \item Para el caso del pivoteo parcial
+            \begin{align*}
+                \rho &=  \frac{max |a_{ij}^{(2)}|}{max |a_{ij}|}\\
+                &=  \frac{100}{100}\\
+                &=  1\\
+            \end{align*}
+            
+             \item Para pivoteo completo
+             \begin{align*}
+                \rho &=  \frac{max |a_{ij}^{(2)}|}{max |a_{ij}|}\\
+                &=  \frac{100}{100}\\
+                &=  1\\
+            \end{align*}
+        \end{enumerate}        
+    \end{enumerate}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item 
+    $A = \begin{pmatrix}
+            1 & 0 & 1 \\ 
+            -1 & 1 & 1 \\
+            -1 & -1 & 1 \\
+        \end{pmatrix}$
+    
+    \begin{enumerate}[]
+        \item Pivoteo parcial\\
+        El máximo valor de la primera columna en la matriz $A$ es $a_{11}$; por lo tanto, se tiene $P_1$ y $M_1$\\
+        \\
+        $P_1 = I$; 
+        $M_1 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            1 & 1 & 0 \\
+            1 & 0 & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(1)}= M_1P_1A = \begin{pmatrix}
+            1 & 0 & 1 \\ 
+            0 & 1 & 2 \\
+            0 & -1 & 2 \\
+        \end{pmatrix}$
+        \\\\\\
+        El máximo valor de la segunda columna en la matriz $A^{(1)}$, por debajo de la primera fila es $a_{22}$; por lo tanto, se tiene $P_2$ y $M_2$\\\\
+        $P_2 = I$; 
+        $M_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 1 & 0 \\
+            0 & 1 & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(2)}= M_2P_2A^{(1)} = \begin{pmatrix}
+             1 & 0 & 1 \\ 
+            0 & 1 & 2 \\
+            0 & 0 & 4 \\
+        \end{pmatrix}$
+        \\\\\\
+        $\xrightarrow{}$ Se verifica que $MA = M_2P_2M_1P_1A$ es una matriz triangular superior\\
+        
+        \item Pivoteo completo\\
+        El máximo valor de todas las columnas y filas de la matriz $A$ es $a_{11}$; por lo tanto, se tiene $P_1$, $Q_1$ y $M_1$\\
+        \\
+        $P_1 = Q_1 = I$
+        $\xrightarrow{}$ $P_1AQ_1 = A$; 
+        $M_1 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            1 & 1 & 0 \\
+            1 & 0 & 1 \\
+        \end{pmatrix} $ \\\\
+        $\xrightarrow{}$
+        $A^{(1)}= M_1P_1AQ_1 = \begin{pmatrix}
+            1 & 0 & 1 \\ 
+            0 & 1 & 2 \\
+            0 & -1 & 2 \\
+        \end{pmatrix}$
+        \\\\\\
+        El máximo valor de las columnas y filas de la matriz $A^{(1)}$, por debajo de la primera fila es $a_{22}$; por lo tanto, se tiene $P_2$, $Q_2$ y $M_2$\\
+        \\
+        $P_2 = I $;
+        $Q_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 0 & 1 \\
+            0 & 1 & 0 \\
+        \end{pmatrix} $
+        $\xrightarrow{}$ $P_2A^{(1)}Q_2 = \begin{pmatrix}
+            1 & 1 & 0 \\ 
+            0 & 2 & 1 \\
+            0 & 2 & -1 \\
+        \end{pmatrix}$
+        \\\\\\
+        $M_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 1 & 0 \\
+            0 & -1 & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(2)}= M_2P_2A^{(1)}Q_2 = \begin{pmatrix}
+            1 & 1 & 0 \\ 
+            0 & 2 & 1 \\
+            0 & 0 & -2 \\
+        \end{pmatrix}$
+        \\\\\\
+        $\xrightarrow{}$ Se verifica que $MAQ = M_2(P_2(M_1P_1AQ_1)Q_2$ es una matriz triangular superior\\
+        
+        \item
+        \begin{enumerate}[]
+            \item Para el caso de pivoteo parcial
+            \begin{align*}
+                PA &= LU\\
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 1 & 0 \\
+                0 & 0 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 0 & 1 \\ 
+                -1 & 1 & 1 \\
+                -1 & -1 & 1 \\
+                \end{pmatrix} &= 
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                -1 & 1 & 0 \\
+                -1 & -1 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 0 & 1 \\ 
+                0 & 1 & 2 \\
+                0 & 0 & 4 \\
+                \end{pmatrix}
+            \end{align*}
+            \\
+            
+            \item Para pivoteo completo
+            \begin{align*}
+                PAQ &= LU\\
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 1 & 0 \\
+                0 & 0 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 0 & 1 \\ 
+                -1 & 1 & 1 \\
+                -1 & -1 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 0 & 1 \\
+                0 & 1 & 0 \\
+                \end{pmatrix} &= 
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                -1 & 1 & 0 \\
+                -1 & 1 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 1 & 0 \\ 
+                0 & 2 & 1 \\
+                0 & 0 & -2 \\
+                \end{pmatrix}
+            \end{align*}
+            \\
+        \end{enumerate}
+        
+        \item Factor de crecimiento
+        \begin{enumerate}[]
+            \item Para el caso del pivoteo parcial
+            \begin{align*}
+                \rho &=  \frac{max |a_{ij}^{(2)}|}{max |a_{ij}|}\\
+                &=  \frac{4}{1}\\
+                &=  1\\
+            \end{align*}
+            
+             \item Para pivoteo completo
+             \begin{align*}
+                \rho &=  \frac{max |a_{ij}^{(2)}|}{max |a_{ij}|}\\
+                &=  \frac{2}{1}\\
+                &=  1\\
+            \end{align*}
+        \end{enumerate}
+    \end{enumerate}
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item 
+    $A = \begin{pmatrix}
+            0.0003 & 1.566 &  1.234 \\ 
+            1.5660 & 2.000 &  1.018 \\
+            1.2340 & 1.018 & -3.000 \\
+        \end{pmatrix}$
+    
+    \begin{enumerate}[]
+        \item Pivoteo parcial\\
+        El máximo valor de la primera columna en la matriz $A$ es $a_{11}$; por lo tanto, se tiene $P_1$ y $M_1$\\
+        \\
+        $P_1 = I$; 
+        $M_1 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            1 & 1 & 0 \\
+            1 & 0 & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(1)}= M_1P_1A = \begin{pmatrix}
+            1 & 0 & 1 \\ 
+            0 & 1 & 2 \\
+            0 & -1 & 2 \\
+        \end{pmatrix}$
+        \\\\\\
+        El máximo valor de la segunda columna en la matriz $A^{(1)}$, por debajo de la primera fila es $a_{22}$; por lo tanto, se tiene $P_2$ y $M_2$\\\\
+        $P_2 = I$; 
+        $M_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 1 & 0 \\
+            0 & 1 & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(2)}= M_2P_2A^{(1)} = \begin{pmatrix}
+             1 & 0 & 1 \\ 
+            0 & 1 & 2 \\
+            0 & 0 & 4 \\
+        \end{pmatrix}$
+        \\\\\\
+        $\xrightarrow{}$ Se verifica que $MA = M_2P_2M_1P_1A$ es una matriz triangular superior\\
+        
+        \item Pivoteo completo\\
+        El máximo valor de todas las columnas y filas de la matriz $A$ es $a_{11}$; por lo tanto, se tiene $P_1$, $Q_1$ y $M_1$\\
+        \\
+        $P_1 = Q_1 = I$
+        $\xrightarrow{}$ $P_1AQ_1 = A$; 
+        $M_1 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            1 & 1 & 0 \\
+            1 & 0 & 1 \\
+        \end{pmatrix} $ \\\\
+        $\xrightarrow{}$
+        $A^{(1)}= M_1P_1AQ_1 = \begin{pmatrix}
+            1 & 0 & 1 \\ 
+            0 & 1 & 2 \\
+            0 & -1 & 2 \\
+        \end{pmatrix}$
+        \\\\\\
+        El máximo valor de las columnas y filas de la matriz $A^{(1)}$, por debajo de la primera fila es $a_{22}$; por lo tanto, se tiene $P_2$, $Q_2$ y $M_2$\\
+        \\
+        $P_2 = I $;
+        $Q_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 0 & 1 \\
+            0 & 1 & 0 \\
+        \end{pmatrix} $
+        $\xrightarrow{}$ $P_2A^{(1)}Q_2 = \begin{pmatrix}
+            1 & 1 & 0 \\ 
+            0 & 2 & 1 \\
+            0 & 2 & -1 \\
+        \end{pmatrix}$
+        \\\\\\
+        $M_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 1 & 0 \\
+            0 & -1 & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(2)}= M_2P_2A^{(1)}Q_2 = \begin{pmatrix}
+            1 & 1 & 0 \\ 
+            0 & 2 & 1 \\
+            0 & 0 & -2 \\
+        \end{pmatrix}$
+        \\\\\\
+        $\xrightarrow{}$ Se verifica que $MAQ = M_2(P_2(M_1P_1AQ_1)Q_2$ es una matriz triangular superior\\
+        
+        \item
+        \begin{enumerate}[]
+            \item Para el caso de pivoteo parcial
+            \begin{align*}
+                PA &= LU\\
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 1 & 0 \\
+                0 & 0 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 0 & 1 \\ 
+                -1 & 1 & 1 \\
+                -1 & -1 & 1 \\
+                \end{pmatrix} &= 
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                -1 & 1 & 0 \\
+                -1 & -1 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 0 & 1 \\ 
+                0 & 1 & 2 \\
+                0 & 0 & 4 \\
+                \end{pmatrix}
+            \end{align*}
+            \\
+            
+            \item Para pivoteo completo
+            \begin{align*}
+                PAQ &= LU\\
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 1 & 0 \\
+                0 & 0 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 0 & 1 \\ 
+                -1 & 1 & 1 \\
+                -1 & -1 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 0 & 1 \\
+                0 & 1 & 0 \\
+                \end{pmatrix} &= 
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                -1 & 1 & 0 \\
+                -1 & 1 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 1 & 0 \\ 
+                0 & 2 & 1 \\
+                0 & 0 & -2 \\
+                \end{pmatrix}
+            \end{align*}
+            \\
+        \end{enumerate}
+        
+        \item Factor de crecimiento
+        \begin{enumerate}[]
+            \item Para el caso del pivoteo parcial
+            \begin{align*}
+                \rho &=  \frac{max |a_{ij}^{(2)}|}{max |a_{ij}|}\\
+                &=  \frac{4}{1}\\
+                &=  1\\
+            \end{align*}
+            
+             \item Para pivoteo completo
+             \begin{align*}
+                \rho &=  \frac{max |a_{ij}^{(2)}|}{max |a_{ij}|}\\
+                &=  \frac{2}{1}\\
+                &=  1\\
+            \end{align*}
+        \end{enumerate}
+    \end{enumerate}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item 
+    $A = \begin{pmatrix}
+            1 & -1 & 0 \\ 
+            -1 & 2 & 0 \\
+            0 & -1 & 2 \\
+        \end{pmatrix}$
+    
+    \begin{enumerate}[]
+        \item Pivoteo parcial\\
+        El máximo valor de la primera columna en la matriz $A$ es $a_{11}$; por lo tanto, se tiene $P_1$ y $M_1$\\
+        \\
+        $P_1 = I$; 
+        $M_1 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            1 & 1 & 0 \\
+            0 & 0 & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(1)}= M_1P_1A = \begin{pmatrix}
+            1 & -1 & 0 \\ 
+            0 & 1 & 0 \\
+            0 & -1 & 2 \\
+        \end{pmatrix}$
+        \\\\\\
+        El máximo valor de la segunda columna en la matriz $A^{(1)}$, por debajo de la primera fila es $a_{22}$; por lo tanto, se tiene $P_2$ y $M_2$\\\\
+        $P_2 = I$; 
+        $M_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 1 & 0 \\
+            0 & 1 & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(2)}= M_2P_2A^{(1)} = \begin{pmatrix}
+             1 & -1 & 0 \\ 
+            0 & 1 & 0 \\
+            0 & 0 & 2 \\
+        \end{pmatrix}$
+        \\\\\\
+        $\xrightarrow{}$ Se verifica que $MA = M_2P_2M_1P_1A$ es una matriz triangular superior\\
+        
+        \item Pivoteo completo\\
+        El máximo valor de todas las columnas y filas de la matriz $A$ es $a_{22}$; por lo tanto, se tiene $P_1$, $Q_1$ y $M_1$\\
+        \\
+        $P_1 = \begin{pmatrix}
+            0 & 1 & 0 \\ 
+            1 & 0 & 0 \\
+            0 & 0 & 1 \\
+        \end{pmatrix} $;
+        $Q_1 = \begin{pmatrix}
+            0 & 1 & 0 \\ 
+            1 & 0 & 0 \\
+            0 & 0 & 1 \\
+        \end{pmatrix} $
+        $\xrightarrow{}$ $P_1AQ_1 = \begin{pmatrix}
+            2 & -1 & 0 \\ 
+            -1 & 1 & 0 \\
+            -1 & 0 & 2 \\
+        \end{pmatrix} $; 
+        $M_1 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            \frac{1}{2} & 1 & 0 \\
+            \frac{1}{2} & 0 & 1 \\
+        \end{pmatrix} $ \\\\
+        $\xrightarrow{}$
+        $A^{(1)}= M_1P_1AQ_1 = \begin{pmatrix}
+            1 & 0 & 1 \\ 
+            0 & 1 & 2 \\
+            0 & -1 & 2 \\
+        \end{pmatrix}$
+        \\\\\\
+        El máximo valor de las columnas y filas de la matriz $A^{(1)}$, por debajo de la primera fila es $a_{22}$; por lo tanto, se tiene $P_2$, $Q_2$ y $M_2$\\
+        \\
+        $P_2 = I $;
+        $Q_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 0 & 1 \\
+            0 & 1 & 0 \\
+        \end{pmatrix} $
+        $\xrightarrow{}$ $P_2A^{(1)}Q_2 = \begin{pmatrix}
+            1 & 1 & 0 \\ 
+            0 & 2 & 1 \\
+            0 & 2 & -1 \\
+        \end{pmatrix}$
+        \\\\\\
+        $M_2 = \begin{pmatrix}
+            1 & 0 & 0 \\ 
+            0 & 1 & 0 \\
+            0 & -1 & 1 \\
+        \end{pmatrix} $ 
+        $\xrightarrow{}$
+        $A^{(2)}= M_2P_2A^{(1)}Q_2 = \begin{pmatrix}
+            1 & 1 & 0 \\ 
+            0 & 2 & 1 \\
+            0 & 0 & -2 \\
+        \end{pmatrix}$
+        \\\\\\
+        $\xrightarrow{}$ Se verifica que $MAQ = M_2(P_2(M_1P_1AQ_1)Q_2$ es una matriz triangular superior\\
+        
+        \item
+        \begin{enumerate}[]
+            \item Para el caso de pivoteo parcial
+            \begin{align*}
+                PA &= LU\\
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 1 & 0 \\
+                0 & 0 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 0 & 1 \\ 
+                -1 & 1 & 1 \\
+                -1 & -1 & 1 \\
+                \end{pmatrix} &= 
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                -1 & 1 & 0 \\
+                -1 & -1 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 0 & 1 \\ 
+                0 & 1 & 2 \\
+                0 & 0 & 4 \\
+                \end{pmatrix}
+            \end{align*}
+            \\
+            
+            \item Para pivoteo completo
+            \begin{align*}
+                PAQ &= LU\\
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 1 & 0 \\
+                0 & 0 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 0 & 1 \\ 
+                -1 & 1 & 1 \\
+                -1 & -1 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                0 & 0 & 1 \\
+                0 & 1 & 0 \\
+                \end{pmatrix} &= 
+                \begin{pmatrix}
+                1 & 0 & 0 \\ 
+                -1 & 1 & 0 \\
+                -1 & 1 & 1 \\
+                \end{pmatrix}
+                \begin{pmatrix}
+                1 & 1 & 0 \\ 
+                0 & 2 & 1 \\
+                0 & 0 & -2 \\
+                \end{pmatrix}
+            \end{align*}
+            \\
+        \end{enumerate}
+        
+        \item Factor de crecimiento
+        \begin{enumerate}[]
+            \item Para el caso del pivoteo parcial
+            \begin{align*}
+                \rho &=  \frac{max |a_{ij}^{(2)}|}{max |a_{ij}|}\\
+                &=  \frac{2}{2}\\
+                &=  1\\
+            \end{align*}
+            
+             \item Para pivoteo completo
+             \begin{align*}
+                \rho &=  \frac{max |a_{ij}^{(2)}|}{max |a_{ij}|}\\
+                &=  \frac{2}{2}\\
+                &=  1\\
+            \end{align*}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}

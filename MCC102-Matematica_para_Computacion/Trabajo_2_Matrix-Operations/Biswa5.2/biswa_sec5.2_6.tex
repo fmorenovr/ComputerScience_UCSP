@@ -1,0 +1,91 @@
+Asumiendo que la factorización LU de $A$ existe, probar que:
+\begin{enumerate}
+    \item $A$ puede ser escrito en la forma\\
+    $$
+     A = LDU_1
+    $$
+    donde $D$ es una matriz diagonal y $L$, $U_1$ son matrices triangular inferior y superior respectivamente.\\\\
+    \textbf{Solución}\\
+    Creamos una matriz $D$ diagonal formado por los elementos de la diagonal de la matriz $U$, tal que $d_{ii} = u_{ii} \forall i \in 1, \ldots, n$. Así $A = LU = L(DD^{-1})U = LD(D^{-1}U)$, donde $D^{-1}$ es una matriz diagonal tal que $d_{ii}^{-1} = \frac{1}{d_ii^{i-1}}$ además se sabe que el producto de una matriz diagonal por una triangular superior sigue siendo una matriz triangular superior. Luego tenemos una nueva matriz $U_1$ denotado por:
+    $$
+    U_1 = D^{-1}U
+    $$
+    
+    Reemplazando $U$ con $U_1$:
+    
+    $$
+    A = LDU_1
+    $$
+    
+    Visualmente:
+    
+    \[
+        D = \begin{bmatrix}
+            d_{11} & 0 & \ldots & 0 \\
+            0 & d_{22} & \ldots & 0 \\
+            \vdots & \vdots & \ddots & \vdots\\
+            0 & 0 & \ldots & d_{nn}\\
+        \end{bmatrix}
+        ,
+        D^{-1} = \begin{bmatrix}
+            \frac{1}{d_{11}} & 0 & \ldots & 0 \\
+            0 & \frac{1}{d_{22}} & \ldots & 0 \\
+            \vdots & \vdots & \ddots & \vdots\\
+            0 & 0 & \ldots & \frac{1}{d_{nn}}\\
+        \end{bmatrix}
+    \]
+    
+    \[
+        U_1 = \begin{bmatrix}
+            1 & \frac{d_{12}}{d_{11}} & \frac{d_{13}}{d_{11}} & \ldots & \frac{d_{1n}}{d_{11}}\\
+            0 & 1 & \frac{d_{23}}{d_{22}} & \ldots & \frac{d_{2n}}{d_{22}}\\
+            0 & 0 & 1 & \ldots & \vdots\\
+            \vdots & \vdots & \vdots & \ddots & \vdots\\
+            0 & 0 & 0 & 0& 1\\
+        \end{bmatrix}
+    \]
+    
+    \item Si $A$ es simétrico luego:
+    $$
+    A = LDL^T
+    $$\\\\
+    
+    \textbf{Solución}\\
+    Usando la factorización de $a)$ tenemos que $A = LDU_1$ si le aplicamos la transpuesta a ambos lados y tenemos:
+    
+    \begin{center}
+            $A^T = (LDU_1)^T$\\
+            $A^T = U_1^T DL^T$\\
+   \end{center}
+
+\textrm{Como A es simétrica además que $-m_{21} = \frac{a_{21}}{a_{11}} = \frac{a_{12}}{a_{11}}= -m_{12}$ luego tenemos que:}\\
+    
+    \begin{equation*}
+        \begin{split}
+            A &= LDL^T
+        \end{split}
+    \end{equation*}
+    
+    \item Si $A$ es simétrico y definido positivo, luego
+    $$
+    A = HH^T
+    $$
+    
+    donde $H$ es una matriz triangular inferior con entradas diagonales positivas (conocido como la \textit{descomposición de Cholevsky})\\\\
+    \textbf{Solución}\\
+    
+    \textbf{Definición}
+    Si $x$ es un autovector de $A$ luego $x \neq 0$ y $A x = \lambda X$. En este caso $x^TAx = \lambda x^T x$. Si $\lambda > 0$ tenemos que $x^T A x > 0$. Luego sabemos que una matriz es positiva definida si $x^TAx > 0$ para todos los vectores $x \neq 0$.
+    
+    Del problema (b) tenemos la matriz $A = LDL^T$, la cual la podemos reescribir como $D = L^{-1}AL^{-1}$. La matriz $D$ por la definición anterior será una nueva matriz definida positiva. Así los elementos de la matriz diagonal de la matriz $D$ serán positivos y de la forma $d_{ii} > 0 \forall i = 1, \ldots, n$.
+    
+    Luego creamos una matriz $D'$, tal que $D' = diag(\sqrt{d_1}, \ldots \sqrt{d_n})$ y denotamos $H = LD'$. Así:
+    \begin{equation*}
+        \begin{split}
+            H H^T &= (L D')(L D')^T\\
+            &= (L D')(D')^T L^T\\
+            &= L(D'D'^T)L^T\\
+            &= L D L ^T
+        \end{split}
+    \end{equation*}
+\end{enumerate}

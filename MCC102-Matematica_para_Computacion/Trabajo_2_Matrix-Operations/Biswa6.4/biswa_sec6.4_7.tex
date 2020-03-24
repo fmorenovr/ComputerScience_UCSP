@@ -1,0 +1,403 @@
+Resolver el sistema lineal $Ax=b$, donde b es un vector con cada componente igual a 1 y con A del ejercicio 18 del capitulo 5,usando:\\
+%wilderd
+
+\renewcommand{\labelenumi}{\alph{enumi}}
+\noindent \textcolor{red}{\bf Solución:}
+\begin{enumerate}
+\item Eliminación Gausianna sin pivoteo 
+
+%	\textbf{a} ELIMINACION DE GAUSS SIN PIVOTEO 
+
+\begin{align*}
+	(i) A =
+\begin{bmatrix}
+1 &\frac{1}{2} &\frac{1}{3} \\[6pt]
+\frac{1}{2} &\frac{1}{3} &\frac{1}{4} \\[6pt]
+\frac{1}{3} &\frac{1}{4} &\frac{1}{5} 
+\end{bmatrix}
+b = 
+\begin{bmatrix}
+1\\[6pt]
+1\\[6pt]
+1
+\end{bmatrix}
+\qquad
+x =
+\begin{bmatrix}
+	x\\[6pt]
+	y\\[6pt]
+	z
+\end{bmatrix}
+\end{align*}
+paso 1) para resolver esto aplicamos el metodo de gaus escalonado aplicando para el elemento $a_{21}$  con $m_{21} = -\frac{1}{2}$ tenemos el siguiente resultado:
+\begin{align*}
+A=
+\begin{bmatrix}
+1 &\frac{1}{2} &\frac{1}{3} \\[6pt]
+0 &\frac{1}{3} &\frac{1}{4} \\[6pt]
+\frac{1}{3} &\frac{1}{4} &\frac{1}{5} 
+\end{bmatrix}
+\end{align*}
+tambien aplicando el metodo  $a_{31} = - \frac{1}{3}$
+
+\begin{align*}
+A=
+\begin{bmatrix}
+1 &\frac{1}{2} &\frac{1}{3} \\[6pt]
+0 &\frac{1}{3} &\frac{1}{4} \\[6pt]
+0 &\frac{1}{4} &\frac{1}{5} 
+\end{bmatrix}
+\end{align*}
+paso 2) ahora podemos tambien aplicar para $a_{32} = -1$, que tambien se convertira en U
+\begin{align*}
+A=
+\begin{bmatrix}
+1 &\frac{1}{2} &\frac{1}{3} \\[6pt]
+0 &\frac{1}{3} &\frac{1}{4} \\[6pt]
+0 &0 &\frac{1}{5} 
+\end{bmatrix}
+\qquad U =
+\begin{bmatrix}
+1 &\frac{1}{2} &\frac{1}{3} \\[6pt]
+0 &\frac{1}{3} &\frac{1}{4} \\[6pt]
+0 &0 &\frac{1}{5} 
+\end{bmatrix}
+\end{align*}
+ahora mostramos la matriz L de lo anterior
+
+\begin{align*}
+L =
+\begin{bmatrix}
+1	&0	&0 \\[6pt]
+\frac{1}{2}	&1	&0 \\[6pt]
+\frac{1}{3} &1 	&1
+\end{bmatrix}
+\end{align*}
+por la factorizacion LU anterior y el sistema lineal $Ax = b$ tenemos que $LY = b$, haciendo esto para obtener los Y tenemos que :
+
+\begin{align*}
+\begin{bmatrix}
+1	&0	&0 \\[6pt]
+\frac{1}{2}	&1	&0 \\[6pt]
+\frac{1}{3} &1 	&1
+\end{bmatrix}
+\begin{bmatrix}
+y_1\\[6pt]
+y_2\\[6pt]
+y_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+1\\[6pt]
+1\\[6pt]
+1
+\end{bmatrix}
+\end{align*}
+tenemos Y 
+\begin{align*}
+Y = 
+\begin{bmatrix}
+1\\[6pt]
+\frac{1}{2}\\[6pt]
+\frac{1}{6}
+\end{bmatrix}
+\end{align*}
+ahora para calcular \textbf{UX = Y} hacemos la multiplicacion y calculamos los valores de x, de la siguiente forma.
+\begin{align*}
+\begin{bmatrix}
+1	&\frac{1}{2} &\frac{1}{3} \\[6pt]
+0	&\frac{1}{12}&\frac{1}{12}\\[6pt]
+0	&0			 &\frac{4}{45} 
+\end{bmatrix}
+\begin{bmatrix}
+x\\[6pt]
+y\\[6pt]
+z
+\end{bmatrix}
+\end{align*}
+de lo anterior podemos deducir facilmente la que los valores de X son $x = 1-\frac{33}{16}-\frac{15}{24}, \qquad y = 6-\frac{15}{8}=\frac{33}{8}, z = \frac{15}{8}$
+\item Eliminacion Gausiana con pivoteo parcial y pivoteo total
+
+\textbf{a pivoteo parcial}
+\begin{align*}
+	(i) A =
+\begin{bmatrix}
+1 &\frac{1}{2} &\frac{1}{3} \\[6pt]
+\frac{1}{2} &\frac{1}{3} &\frac{1}{4} \\[6pt]
+\frac{1}{3} &\frac{1}{4} &\frac{1}{5} 
+\end{bmatrix}
+\end{align*}
+
+	usando el pivoteo parcial vamos a expresar A = MU, para encontrar P y L de tal forma que PA = LU.
+	\textbf{paso 1} el pivote parcial entra con $a_{11}= 1$ y $r = 1$
+	
+	\begin{align*}
+		P_{1} &= 
+		\begin{bmatrix}
+			1 &0 &0\\
+			0 &1 &0\\
+			0 &0 &1		
+		\end{bmatrix}\\
+		p_{1}A&=
+		\begin{bmatrix}
+			 1   &0.50000   &0.33333\\
+   			 0.50000   &0.33333   &0.25000\\
+  			 0.33333   &0.25000   &0.20000
+		\end{bmatrix}\\
+		M_1 &=
+		\begin{bmatrix}
+			1 &0 &0\\
+			-\frac{1}{2} &1 &0\\
+			-\frac{1}{3} &0 &1			
+		\end{bmatrix}\\
+		a^{ ( 1 ) } &=M_1P_1A = 
+		\begin{bmatrix}
+			1   &0.50000   &0.33333\\
+		   0   &0.08333   &0.08333\\
+		   0   &0.08333   &0.08889		
+		\end{bmatrix}
+	\end{align*}
+	\textbf{paso 2}, ahora el pivote entrante es $a_{22} = 0.833$
+	\begin{align*}
+		P_2A^{( 1 )} &= 
+		\begin{bmatrix}
+			1   &0.50000   &0.33333\\
+		   0   &0.08333   &0.08333\\
+		   0   &0.08333   &0.08889
+		\end{bmatrix}
+		\\ P_2 &= I_3\\
+		M_2 &= 
+		\begin{bmatrix}
+			1 &0 &0 \\
+			0 &1 &0 \\
+			0 &-1 &1		
+		\end{bmatrix}\\
+		U &= A^{( 2 )} =M_2P_2A^{( 1 )} =
+		\begin{bmatrix}
+		1   &0.50000  & 0.33333\\
+  		0   &0.08333   &0.08333\\
+	    0   &0		   &0.00556
+		\end{bmatrix}\\
+		M &= M_2P_2M_1P_1=
+		\begin{bmatrix}
+			1   &0   &0\\
+		  -0.50000   &1   &0\\
+		   0.16667   &0   &0
+		\end{bmatrix}
+	\end{align*}
+	para la matriz L hacemos
+	\begin{align*}
+		P &= P_2P_1=
+		\begin{bmatrix}
+			1 &0 &0\\
+			0 &1 &0\\
+			0 &0 &1
+		\end{bmatrix}\\
+		L &= P(M_2P_2M_1P_1)^{-1} =
+		\begin{bmatrix}
+			1  &-0.50000   &0.16667\\
+		    0   &1   &0\\
+		    0   &0   &0
+		\end{bmatrix}
+	\end{align*}
+	
+	por la factorizacion LU anterior y el sistema lineal Ax = b, tenemos que LY = b, haciendo este ultimo para obtener los Y tenemos:
+	\begin{align*}
+		LY &= 
+		\begin{bmatrix}
+			1  &-0.50000   &0.16667\\
+		    0   &1   &0\\
+		    0   &0   &0
+		\end{bmatrix}
+		\begin{bmatrix}
+			y_1\\
+			y_2\\
+			y_3
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			1\\
+			1\\
+			1
+		\end{bmatrix}
+	\end{align*}
+	de lo anterior podemos obtener $y_3 = 0, \qquad y_2 = 1; y1 = 1$, entonces podemos hacer UX = Y , y calculamos los valores de x.
+	\begin{align*}
+		\begin{bmatrix}
+		1   &0.50000  & 0.33333\\
+  		0   &0.08333   &0.08333\\
+	    0   &0		   &0.00556
+		\end{bmatrix}
+		\begin{bmatrix}
+		x\\
+		y\\
+		z
+		\end{bmatrix} 
+		=
+		\begin{bmatrix}
+			1\\
+			1\\
+			1
+		\end{bmatrix}
+	\end{align*}
+	de donde podemos inferir $z = \frac{1}{0.00556}, \qquad y = \frac{1-14.9874}{0.8333}, x = 1-0.5y-0.333z$
+	
+\textbf{b} pivoteo total
+
+\begin{align*}
+	(i) A =
+\begin{bmatrix}
+1 &\frac{1}{2} &\frac{1}{3} \\[6pt]
+\frac{1}{2} &\frac{1}{3} &\frac{1}{4} \\[6pt]
+\frac{1}{3} &\frac{1}{4} &\frac{1}{5} 
+\end{bmatrix}
+\end{align*}
+el pivoteo total elige el mayor elemento dentro de un matriz para asi poder elegir el pivote con el mayor elemento en le primer elemento y la primera columna. y asi hacemos dentro de cada sub matriz obteniendo el mayor elemento en la diagonal principal.
+
+en este ejemplo no podemos
+\begin{align*}
+A &=
+\left(\begin{array}{ccc|c}  
+  1          &\frac{1}{2} & \frac{1}{3} & 1 \\[6pt]  
+  \frac{1}{2}&\frac{1}{3} & \frac{1}{4} & 1 \\[6pt] 
+  \frac{1}{3}&\frac{1}{4} & \frac{1}{5} & 1  
+\end{array}\right)\\
+\end{align*}
+en la anterior reduccion no existe intercambio debido aque 1 es el mayor elemento dentro de nuestra matriz, asi tambien para reducir tenemos nuestro pivote al 1.
+\begin{align*}
+A &=
+\left(\begin{array}{ccc|c}  
+  1          &\frac{1}{2} & \frac{1}{3} & 1 \\[6pt]  
+  0     &\frac{1}{4} & \frac{1}{12} & \frac{1}{2} \\[6pt] 
+  \frac{1}{3}&\frac{1}{4} & \frac{1}{5} & 1  
+\end{array}\right)\\
+\end{align*}
+ahora reduciremos el elemento $a_{31}$ de la siguiente forma
+\begin{align*}
+A &=
+\left(\begin{array}{ccc|c}  
+  1          &\frac{1}{2} & \frac{1}{3} & 1 \\[6pt]  
+  0     &\frac{1}{4} & \frac{1}{12} & \frac{1}{2} \\[6pt] 
+  0     &\frac{1}{12} & \frac{4}{5} & \frac{2}{3}  
+\end{array}\right)\\
+\end{align*}
+ahora pasaremos a reducir el en forma escalonada el elemento $a_{32}$
+\begin{align*}
+A &=
+\left(\begin{array}{ccc|c}  
+  1          &\frac{1}{2} & \frac{1}{3} & 1 \\[6pt]  
+  0     &\frac{1}{4} & \frac{1}{12} & \frac{1}{2} \\[6pt] 
+  0     &0 & \frac{1}{180} & \frac{1}{2}  
+\end{array}\right)\\
+\end{align*}
+
+ahora resolviendo tendremos que 
+\begin{align*}
+x &=-15\\
+y &=-28\\
+z &= 90 
+\end{align*}
+\item Factorizacion QR
+aplicando el metodo de factorizacion QR tenemos
+\begin{align*}
+	(i) A =
+\begin{bmatrix}
+1 &\frac{1}{2} &\frac{1}{3} \\[6pt]
+\frac{1}{2} &\frac{1}{3} &\frac{1}{4} \\[6pt]
+\frac{1}{3} &\frac{1}{4} &\frac{1}{5} 
+\end{bmatrix}
+\end{align*}
+dado el sistema Ax = b si $A= QR \rightarrow QRx = b$, asi $Rx = Q^t b$
+entonces primero tenemos que hallar Q y R.
+asi primero dividimos la matriz en pequeños bloques verticales de vectores.
+\begin{align*}
+s=
+\left\lbrace 
+\begin{bmatrix}
+1\\[6pt]
+\frac{1}{2}\\[6pt]
+\frac{1}{3}
+\end{bmatrix}
+,
+\begin{bmatrix}
+\frac{1}{2}\\[6pt]
+\frac{1}{3}\\[6pt]
+\frac{1}{4}
+\end{bmatrix}
+,
+\begin{bmatrix}
+\frac{1}{3}\\[6pt]
+\frac{1}{4}\\[6pt]
+\frac{1}{5}
+\end{bmatrix}
+\right\rbrace
+=\{ v_1, v_2, v_3\}
+\end{align*}
+acontinuacion las ecuaciones que debemos hallar son
+\begin{align*}
+U_1 &= V_1\\
+U_2 &= V_2 - \alpha_{12}U_1\\
+U_3 &= V_3 -\alpha_{13}U_1-\alpha_{23}U_2
+\end{align*}
+hallando $U_2$ tenemos $\alpha_{12}=\frac{<U_1,V_2>}{\parallel U_1\parallel} = \frac{49}{27}$
+\begin{align*}
+U_2 =
+\begin{bmatrix}
+\frac{1}{2}\\[6pt]
+\frac{1}{3}\\[6pt]
+\frac{1}{4}
+\end{bmatrix}
+- \alpha_{12}
+\begin{bmatrix}
+1\\[6pt]
+\frac{1}{2}\\[6pt]
+\frac{1}{3}
+\end{bmatrix}
+\\
+U_2 =
+\begin{bmatrix}
+-1,314\\
+-0,5740\\
+-0,3548
+\end{bmatrix}
+\end{align*}
+ahora calculamos $U_3$ con $\alpha_{13}=\frac{<U_1,V_3>}{\parallel U_1\parallel} = 0,525$, asi tambien$\alpha_{23}=\frac{<U_2,V_3>}{\parallel U_2\parallel} = 0.3$
+\begin{align*}
+U_3 &= 
+\begin{bmatrix}
+\frac{1}{3}\\[6pt]
+\frac{1}{4}\\[6pt]
+\frac{1}{5}
+\end{bmatrix}-
+\alpha_{13}U_1-\alpha_{23}U_2 \\
+U_3 &= 
+\begin{bmatrix}
+0,615\\
+3,7153\\
+0,2314
+\end{bmatrix}
+\end{align*}
+asi ahora tenemos  el Q 
+\begin{align*}
+Q =
+\begin{bmatrix}
+U_1 &U_2 &U_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+1			&-1,314	 &0,615 \\[6pt]
+\frac{1}{2}	&-0,5740 &3,7153\\[6pt]
+\frac{1}{3} &-0,3548 &0,2314
+\end{bmatrix}
+\end{align*}
+ademas ahora podemos calcular R.
+\begin{align*}
+R=
+\begin{bmatrix}
+1	&1,8148  &0,525\\
+0   &1       &0.3\\
+0   &0       &1
+\end{bmatrix}
+\end{align*}
+
+\end{enumerate}

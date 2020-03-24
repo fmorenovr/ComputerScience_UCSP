@@ -1,0 +1,5 @@
+set grid
+set title "Algoritmos de Ordenamiento"
+set ylabel "Tiempo"
+set xlabel "Numero de datos"
+plot "gnuplot.txt" using 1:2 lw 6 lt 1 title "InsertionSort",  "gnuplot.txt" using 1:3 lt 4 lw 3 title "MergeSort", "gnuplot.txt" using 1:4 ls 1 lw 6 lt 2 title "QuickSort"

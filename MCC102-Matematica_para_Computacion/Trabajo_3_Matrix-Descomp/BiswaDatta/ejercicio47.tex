@@ -1,0 +1,148 @@
+Sean $p_0, \ldots, p_{n-1}$ los vectores de dirección generados por el método básico del gradiente conjugado. Sea el residual $r_k = b - Ax_k$, para $k=0,1,\ldots,n-1$. Probar que:
+\begin{itemize}
+    \item $r_k \in span(p_0, \ldots, p_k)$ para $k=0,1,\ldots,n-1$
+    
+    De la recurrencia
+    
+    \begin{equation*}
+        p_k = r_k - \beta_{k-1} \times p_{k-1}
+    \end{equation*}
+    
+    Despejando $r_k$ tenemos que:
+    
+    \begin{align*}
+        r_k &= p_k - \beta_{k-1} \times p_{k-1}\\
+        &= l \times c(p_{k-1}, p_k) \\
+        &= l \times c(p_0, \ldots, p_{k-1}, p_k) \\
+    \end{align*}
+    
+    Por lo tanto tenemos que $r_k$ es una combinación lineal de los vectores de dirección $p_0, \ldots, p_k$.
+    
+    \item $span(p_0, \ldots, p_k) = span(r_0, Ar_0, \ldots, A^kr_0) $ para $k=0, \ldots, n-1$
+    
+    Lo que debemos probar es que cualquier vector generado por el primer conjunto, puede ser generado también por el otro conjunto generador. Para ésto, empecemos por expresar un vector generado por el primer conjunto de la siguiente forma:
+    
+    \begin{equation*}
+        v = c_0 \times p_0 + c_1 \times p_1 + \ldots + c_k \times p_k\\
+    \end{equation*}
+    
+    Lo que necesitamos es poder expresar éste mismo vector en la forma siguiente: 
+    
+    \begin{equation*}
+        v = d_0 \times r_0 + d_1 \times A^1 \times r_0 + \ldots + d_k \times A^k \times r_0
+    \end{equation*}
+    
+    Para esto basta con probar que los vectores $p_k$ pueden expresarse como una combinación lineal de los vectores $r_0, A \times r_0, \ldots, A^k \times r_0$. Ésto puede obtenerse a partir de las siguientes relaciones:
+    
+    \begin{align*}
+        p_k &= r_k - \beta_{k-1} \times p_{k-1}\\
+        r_k &= r_{k-1} - \alpha_{k-1} \times A \times p_{k-1}\\
+    \end{align*}
+    
+    Para probar esto, procedemos reemplazando la segunda igualdad en la primera.
+    
+    \begin{align*}
+        p_k &= r_k - \beta_{k-1} \times p_{k-1}\\
+            &= r_{k-1} - \alpha_{k-1} \times A \times p_{k-1} - \beta_{k-1} \times p_{k-1}\\
+    \end{align*}
+    
+    Si repetimos el proceso para cada $r_i$ tendremos lo siguiente:
+    
+    \begin{align*}
+        p_k &= r_{k-1} - \alpha_{k-1} \times A \times p_{k-1} - \beta_{k-1} \times p_{k-1}\\
+            &= r_0 - \sum_{i=0}^{k-1} \alpha_i \times A \times p_i - \beta_{k-1} \times p_{k-1}\\
+    \end{align*}
+    
+    Para probar lo que deseamos, primero procedemos por analizar un par de casos base para ver como vamos a proceder. Se puede observar que la prueba será por inducción:
+    
+    \begin{description}
+        \item Para $k=1$:
+            \begin{align*}
+                p_1 &= r_0 - \alpha_0 A p_0 - \beta_0 p_0\\
+                    &= r_0 - \alpha_0 A r_0 - \beta_0 r_0\\
+                    &= (\ldots) r_0 + (\ldots) A r_0\\
+            \end{align*}
+            
+        \item Para $k=2$
+            \begin{align*}
+                p_2 &= r_0 - \alpha_0 A r_0 - \alpha_1 A p_1 - \beta_1 p_1\\
+                    &= r_0 - \alpha_0 A r_0 - \alpha_1 A (r_0 - \alpha_0 A r_0 - \beta_0 r_0) - \beta_1 (r_0 - \alpha_0 A r_0 - \beta_0 r_0)\\
+                    &= r_0 - \alpha_0 A r_0 - \alpha_1 A r_0 + \alpha_0 A^2 r_0 + \beta_0 A r_0 - \beta_1 r_0 + \alpha_0 \beta_1 A r_0 + \beta_0 \beta_1 r_0)\\
+                    &= (\ldots) r_0 + (\ldots) A r_0 + (\ldots) A^2 r_0\\
+            \end{align*}
+    \end{description}
+    
+    Observemos que hay un patrón que se puede seguir, además que para estos casos si se cumple nuestra hipótesis, por lo que podemos proceder por inducción. Se observa que cada paso anterior da al paso siguiente una combinación lineal que puede ser agrupada y formar otra combinación lineal de mayor orden.
+    Por inducción, probemos la hipótesis:
+    
+    \begin{align*}
+        p_k &= l \times c(r_0, A \times r_0, \ldots, A^k \times r_0) \\
+    \end{align*}
+    
+    \begin{itemize}
+        \item Caso base $k=1$. Éste caso ya lo probamos anteriormente.
+        \item Sea verdad $p_k \&= l \times c(r_0, A \times r_0, \ldots, A^k \times r_0)$.
+        \item Probemos que se cumple la suposición para $k+1$. Para eso, tenemos la siguiente expresión, podemos relación $p_{k+1}$ y $p_k$. Usando:
+        
+        \begin{align*}
+            p_{k+1} &= r_0 - \sum_{i=0}^{k} \alpha_i \times A \times p_i - \beta_k \times p_k \\
+        \end{align*}
+    \end{itemize}
+    
+    Dado que cada $p_i \&= l \times c(r_0, A \times r_0, \ldots, A^i \times r_0)$ para $i \leq k$ gracias a la hipótesis inductiva, tenemos que:
+    
+    \begin{align*}
+        p_{k+1} &= r_0 - \sum_{i=0}^{k} \alpha_i \times A \times p_i - \beta_k \times p_k - r_0 + \sum_{i=0}^{k} l \times c (r_0, Ar_0, \ldots, A^{i+1}r_0) - \beta_k \times l \times c (r_0, Ar_0, \ldots, A^k r_0) \\
+    \end{align*}
+    
+    Se observa la sumatoria dará una combinación hasta el orden $k$, y combinando todo tendremos que:
+    
+    \begin{align*}
+        p_{k+1} = l \times c (r_0, A \times r_0, \ldots, A^{k+1} \times r_0)
+    \end{align*}
+    
+    Lo cual prueba la hipóstesis inductiva y completa la prueba por inducción. Entonces, como resultado hemos probado lo que necesitamos, por lo que la premisa es verdad.
+    
+    \item $r_0, r_1, \ldots r_{n-1}$ son mutualmente ortogonales
+    
+    Partamos de:
+    
+    \begin{align*}
+        r_k &= r_{k-1} - \alpha_{k-1} \times A \times p_{k-1}\\
+            &= r_{k-1} - \frac{\left\Vert r_{k-1} \right\Vert^2 \times A \times p_{k-1} }{p^T_{k-1} \times A \times p_{k-1}}
+    \end{align*}
+    
+    Multipliquemos ambos lados por $r^T_{k-1}$
+    
+    \begin{align*}
+        r^T_{k-1} \times r_k &= r^T_{k-1} \times r_{k-1} - \frac{\left\Vert r_{k-1} \right\Vert^2 \times A \times p_{k-1} }{p^T_{k-1} \times A \times p_{k-1}}
+    \end{align*}
+    
+    Además, de:
+    
+    \begin{align*}
+        r_k &= p_{k-1} + \beta_{k-2} \times p_{k-2}\\
+    \end{align*}
+    
+    Si la última expresión la transponemos y multiplicamos por $A \times p_{k-1}$ tendremos que:
+    
+    \begin{align*}
+        r^T_{k-1} \times A \times r_k &= p^T_{k-1} \times A \times p_{k-1} + \beta_{k-2} \times p^T_{k-2} \times A \times p_{k-1}
+    \end{align*}
+    
+    Pero como los vectores $p_{k-1}$, $p_{k-2}$ son \textit{A-ortogonales} tenemos que $p^T_{k-2} \times A \times p_{k-1} = 0$ por lo que tendremos:
+    
+    \begin{align*}
+        r^T_{k-1} \times A \times p_{k-1} = p^T_{k-1} \times A \times p_{k-1}
+    \end{align*}
+    
+    Reemplazando la ecuación anterior tenemos que
+    
+    \begin{align*}
+        r^T_{k-1} \times r_k &= r^T_{k-1} \times r_{k-1} \frac{\left\Vert r_{k-1} \right\Vert^2 \times p^T_{k-1} \times A \times p_{k-1} } {p^T_{k-1} \times A \times p_{k-1}}\\
+        &= r^T_{k-1} \times r_{k-1} - \left\Vert r_{k-1} \right\Vert^2\\
+        &= 0
+    \end{align*}
+    
+Por lo que tenemos que los vectores $r_k, r_{k-1}$ son ortogonales. Expandiendo hasta $k=n-1$ tenemos que $r_0, r_1, \ldots, r_{n-1}$ son mutuamente ortogonales.
+\end{itemize}

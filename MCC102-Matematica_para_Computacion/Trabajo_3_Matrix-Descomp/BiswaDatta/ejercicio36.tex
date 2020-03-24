@@ -1,0 +1,105 @@
+Considere el siguiente sistema lineal
+
+\begin{equation*}
+    A x = b
+\end{equation*}
+
+\begin{equation*}
+    \begin{pmatrix}
+        4 & -1 & -1 & 0 \\
+        -1 & 4 & 0 & -1 \\
+        -1 & 0 & 4 & -1 \\
+        0 & -1 & -1 & 4
+    \end{pmatrix}
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        x_3 \\
+        x_4
+    \end{pmatrix}    
+    =    
+    \begin{pmatrix}
+        2 \\
+        2 \\
+        2 \\
+        2
+    \end{pmatrix}
+\end{equation*}
+
+
+\begin{itemize}
+    \item ¿Por qué ambos métodos, Jacobi y Gauss-Seidel, convergen con una aproximación inicial elegida arbitrariamente para este sistema?
+    
+    \item Realice 5 iteraciones para ambos métodos con la misma aproximación inicial.
+\end{itemize}
+
+\textbf{Solución:}
+
+\begin{itemize}
+    \item El sistema del enunciado converge con ambos métodos, Jacobi y Gauss-Seidel para cualquier aproximación inicial porque cumple con las siguientes condiciones.
+    
+    \begin{itemize}
+        \item La matriz $A$ es diagonal dominante, esto es, el valor de la diagonal es el mayor valor de las filas y columnas en la matriz.
+        
+        \item El radio espectral de $B$ es menor a 1. $\rho(B) < 1$
+        
+        \begin{itemize}
+            \item Para el método de Jacobi\\
+            \begin{equation*}
+                B = 
+                \begin{pmatrix}
+                    0 & \frac{1}{4} & \frac{1}{4} & 0 \\
+                    \frac{1}{4} & 0 & 0 & \frac{1}{4} \\
+                    \frac{1}{4} & 0 & 0 & \frac{1}{4} \\
+                    0 & \frac{1}{4} & \frac{1}{4} & 0
+                \end{pmatrix}
+            \end{equation*}
+            \\
+            \begin{equation*}
+                \rho(B) = 0.5
+            \end{equation*}
+            
+            %\item Para el método de Gauss-Seidel\\
+            %\begin{equation*}
+            %    B = 
+            %    \begin{pmatrix}
+            %        0 & \frac{1}{4} & \frac{1}{4} & 0 \\
+            %        \frac{1}{4} & 0 & 0 & \frac{1}{4} \\
+            %        \frac{1}{4} & 0 & 0 & \frac{1}{4} \\
+            %        0 & \frac{1}{4} & \frac{1}{4} & 0
+            %    \end{pmatrix}
+            %\end{equation*}
+            %\\
+            %\begin{equation*}
+            %    \rho(B) = 0.5
+            %\end{equation*}
+        \end{itemize}
+    \end{itemize}
+    
+     \item 
+    
+    \begin{itemize}
+        \item Para el método de Jacobi después de 5 iteraciones:
+        \begin{equation*}
+            x = 
+            \begin{pmatrix}
+                -0.125\\
+                -0.25\\
+                -0.25\\
+                0.0
+            \end{pmatrix}
+        \end{equation*}
+    
+        %\item Para el método de Gauss-Seidel después de 5 iteraciones:
+        %\begin{equation*}
+        %    x = 
+        %    \begin{pmatrix}
+        %        -0.125\\
+        %        -0.25\\
+        %        -0.25\\
+        %        0.0
+        %    \end{pmatrix}
+        %\end{equation*}
+    \end{itemize} 
+    
+\end{itemize}

@@ -1,0 +1,57 @@
+    Construye un ejemplo para mostrar que cuando el metodo de Jacobi converge, no necesariamente
+    implica que el metodo de Gauss-Seidel también converge.\\\\
+    Ya que la convergencia de estos algoritmos depende de su radio espectral
+    Para un sistema: 
+    \[
+        x^{(k+1)} = B*x^{(k)} + c
+    \]
+    La condición necesaria y suficiente para la convergencia de la iteración es que: $\rho(B) < 1$.  \textit{(B. Datta, 6.10.2)}\\ 
+
+    El teórema de \textit{Stein-Rosenberg}, dice lo siguiente para una matriz con diagonal positiva.
+    y los demás términos de la matriz negativos.
+    \begin{itemize}
+        \item Jacobi y Gauss Seidel o bien convergen o bien divergen.
+        \item Cuando ambos convergen el metodo de Gauss-Seidel converge más rápido
+        que el metodo de Jacabi.
+    \end{itemize}
+    Ya que en este teorema no esta contemplado el caso que buscamos, esto es: \textit{Si el método
+    de Jacobi converge, el metodo de Gauss Seidel no lo hace}.
+    Se puede buscar matrices donde los términos de la diagonal no son todos positivos, y/ó donde los otros términos
+    no necesariamente son negativos.
+    
+    Sea el sistema $3x3$ 
+    \[
+        A =
+            \begin{bmatrix}
+                1 & 2 & -2 \\
+                1 & 0.9 & 1\\
+                2 & 2 & 1
+            \end{bmatrix}
+    \]
+    Por tanto: 
+    \[
+        T_{J} =
+            \begin{bmatrix}
+                0 & 2 & -2 \\
+                1.11 & 0 & 1.11\\
+                2 & 2 & 0
+            \end{bmatrix}   
+    \]
+    
+    y: 
+    \[
+        T_{GS} =
+            \begin{bmatrix}
+                0 & 2 & -2 \\
+                0 & 2.22 & 1.11\\
+                0 & 8.44 & -6.22
+            \end{bmatrix}   
+    \]
+    Calculando el radio espectral para ambas matrices:
+    \[
+            \rho(T_{J}) = 0.666
+    \]
+    \[
+            \rho(T_{GS}) = 4.90
+    \]
+    Por tanto para este caso el metodo de Jacobi converge y el método de Gauss-Seidel no.

@@ -1,0 +1,104 @@
+Pruebe la desigualdad:\\
+\begin{equation}
+    \frac{\| \delta x \|}{\| x + \delta x \|} \leq Cond(A)\frac{\| \Delta A\|}{\| A\|}  
+\end{equation}
+
+Donde: 
+$$Ax=b$$
+$$(A + \Delta A)(x + \delta x) = b$$
+Verifique la desigualdad para el sistema:
+$$
+    \begin{bmatrix}
+       1 & 1/2 & 1/3\\
+       1/2 & 1/3 & 1/4 \\
+       1/3 & 1/4 & 1/5 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+       x_1 \\
+       x_2 \\
+       x_3 \\
+    \end{bmatrix}=
+    \begin{bmatrix}
+       1 \\
+       1 \\
+       1 \\
+    \end{bmatrix}$$
+   
+    Usando 
+    $$\Delta A= \begin{bmatrix}
+       0 & 0 & 0.00003 \\
+       0 & 0 & 0 \\
+       0 & 0 & 0 \\
+    \end{bmatrix}$$
+
+\noindent \textcolor{red}{\bf Solución:}\\
+Desarrollando el producto:
+\begin{align}
+    b \&= (A + \Delta A)(x + \delta x)  \\
+    b \&= Ax+A\delta x+\Delta Ax+\Delta A\delta x \nonumber \\
+    0=A\delta x+\Delta Ax+\Delta A\delta x \nonumber \\
+    -A\delta x \&= \Delta Ax+\Delta A\delta x \nonumber\\
+    -A\delta x \&= \Delta A(x+\delta x) \nonumber
+\end{align}
+
+Despejando $\delta x$:
+\begin{align}
+    \delta x &= -A^{-1} \Delta A(x+\delta x) \nonumber \\
+    \| \delta x \| &=\| A^{-1} \Delta A(x+\delta x) \| \nonumber \\
+    \| \delta x \| &\leq \| A^{-1} \| \| \Delta A\| \|(x+\delta x) \| \nonumber \\
+    \| \delta x \| &\leq \| A^{-1} \| \frac{\| A\|}{\| A\|}\| \Delta A\| \|(x+\delta x) \| \nonumber \\
+    \| \delta x \| &\leq (\| A^{-1} \| \| A\|)\frac{\| \Delta A\|}{\| A\|} \|(x+\delta x) \| \nonumber \\
+    \frac{\| \delta x \|}{\|(x+\delta x) \|} &\leq Cond(A)\frac{\| \Delta A\|}{\| A\|}  
+\end{align}\\\\
+A continuación verificaremos la desigualdad para el siguiente sistema:
+$$\begin{bmatrix}
+       1 & 1/2 & 1/3 + 0.00003\\
+       1/2 & 1/3 & 1/4 \\
+       1/3 & 1/4 & 1/5 \\
+    \end{bmatrix}
+     \begin{bmatrix}
+       x_1 \\
+       x_2 \\
+       x_3 \\
+    \end{bmatrix}=
+    \begin{bmatrix}
+       1 \\
+       1 \\
+       1 \\
+    \end{bmatrix}
+    $$
+    
+\begin{center}
+    $
+    x=
+    \begin{bmatrix}
+       3 \\
+       -24 \\
+       30 \\
+    \end{bmatrix} \wedge
+    \delta x=
+    \begin{bmatrix}
+       -0.0080927 \\
+       0.0323709 \\
+       -0.0269757 \\
+    \end{bmatrix}
+    $
+\end{center}
+\begin{align}
+    \Rightarrow \| x\| = 38 \wedge \| \delta x\| = 0.042908 
+\end{align}
+\\Además:
+\begin{align}
+    \Rightarrow \| A\| = 1.4083 \wedge \| A^{-1}\| = 372.12 \wedge \| \Delta A\| = 0.00003 
+\end{align}
+Calculando:
+\begin{align}
+    \frac{\| \delta x \|}{\|(x+\delta x) \|} &= \frac{0.042908}{38+0.04908} \nonumber \\
+    \frac{\| \delta x \|}{\|(x+\delta x) \|} &= 0.0011122 \\
+    Cond(A)\frac{\| \Delta A\|}{\| A\|} &= (\| A^{-1} \| \| A\|)\frac{\| \Delta A\|}{\| A\|} \nonumber \\
+    Cond(A)\frac{\| \Delta A\|}{\| A\|} &= (372.12 * 1.4083)\frac{0.00003}{1.4083} \nonumber \\
+    Cond(A)\frac{\| \Delta A\|}{\| A\|} &= 0.011163 \nonumber \\
+    0.0011122 &\leq 0.011163
+\end{align}
+Por lo tanto queda comprobada la desigualdad.
+\\

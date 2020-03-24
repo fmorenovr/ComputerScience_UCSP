@@ -1,0 +1,67 @@
+Considera cadena homogénea de \textit{Markov} que tiene 3 estados y la matriz
+    de transición de transición dado por:
+    \[
+        P =
+            \begin{bmatrix}
+                0.50 & 0.25 & 0 \\
+                0.50 & 0.50 & 0.25\\
+                0 & 0.25 & 0.75
+            \end{bmatrix}
+    \]
+    \begin{itemize}
+        \item Mostrar que \textit{P} es primitiva.
+
+        Una matriz $mxm$ no negativa $A$ se dice que es primitiva si existe un $k$, tal que
+        $A^k > 0$, esto es, $a_{ij} > 0$ $\forall$ $i$ $\&$ $j$. 
+        Para $k = 2$:\\
+        \[
+            P =
+                \begin{bmatrix}
+                    0.375 & 0.25 & 0.0625 \\
+                    0.50 & 0.4375 & 0.3125\\
+                    0.125 & 0.3125 & 0.625
+                \end{bmatrix}
+        \]
+        Ya que la matriz es P es no negativa, además existe un $k = 2$ tal que $P^* = P^2$: $p^*_{ij} > 0$ $\forall$ $i$ $\&$ $j$, por tanto la matriz $P$ es primitiva
+        \item Determina la distribución de equilibrio, esto es, encuentra el vector
+        $\pi$ tal que $\lim_{t \to \infty} p^{(t)} = \pi$\\\\
+        En general:
+        \[
+            p^{(t)} = P^tp^{(0)} 
+        \]
+        Ya que $p^{(t)} = P^{(t)}p^{(0)}$, también puede ser expresado como:
+        \[
+            p^{(t)} = Pp^{(t-1)}
+        \]
+        El sistema apunta al punto de equilibrio en donde las proporsiones para los estados
+        estan dados por las componentes de $\pi$ y esta proporsion no cambia con el tiempo.
+        Esto es: $p^{(t)} = p^{(t-1)}$, por tanto:
+        \[
+                \pi = P\pi  \quad \dots \quad(1)
+        \]
+        Además ya que este punto representa la probabilidad de un conjunto, la suma de este es igual a 1.
+        Esto es:
+        \[
+                \pi'1_m = 1 \quad \dots \quad(2)
+        \]
+
+        Hallando el autovalor $\pi$ a partir de la ecuación $(1)$:
+        \[
+            \pi = 
+                \begin{bmatrix}
+                    1 \\
+                    2\\
+                    2
+                \end{bmatrix}
+        \]
+        De la ecuación $(2)$: (Las probabilidades deben sumar 1).
+        Esto es:
+        \[
+            \pi = 
+                \begin{bmatrix}
+                    0.2 \\
+                    0.4\\
+                    0.4
+                \end{bmatrix}
+        \]
+    \end{itemize}

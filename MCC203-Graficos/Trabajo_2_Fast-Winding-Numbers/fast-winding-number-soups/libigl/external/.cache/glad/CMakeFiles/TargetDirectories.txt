@@ -1,0 +1,3 @@
+/home/jenazads/github/ComputerScience_UCSP/MCC203_Graficos/Trabajo_2_Fast-Winding-Numbers/fast-winding-number-soups/libigl/external/.cache/glad/CMakeFiles/rebuild_cache.dir
+/home/jenazads/github/ComputerScience_UCSP/MCC203_Graficos/Trabajo_2_Fast-Winding-Numbers/fast-winding-number-soups/libigl/external/.cache/glad/CMakeFiles/glad-download.dir
+/home/jenazads/github/ComputerScience_UCSP/MCC203_Graficos/Trabajo_2_Fast-Winding-Numbers/fast-winding-number-soups/libigl/external/.cache/glad/CMakeFiles/edit_cache.dir

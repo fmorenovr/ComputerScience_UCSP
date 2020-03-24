@@ -1,0 +1,125 @@
+Resolver el sistema tridiagonal
+
+\[
+    \begin{bmatrix}
+        2 & -1 & 0 & 0 \\
+        -1 & 2 & -1 & 0 \\
+        0 & -1 & 2 & -1 \\
+        0 & 0 & -1 & 2 \\
+    \end{bmatrix}
+    \times
+    \begin{bmatrix}
+        x_1 \\
+        x_2 \\
+        x_3 \\
+        x_4 \\
+    \end{bmatrix}
+\]
+
+\begin{itemize}
+    \item Usando la eliminación gaussiana.
+
+    \[
+        \begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1 \\
+        \end{bmatrix}
+        \times
+        \begin{bmatrix}
+            2 \\
+            3 \\
+            3 \\
+            2 \\
+        \end{bmatrix}
+    \]
+    \begin{align*}
+        x_1 &= 2 \\
+        x_2 &= 3 \\
+        x_3 &= 3 \\
+        x_4 &= 2 \\
+    \end{align*}
+    
+    \item Usando la descomposición LU.
+    
+    \[
+        L = \begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            -\frac{1}{2} & 1 & 0 & 0 \\
+            0 & -\frac{2}{3} & 1 & 0 \\
+            0 & 0 & -\frac{3}{4} & 1 \\
+        \end{bmatrix}
+        \quad
+        U = \begin{bmatrix}
+            2 & -1 & 0 & 0 \\
+            0 & \frac{3}{2} & -1 & 0 \\
+            0 & 0 & \frac{4}{3} & -1 \\
+            0 & 0 & 0 & \frac{5}{4} \\
+        \end{bmatrix}
+    \]
+    
+    Luego, resolvemos $L \times y$.
+    
+    \[
+        L = \begin{bmatrix}
+            1 & 0 & 0 & 0 \\
+            -\frac{1}{2} & 1 & 0 & 0 \\
+            0 & -\frac{2}{3} & 1 & 0 \\
+            0 & 0 & -\frac{3}{4} & 1 \\
+        \end{bmatrix}
+        \times
+        \begin{bmatrix}
+            y_1 \\
+            y_2 \\
+            y_3 \\
+            y_4 \\
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            1 \\
+            1 \\
+            1 \\
+            1 \\
+        \end{bmatrix}
+    \]
+    \begin{align*}
+        y_1 &= 1 \\
+        y_2 &= \frac{3}{2} \\
+        y_3 &= 2 \\
+        y_4 &= \frac{5}{2} \\
+    \end{align*}
+    
+    Ahora, resolvemos $U \times x$.
+    
+    \[
+        U = \begin{bmatrix}
+            2 & -1 & 0 & 0 \\
+            0 & \frac{3}{2} & -1 & 0 \\
+            0 & 0 & \frac{4}{3} & -1 \\
+            0 & 0 & 0 & \frac{5}{4} \\
+        \end{bmatrix}
+        \times
+        \begin{bmatrix}
+            x_1 \\
+            x_2 \\
+            x_3 \\
+            x_4 \\
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            2 \\
+            3 \\
+            3 \\
+            2 \\
+        \end{bmatrix}
+    \]
+
+    \begin{align*}
+        y_1 &= 2 \\
+        y_2 &= 3 \\
+        y_3 &= 3 \\
+        y_4 &= 2 \\
+    \end{align*}
+
+\end{itemize}

@@ -1,0 +1,102 @@
+\begin{enumerate}
+    \item Mostrar que una matriz triangular inferior elemental tiene la forma:\\
+    
+        $$E = I + m_{k}e_{k}^{T}$$
+        donde $m_{k}=(0,0,...,0,m_{k+1,k}, ..., m_{n,k})^{T} $
+        
+        Solución:
+        
+        \(
+            A =
+            \left( {\begin{array}{c}
+                a_{1} \\
+                a_{2} \\
+                ... \\
+                a_{n}\\
+            \end{array} } \right)
+        \)
+        
+        $$a_{1} \neq 0 $$
+        
+        tomamos también que $e_{i}^{T}m_{k} = 0$ para $i = 1, 2, ..., k$
+        Esto podemos ver de la siguiente matriz:
+        
+        \[
+        E =
+            \left( {\begin{array}{cccccccc}
+                1 & 0  & 0 & 0 & ... & 0 & 0 & 0\\
+                0 & 1  & 0 & 0 & ... & 0 & 0 & 0\\
+                0 & 0  & 1 & 0 & ... & 0 & 0 & 0\\
+                ... & ... & ... & ... & ... & ... & ... & ...\\
+                ... & ... &  & 0 & 1 & ... &  & ...\\
+                0 & 0  & 0 & ... & m_{k+1,k} & ... & 0 & 0\\
+                0 & 0  & 0 & ... & ... & ... & ... & 0\\
+                0 & 0  & 0 & ... & m_{n,k} & ... & 0 & 1\\
+            \end{array} } \right)
+        \]
+        
+        
+        Decimos que existe una matriz elementaria E tal que  $E_{a}$ es múltiplo de $e_{1}$
+        \[
+        E =
+            \left( {\begin{array}{cccccc}
+                1 & 0  & 0 & ... & ... & 0\\
+                -\frac{a_{2}}{a_{1}} & 1  & 0 & ... & ... & 0\\
+                ... & 0 & ... & ... & ... & 0 \\
+                ... & ... & ... & ... & ... & ... \\
+                ... & ... & ... & ... & ... & ... \\
+                -\frac{a_{n}}{a_{1}} & 0 & 0 & ... & 0 & 1 \\
+            \end{array} } \right)
+        \]
+        
+        tiene la forma de una matriz triangular inferior tal que:
+        
+        \(
+            E_{a} =
+            \left( {\begin{array}{c}
+                a_{1} \\
+                0 \\
+                0 \\
+                ... \\
+                ... \\
+                0\\
+            \end{array} } \right)
+        \)
+        
+        De esta forma si juntamos todos los $m_{k}E_{k}^{T}, para k = 1 ... n$, obtenemos
+    
+        \[
+        E =
+            \left( {\begin{array}{cccccccc}
+                1 & 0  & 0 & 0 & ... & 0 & 0 & 0\\
+                m_{1,0} & 1  & 0 & 0 & ... & 0 & 0 & 0\\
+                m_{2,0} & m_{2,1}  & 1 & 0 & ... & 0 & 0 & 0\\
+                ... & ... & ... & 1 & ... & ... & ... & ...\\
+                ... & ... & ... & ... & 1 & ... &  & ...\\
+                ... & ...  & ... & ... & m_{k+1,k} & ... & 0 & 0\\
+                ... & ...  & ... & ... & ... & ... & ... & 0\\
+                m_{n,0} & m_{n,1}  & m_{n,2} & ... & m_{n,k} & ... & m_{n,n-1} & 1\\
+            \end{array} } \right)
+        \]
+        
+        Tiene la forma matriz triangular inferior.
+        
+    \item Mostrar que la inversa de  E en (a) es dada por:\\
+    
+        $$E^{-1} = I - m_{k}e_{k}^{T}$$
+    
+        Si suponemos que $$E^{-1} = I - m_{k}e_{k}^{T}$$ y $$E = I + m_{k}e_{k}^{T}$$, por tanto $$E * E^{-1} = I$$
+        \begin{align*}
+            E * E^{-1} &= I \\
+            (I + m_{k}e_{k}^{T})*(I - m_{k}e_{k}^{T}) &= I\\
+            I*I + I*(m_{k}e_{k}^{T}) - i*(m_{k}e_{k}^{T}) - (m_{k}e_{k}^{T}) *(m_{k}e_{k}^{T}) &= I\\
+            I - (m_{k}e_{k}^{T}) *(m_{k}e_{k}^{T}) &= I\\
+            - (m_{k}e_{k}^{T}) *(m_{k}e_{k}^{T}) &= I - I\\
+            - (m_{k}e_{k}^{T}) *(m_{k}e_{k}^{T}) &= 0\\
+        \end{align*}
+\end{enumerate}
+
+
+
+
+

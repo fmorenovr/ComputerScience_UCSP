@@ -1,0 +1,55 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/jenazads/github/ComputerScience_UCSP/MCC201_Imagenes/ComputerVision/Trabajo_2_Fast-3D-Recognition/fast-3D-recognition/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_02385/fast"
+/usr/bin/make -f CMakeFiles/cmTC_02385.dir/build.make CMakeFiles/cmTC_02385.dir/build
+make[1]: Entering directory '/home/jenazads/github/ComputerScience_UCSP/MCC201_Imagenes/ComputerVision/Trabajo_2_Fast-3D-Recognition/fast-3D-recognition/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_02385.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -std=c++11 -march=native -DWITH_PCL    -o CMakeFiles/cmTC_02385.dir/CheckSymbolExists.cxx.o -c /home/jenazads/github/ComputerScience_UCSP/MCC201_Imagenes/ComputerVision/Trabajo_2_Fast-3D-Recognition/fast-3D-recognition/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTC_02385
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_02385.dir/link.txt --verbose=1
+/usr/bin/c++   -std=c++11 -march=native -DWITH_PCL     -rdynamic CMakeFiles/cmTC_02385.dir/CheckSymbolExists.cxx.o  -o cmTC_02385 
+CMakeFiles/cmTC_02385.dir/CheckSymbolExists.cxx.o: In function `main':
+CheckSymbolExists.cxx:(.text+0x1b): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_02385.dir/build.make:97: recipe for target 'cmTC_02385' failed
+make[1]: *** [cmTC_02385] Error 1
+make[1]: Leaving directory '/home/jenazads/github/ComputerScience_UCSP/MCC201_Imagenes/ComputerVision/Trabajo_2_Fast-3D-Recognition/fast-3D-recognition/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_02385/fast' failed
+make: *** [cmTC_02385/fast] Error 2
+
+File /home/jenazads/github/ComputerScience_UCSP/MCC201_Imagenes/ComputerVision/Trabajo_2_Fast-3D-Recognition/fast-3D-recognition/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/jenazads/github/ComputerScience_UCSP/MCC201_Imagenes/ComputerVision/Trabajo_2_Fast-3D-Recognition/fast-3D-recognition/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b77ec/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b77ec.dir/build.make CMakeFiles/cmTC_b77ec.dir/build
+make[1]: Entering directory '/home/jenazads/github/ComputerScience_UCSP/MCC201_Imagenes/ComputerVision/Trabajo_2_Fast-3D-Recognition/fast-3D-recognition/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b77ec.dir/CheckFunctionExists.cxx.o
+/usr/bin/c++    -std=c++11 -march=native -DWITH_PCL -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_b77ec.dir/CheckFunctionExists.cxx.o -c /home/jenazads/github/ComputerScience_UCSP/MCC201_Imagenes/ComputerVision/Trabajo_2_Fast-3D-Recognition/fast-3D-recognition/build/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_b77ec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b77ec.dir/link.txt --verbose=1
+/usr/bin/c++   -std=c++11 -march=native -DWITH_PCL -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_b77ec.dir/CheckFunctionExists.cxx.o  -o cmTC_b77ec -lpthreads 
+/usr/bin/x86_64-linux-gnu-ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_b77ec.dir/build.make:97: recipe for target 'cmTC_b77ec' failed
+make[1]: *** [cmTC_b77ec] Error 1
+make[1]: Leaving directory '/home/jenazads/github/ComputerScience_UCSP/MCC201_Imagenes/ComputerVision/Trabajo_2_Fast-3D-Recognition/fast-3D-recognition/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_b77ec/fast' failed
+make: *** [cmTC_b77ec/fast] Error 2
+
+

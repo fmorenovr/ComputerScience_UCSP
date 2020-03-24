@@ -1,0 +1,239 @@
+%wilderd
+\renewcommand{\labelenumi}{\alph{enumi}}
+%%%% Sol
+\begin{enumerate}[label=(\alph*)]
+    \item Sea A de orden $mxn$ y sea $r = min\{ m-1,n\}$, desarrolle un algoritmo para construir las matrices elementales $E_1,\dots ,E_r$, tal que:
+    \[
+	E_r, E_{r-1}, \dots E_2, E_1 A
+    \]
+    es una matriz trapezoidal superior U. El algoritmo deberia sobreescribir A con U.
+    \\\\
+    \noindent \textcolor{red}{\bf Solución:}\\    
+    El algoritmo que se desarrollará es muy similar al de una eliminación Gausianna sin pivoteo, ya que este proceso puede ser extendido fácilmente a una matriz $mxn$ para calcular la factorización LU, la diferencia está en el calculo de pasos. En este caso tomaremos el $k = min\{m-1,n\}$ así, el algoritmo trapezoidal sobrescribe el trapecio superior de A incluyendo la diagonal con U. Las entradas de A sobre la diagonal son sobrescritas con multiplicadores que se necesitan para calcular L.
+	
+	para $k = 1,2, ...\min\{m-1, n\}$ hacer
+	%\textbf{1}
+	\[
+		a_{ik} = m_{ik} = -\frac{a_{ik}}{a_{kk}}(i = k+1,k+2,\dots ,n)
+	\]
+	%\textbf{2}
+	para la actualización tenemos 
+	\[
+		a_{ij} = a_{ij} + m_{ik} a_{kj}(i = k+1,\dots, n  j = k+1,\dots, n)
+	\]		
+	para formar la matriz L solo tenemos que recorrer el mismo A y llenar con los multiplicadores y completar con ceros los demas valores. de lo anterior se puede deducir explícitamente la matriz L .
+	\[
+		a_{ik} = m_{ik}
+	\]
+	
+	\item Mostrar que el algoritmo requiere $\frac{n^3}{3}$ flops.\\\\
+	\noindent \textcolor{red}{\bf Solución:}\\    
+	El \textbf{numero de operaciones punto flotante} se obteiene de manera similar que en el análisis del algoritmo de triangulación, se muestra que requiere $\frac{r^3}{3}$, ya que en el primer paso calculamos $min=\{m-1,n\}$,si m-1 es el mínimo, se tendría $((m-1)-1)$ multiplicadores  y $((n-1)-1)^2$ actualizaciones  en A, cada multiplicador requiere 1 flop y cada actualización también requiere un flop, asi en el primer paso , requerimos $((m-1)-1)^2+(m-1-1) =(m-2)^2+(m-2)$, pero si $n$ es el mínimo entonces se tendría $(n-1)^2+(n-1)$ flops.
+	De igual manera podemos analizar para el paso $2,3, \dots$ y de forma general para $k$ pasos se requiere $(n-k)+ n-k$ flops. De una manera más formal, se tiene:
+	
+	Sea $tf$ el número total de flops:
+    \begin{align*}
+		tf &=\sum_{k=1}^{n-1}(n-k)^2 + \sum_{k=1}^{n-1}(n-k)\\
+		&=\frac{n(n-1)(2n-1)}{6} + \frac{n(n-1)}{2}\\
+		&=\left[ \frac{n^3}{3} + O(n^2)\right]
+    \end{align*}
+    
+    \item Aplicar el algoritmo a
+    \[
+    A = 
+    \begin{bmatrix}
+    1 & 2 \\
+    4 & 5 \\
+    6 & 7 
+    \end{bmatrix}
+    \qquad
+    m = 3 \qquad n = 2
+    \]
+     \\\\
+    \noindent \textcolor{red}{\bf Solución:}\\ 
+    lo anterior tenemos que el algoritmo, tiene  $k= min ( 3,2 ) = 2$ numero de pasos.
+
+\textbf{paso 1} los multiplicadores son $m_{21} = -4 \qquad m_{31} = -6$.
+\begin{align*}
+	a_{22} &= a_{22}^{ ( 1 ) } = a_{22} + m_{21}a_{12} = -3 \\
+	a_{32} &= a_{32}^{ ( 1 ) } = a_{32} + m_{31}a_{13} = -5 \\ 
+	A &= A^{( 1 )}
+\begin{bmatrix}
+1 & 2 \\
+0 & -3 \\
+0 & -5 
+\end{bmatrix}
+\end{align*}
+\textbf{paso 2} los multiplicadores son $m_{32} = \frac{5}{3} ,\qquad a_{32}=a_{32}^{ ( 2 ) } = 0$
+
+\begin{align*}
+		A &= A^{( 2 )}
+\begin{bmatrix}
+1 & 2 \\
+0 & -3 \\
+0 & 0 
+\end{bmatrix} \\
+\\
+U &= 
+\begin{bmatrix}
+1 & 2 \\
+0 & -3 \\
+0 & 0 
+\end{bmatrix}
+\end{align*}
+
+podemos notar que \textbf{U} en este caso es la trapezoidal superior mas bien , así se obtiene la la trapezoidal superior L de la siguiente forma:
+\begin{align*}
+L = 
+\begin{bmatrix}
+1 		&0	 &0\\
+-m_{21} &1	 &0\\
+-m_{31} &-m_{32} &1
+\end{bmatrix}
+= 
+\begin{bmatrix}
+1		&0		&0\\
+4 		&1		&0\\
+6		&-\frac{5}{3} &1
+\end{bmatrix}
+\end{align*}
+verificamos que
+\begin{align*}
+LU = 
+\begin{bmatrix}
+1		&0		&0\\
+4 		&1		&0\\
+6		&-\frac{5}{3} &1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 2 \\
+0 & -3 \\
+0 & 0 
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 2 \\
+4 & 5 \\
+6 & 7 
+\end{bmatrix}
+= A
+\end{align*}
+\end{enumerate}
+\begin{enumerate}[label=(\alph*)]
+    \item Sea A de orden $mxn$ y sea $r = min\{ m-1,n\}$, desarrolle un algoritmo para construir las matrices elementales $E_1,\dots ,E_r$, tal que:
+    \[
+	E_r, E_{r-1}, \dots E_2, E_1 A
+    \]
+    es una matriz trapezoidal superior U. El algoritmo deberia sobreescribir A con U.
+    \\\\
+    \noindent \textcolor{red}{\bf Solución:}\\    
+    El algoritmo que se desarrollará es muy similar al de una eliminación Gausianna sin pivoteo, ya que este proceso puede ser extendido fácilmente a una matriz $mxn$ para calcular la factorización LU, la diferencia está en el calculo de pasos. En este caso tomaremos el $k = min\{m-1,n\}$ así, el algoritmo trapezoidal sobrescribe el trapecio superior de A incluyendo la diagonal con U. Las entradas de A sobre la diagonal son sobrescritas con multiplicadores que se necesitan para calcular L.
+	
+	para $k = 1,2, ...\min\{m-1, n\}$ hacer
+	%\textbf{1}
+	\[
+		a_{ik} = m_{ik} = -\frac{a_{ik}}{a_{kk}}(i = k+1,k+2,\dots ,n)
+	\]
+	%\textbf{2}
+	para la actualización tenemos 
+	\[
+		a_{ij} = a_{ij} + m_{ik} a_{kj}(i = k+1,\dots, n  j = k+1,\dots, n)
+	\]		
+	para formar la matriz L solo tenemos que recorrer el mismo A y llenar con los multiplicadores y completar con ceros los demas valores. de lo anterior se puede deducir explícitamente la matriz L .
+	\[
+		a_{ik} = m_{ik}
+	\]
+	
+	\item Mostrar que el algoritmo requiere $\frac{n^3}{3}$ flops.\\\\
+	\noindent \textcolor{red}{\bf Solución:}\\    
+	El \textbf{numero de operaciones punto flotante} se obteiene de manera similar que en el análisis del algoritmo de triangulación, se muestra que requiere $\frac{r^3}{3}$, ya que en el primer paso calculamos $min=\{m-1,n\}$,si m-1 es el mínimo, se tendría $((m-1)-1)$ multiplicadores  y $((n-1)-1)^2$ actualizaciones  en A, cada multiplicador requiere 1 flop y cada actualización también requiere un flop, asi en el primer paso , requerimos $((m-1)-1)^2+(m-1-1) =(m-2)^2+(m-2)$, pero si $n$ es el mínimo entonces se tendría $(n-1)^2+(n-1)$ flops.
+	De igual manera podemos analizar para el paso $2,3, \dots$ y de forma general para $k$ pasos se requiere $(n-k)+ n-k$ flops. De una manera más formal, se tiene:
+	
+	Sea $tf$ el número total de flops:
+    \begin{align*}
+		tf &=\sum_{k=1}^{n-1}(n-k)^2 + \sum_{k=1}^{n-1}(n-k)\\
+		&=\frac{n(n-1)(2n-1)}{6} + \frac{n(n-1)}{2}\\
+		&=\left[ \frac{n^3}{3} + O(n^2)\right]
+    \end{align*}
+    
+    \item Aplicar el algoritmo a
+    \[
+    A = 
+    \begin{bmatrix}
+    1 & 2 \\
+    4 & 5 \\
+    6 & 7 
+    \end{bmatrix}
+    \qquad
+    m = 3 \qquad n = 2
+    \]
+     \\\\
+    \noindent \textcolor{red}{\bf Solución:}\\ 
+    lo anterior tenemos que el algoritmo, tiene  $k= min ( 3,2 ) = 2$ numero de pasos.
+
+\textbf{paso 1} los multiplicadores son $m_{21} = -4 \qquad m_{31} = -6$.
+\begin{align*}
+	a_{22} &= a_{22}^{ ( 1 ) } = a_{22} + m_{21}a_{12} = -3 \\
+	a_{32} &= a_{32}^{ ( 1 ) } = a_{32} + m_{31}a_{13} = -5 \\ 
+	A &= A^{( 1 )}
+\begin{bmatrix}
+1 & 2 \\
+0 & -3 \\
+0 & -5 
+\end{bmatrix}
+\end{align*}
+\textbf{paso 2} los multiplicadores son $m_{32} = \frac{5}{3} ,\qquad a_{32}=a_{32}^{ ( 2 ) } = 0$
+
+\begin{align*}
+		A &= A^{( 2 )}
+\begin{bmatrix}
+1 & 2 \\
+0 & -3 \\
+0 & 0 
+\end{bmatrix} \\
+\\
+U &= 
+\begin{bmatrix}
+1 & 2 \\
+0 & -3 \\
+0 & 0 
+\end{bmatrix}
+\end{align*}
+
+podemos notar que \textbf{U} en este caso es la trapezoidal superior mas bien , así se obtiene la la trapezoidal superior L de la siguiente forma:
+\begin{align*}
+L = 
+\begin{bmatrix}
+1 		&0	 &0\\
+-m_{21} &1	 &0\\
+-m_{31} &-m_{32} &1
+\end{bmatrix}
+= 
+\begin{bmatrix}
+1		&0		&0\\
+4 		&1		&0\\
+6		&-\frac{5}{3} &1
+\end{bmatrix}
+\end{align*}
+verificamos que
+\begin{align*}
+LU = 
+\begin{bmatrix}
+1		&0		&0\\
+4 		&1		&0\\
+6		&-\frac{5}{3} &1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 2 \\
+0 & -3 \\
+0 & 0 
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 2 \\
+4 & 5 \\
+6 & 7 
+\end{bmatrix}
+= A
+\end{align*}
+\end{enumerate}

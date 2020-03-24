@@ -1,0 +1,30 @@
+Muestre que el coeficiente $\alpha_k$  y $\beta_k$ en el método de la gradiente conjugada puede ser escrita en la forma alternativa:
+
+\[\alpha_k=\frac{||r^{(K)}||_2^2}{{p^{(k)}}^T}Ap^{(k)} , \beta_k=\frac{||r^{(k+1)}||_2^2}{||r^{(k)}||_2^2} \]
+
+\textbf{Solución}\\
+Para $\alpha_k=\frac{||r^{(K)}||_2^2}{{p^{(k)}}^T}Ap^{(k)}$\\
+Se sabe que: $r^{k+1} = r^k - \alpha_k AP^{k} $ , por lo que:\\
+\[AP^k = \frac{r^k - r^{k+1}}{\alpha_k} ....(I)\]
+\[(r^k)^T AP^k = \frac{(r^k)^T r^k - (r^k)^T r^{k+1}}{\alpha_k}\]
+Como $(r^k)^T r^{k+1}$ es el producto interno, entonces $(r^k)^T r^{k+1}=0$
+\[(r^k)^T AP^k = || r^k ||_2^2 ...(II)\]
+\[p^{k+1} = r^{k+1} - \beta_k P\]
+\[(P^k)^T AP^k = (r^k - \beta_{k-1})P^{k-1} AP^k\]
+\[(P^k)^T AP^k = ((r^k)^T - \beta_{k-1})(P^{k-1})^T)AP^k\]
+\[(P^k)^T AP^k = (r^k)^T AP^k - \beta_{k-1}(P^{k-1} AP^k) , (P^{k-1})^T P^T = 0\]
+\[(P^k)^T AP^k = (r^k)^T AP^k ...(III)\]
+De II y III se tiene que:\\
+\[(P^k)^T AP^k = \frac{||r^k||_2^2}{\alpha_k}\]
+\[\alpha_k = \frac{||r^k||_2^2}{(P^k) AP^k}\]
+
+Para $\beta_k=\frac{||r^{(k+1)}||_2^2}{||r^{(k)}||_2^2} $\\
+Partimos de I se tiene que:
+\[(AP^k)^T = \frac{r^k - r^{k+1}}{\alpha_k} r^{k+1}\]
+Despejando el producto interno:
+\[(AP^k)^T r^{k+1} = \frac{||r^{k+1}||_2^2}{\alpha_k}  ...(IV)\]
+Por definición se tiene:
+\[\beta_k = \frac{(AP^k)^T r^{k+1}}{(AP^k)^T P^{k+1}}\]
+Y del resultado de $\alpha_k=\frac{||r^{(K)}||_2^2}{{p^{(k)}}^T}Ap^{(k)}$ y de IV se tiene:
+\[\beta_k = \frac{-\frac{||r^{k+1}||_2^2}{\alpha_k}}{-\frac{||r^k||_2^2}{\alpha_k}}\]
+\[\beta_k = \frac{|| r^{k+1} ||_2^2}{||r^k||_2^2}\]

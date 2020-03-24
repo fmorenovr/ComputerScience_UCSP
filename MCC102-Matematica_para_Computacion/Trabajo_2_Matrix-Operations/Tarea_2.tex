@@ -1,0 +1,250 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+\documentclass[12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{color}
+\usepackage{subfigure}
+\usepackage{enumitem}
+\usepackage{algpseudocode}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\sloppy
+\definecolor{lightgray}{gray}{0.5}
+\setlength{\parindent}{0pt}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+%\renewcommand{\qedsymbol}{\filledbox}
+
+\title{Trabajo de estatica en \LaTeX}
+
+\author{Beicker Baena Baldiris \and Yeison Sarmiento Lopez \and Yair Franco Puello \and 'Alvaro Polo Ulloque\and\ Dayana Jimenez Perez} 
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Universidad Cat\'olica San pablo}\\[1.5cm] % Name of your university/college
+\textsc{\Large Matem\'atica para la Computaci\'on}\\[0.5cm] % Major heading such as course name
+\textsc{\large }\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Lista de Ejercicios Nro.2 }\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Entregado por:}\\
+Choqueluque Roman, David\\Flores Benites, Victor \\Moreno Vera, Felipe Adrian \\Palomino Paucar, Daniel \\Ramos Cooper, Solange \\% Your name
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Profesor:} \\
+Sergio \textsc{Aquise Escobedo} % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[2cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[2cm] % Date, change the \today to a set date if you want to be precise
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+\newpage
+
+%=========================================================
+% BISWA DATA
+%=========================================================
+% 
+% Sección 5
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+\section{Biswa Datta: secciones 5.2 y 5.3}
+
+% Ejercicio 1
+\subsection{Ejercicio 1}
+\input{Biswa5.2/biswa_sec5.2_1.tex} % Walter
+
+% Ejercicio 4
+\subsection{Ejercicio 4}
+\input{Biswa5.2/biswa_sec5.2_4.tex} % Daniel
+
+% Ejercicio 6
+\subsection{Ejercicio 6}
+\input{Biswa5.2/biswa_sec5.2_6.tex} % Josué
+
+% Ejercicio 7
+\subsection{Ejercicio 7}
+\input{Biswa5.2/biswa_sec5.2_7.tex} % Roxana
+
+% Ejercicio 8
+\subsection{Ejercicio 8}
+\input{Biswa5.2/biswa_sec5.2_8.tex} % Roxana
+
+% Ejercicio 9
+\subsection{Ejercicio 9}
+\input{Biswa5.2/biswa_sec5.2_9.tex} % David
+
+%Ejercicio 13
+\subsection{Ejercicio 13}
+\input{Biswa5.2/biswa_sec5.2_13.tex} % Wilderd
+
+%Ejercicio 16
+\subsection{Ejercicio 16}
+\input{Biswa5.2/biswa_sec5.3_16.tex} % Alvarito
+
+% Ejercicio 18
+\subsection{Ejercicio 18}
+\input{Biswa5.2/biswa_sec5.3_18.tex} % Sol
+
+%
+% Sección 6.4
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+\section{Biswa Datta: sección 6.4}
+
+\subsection{Ejercicio 7}
+\input{Biswa6.4/biswa_sec6.4_7.tex} % wilder
+
+% Ejercicio 12
+\subsection{Ejercicio 8}
+\input{Biswa6.4/biswa_sec6.4_8.tex} % Vittorino
+
+% Ejercicio 9
+\subsection{Ejercicio 9}
+\input{Biswa6.4/biswa_sec6.4_9.tex} % Laura
+
+% Ejercicio 12
+\subsection{Ejercicio 12}
+\input{Biswa6.4/biswa_sec6.4_12.tex} % Victor
+
+\subsection{Ejercicio 14}
+\input{Biswa6.4/biswa_sec6.4_14.tex} % Josué
+
+% Ejercicio 17 
+\subsection{Ejercicio 17}
+\input{Biswa6.4/biswa_sec6.4_17.tex} % Luis Ernesto
+
+% Ejercicio 20
+\subsection{Ejercicio 20}
+\input{Biswa6.4/biswa_sec6.4_20.tex} %Walter
+
+%
+% Sección 6.6
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+\section{Biswa Datta: sección 6.6}
+
+% Ejercicio 26
+\subsection{Ejercicio 26}
+\input{Biswa6.6/biswa_sec6.6_26.tex} % David
+
+% Ejercicio 27
+\subsection{Ejercicio 27}
+\input{Biswa6.6/biswa_sec6.6_27.tex} % Jose
+
+% Ejercicio 28
+\subsection{Ejercicio 28}
+s\input{Biswa6.6/biswa_sec6.6_28.tex} % Vittorino
+
+% Ejercicio 29
+\subsection{Ejercicio 29}
+\input{Biswa6.6/biswa_sec6.6_29.tex} % Roxana
+
+
+\subsection{Ejercicio 34}
+\input{Biswa6.6/biswa_sec6.7_34.tex} % Daniel
+
+%=========================================================
+% Alfio Quarteroni
+%=========================================================
+\section{Alfio Quarteroni}
+% 
+% Sección 3
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+% Ejercicio 1
+\subsection{Ejercicio 1}
+\input{Alfio/alfio_sec3.15_1.tex} % Jeff
+
+% Ejercicio 3
+\subsection{Ejercicio 3}
+\input{Alfio/alfio_sec3.15_3.tex} % Erick
+
+% Ejercicio 9
+\subsection{Ejercicio 9}
+\input{Alfio/alfio_sec3.15_9.tex} % Liz
+
+% Ejercicio 10
+\subsection{Ejercicio 10}
+\input{Alfio/alfio_sec3.15_10.tex} % Victor
+
+% Ejercicio 11
+\subsection{Ejercicio 11}
+\input{Alfio/alfio_sec3.15_11.tex} % Diego
+
+% Ejercicio 13
+\subsection{Ejercicio 13}
+\input{Alfio/alfio_sec3.15_13.tex} % Erick
+
+% Ejercicio 14
+\subsection{Ejercicio 14}
+\input{Alfio/alfio_sec3.15_14.tex} % 
+
+% Ejercicio 15
+\subsection{Ejercicio 15}
+\input{Alfio/alfio_sec3.15_15.tex} % Felipe
+
+
+\section{Ejercicios Adicionales}
+\input{Adicionales/gramSchmidt.tex} % Felipe
+
+\end{document}

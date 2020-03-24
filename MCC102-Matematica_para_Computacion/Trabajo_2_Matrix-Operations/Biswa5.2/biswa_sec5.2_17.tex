@@ -1,0 +1,382 @@
+\textbf{Dada la siguiente matriz}
+\[ A =
+    \left( \begin{array}{cccc}
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1\\ 
+    2 & 3 & 4 & 5
+    \end{array} \right) 
+\]
+\textbf{Encontrar una matriz de permutación P, una matriz triangular inferior unitaria L y una matriz triangular superior U tal que $PA = LU$} \\
+
+\textbf{Solución}
+
+La matriz de permutación P se forma a partir de los intercambios que se deben realizar entre filas  en la matriz A.\\
+
+\textbf{Iteración 1}\\
+
+La matriz de permutación $P_1 = I$
+\[ P_1 =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1
+    \end{array} \right) 
+\]
+En la matriz A, el pivote se encuentra en la fila 4, $r_1 = 4$, por lo tanto haremos el intercambio en la matriz $P_1$
+\[ P_1 =
+    \left( \begin{array}{cccc}
+    0 & 0 & 0 & 1\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    1 & 0 & 0 & 0
+    \end{array} \right) 
+\]
+Calculamos $P_{1}A $
+\[ P_{1}A =
+    \left( \begin{array}{cccc}
+    0 & 0 & 0 & 1\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    1 & 0 & 0 & 0
+    \end{array} \right)\left( \begin{array}{cccc}
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1\\ 
+    2 & 3 & 4 & 5
+    \end{array} \right) =
+    \left( \begin{array}{cccc}
+    2 & 3 & 4 & 5\\
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1\\ 
+    0 & 1 & 0 & 0
+    \end{array} \right) 
+\]
+Calculamos la matriz $M_1$
+\[ M_1 =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    m_{2,1} & 1 & 0 & 0\\ 
+    m_{3,1} & 0 & 1 & 0\\ 
+    m_{4,1} & 0 & 0 & 1
+    \end{array} \right) 
+\]
+Donde $m_{2,1} = \frac{-a_{2,1}}{a_{1,1}}$, $m_{3,1} = \frac{-a_{3,1}}{a_{1,1}}$ y $m_{4,1} = \frac{-a_{4,1}}{a_{1,1}}$ donde los valores de $a_{i,1}$ son obtenidos del resultado de $P_{1}A $ \\
+
+ $m_{2,1} = \frac{0}{2} = 0$, $m_{3,1} = \frac{0}{2} = 0$ y $m_{4,1} = \frac{0}{2} = 0$
+ \[ M_1 =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1
+    \end{array} \right) 
+\]
+Calculamos la matriz $A^{(1)} = M_{1}P_{1}A$
+\[ A^{(1)} =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1
+    \end{array} \right) 
+    \left( \begin{array}{cccc}
+    0 & 0 & 0 & 1\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    1 & 0 & 0 & 0
+    \end{array} \right)
+    \left( \begin{array}{cccc}
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1\\ 
+    2 & 3 & 4 & 5
+    \end{array} \right) 
+\]
+\[ A^{(1)} =
+    \left( \begin{array}{cccc}
+    2 & 3 & 4 & 5\\
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1\\ 
+    0 & 1 & 0 & 0
+    \end{array} \right) 
+\]
+\textbf{Iteración 2}\\
+$P_2 = I$
+\[ P_2 =
+     \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1
+    \end{array} \right)
+\]
+En la matriz $A^{(1)}$, el pivote se encuentra en la fila 4, $r_2 = 4$, por lo tanto haremos el intercambio de la fila 2 por la fila 4 en la matriz $P_2$
+\[ P_2 =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 0 & 0 & 1\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 1 & 0 & 0
+    \end{array} \right) 
+\]
+Calculamos $P_{2}A^{(1)} $
+\[ P_{2}A^{(1)} =
+     \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 0 & 0 & 1\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 1 & 0 & 0
+    \end{array} \right)\left( \begin{array}{cccc}
+    2 & 3 & 4 & 5\\
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1\\ 
+    0 & 1 & 0 & 0
+    \end{array} \right) =
+    \left( \begin{array}{cccc}
+    2 & 3 & 4 & 5\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 0 & 1\\ 
+    0 & 0 & 1 & 0
+    \end{array} \right) 
+\]
+Calculamos la matriz $M_2$
+\[ M_2 =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & m_{3,2} & 1 & 0\\ 
+    0 & m_{4,2} & 0 & 1
+    \end{array} \right) 
+\]
+Donde $m_{3,2} = \frac{-a_{3,2}}{a_{2,2}}$ y $m_{4,2} = \frac{-a_{4,2}}{a_{2,2}}$ donde los valores de $a_{i,2}$ son obtenidos del resultado de $P_{2}A^{(1)} $ \\
+$m_{3,2} = \frac{0}{1} = 0$ y $m_{4,2} = \frac{0}{1} = 0$
+\[ M_2 =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1
+    \end{array} \right) 
+\]
+Calculamos la matriz $A^{(2)} = M_{2}P_{2}A^{(1)}$
+\[ A^{(2)} =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1
+    \end{array} \right) 
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 0 & 0 & 1\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 1 & 0 & 0
+    \end{array} \right)
+    \left( \begin{array}{cccc}
+    2 & 3 & 4 & 5\\
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1\\ 
+    0 & 1 & 0 & 0
+    \end{array} \right)
+\]
+\[ A^{(2)} =
+    \left( \begin{array}{cccc}
+    2 & 3 & 4 & 5\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 0 & 1\\
+    0 & 0 & 1 & 0
+    \end{array} \right) 
+\]
+\textbf{Iteración 3}\\
+$P_3 = I$
+\[ P_3 =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1
+    \end{array} \right) 
+\]
+En la matriz $A^{(2)}$, el pivote se encuentra en la fila 4, $r_3 = 4$, por lo tanto haremos el intercambio de la fila 3 por la fila 4 en la matriz $P_3$
+\[ P_3 =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 0 & 1\\ 
+    0 & 0 & 1 & 0
+    \end{array} \right) 
+\]
+Calculamos $P_{3}A^{(2)} $
+\[ P_{3}A^{(2)} =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 0 & 1\\ 
+    0 & 0 & 1 & 0
+    \end{array} \right) \left( \begin{array}{cccc}
+    2 & 3 & 4 & 5\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 0 & 1\\
+    0 & 0 & 1 & 0
+    \end{array} \right) =
+    \left( \begin{array}{cccc}
+    2 & 3 & 4 & 5\\
+    1 & 0 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\
+    0 & 0 & 0 & 1
+    \end{array} \right) 
+\]
+Calculamos la matriz $M_3$
+\[ M_3 =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & m_{4,3} & 1
+    \end{array} \right) 
+\]
+Donde $m_{4,3} = \frac{-a_{4,3}}{a_{3,3}} = \frac{0}{1} = 0 $ 
+\[ M_3 =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1
+    \end{array} \right) 
+\]
+Calculamos la matriz $A^{(3)} = M_{3}P_{3}A^{(2)}$
+\[ A^{(3)} =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1
+    \end{array} \right) 
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 0 & 1\\ 
+    0 & 0 & 1 & 0
+    \end{array} \right)
+    \left( \begin{array}{cccc}
+    2 & 3 & 4 & 5\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 0 & 1\\
+    0 & 0 & 1 & 0
+    \end{array} \right)
+\]
+\[ A^{(3)} =
+    \left( \begin{array}{cccc}
+    2 & 3 & 4 & 5\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\
+    0 & 0 & 0 & 1
+    
+    \end{array} \right) 
+\]
+La matriz de permutación esta dada por $P = P_{3}P_{2}P_{1}$
+\[ P =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 0 & 1\\ 
+    0 & 0 & 1 & 0
+    \end{array} \right) 
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 0 & 0 & 1\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 1 & 0 & 0
+    \end{array} \right)
+    \left( \begin{array}{cccc}
+    0 & 0 & 0 & 1\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    1 & 0 & 0 & 0
+    \end{array} \right)
+\]
+\[ P =
+    \left( \begin{array}{cccc}
+    0 & 0 & 0 & 1\\ 
+    1 & 0 & 0 & 0\\ 
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0
+    \end{array} \right)
+\]
+La matriz triangular inferior unitario esta dada por $L = P(M_{3}P_{3}M_{2}P_{2}M_{1}P_{1})^{-1}$
+\[ L =
+    \left( \begin{array}{cccc}
+    0 & 0 & 0 & 1\\ 
+    1 & 0 & 0 & 0\\ 
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0
+    \end{array} \right)
+    \left( \begin{array}{cccc}
+    0 & 0 & 0 & 1\\
+    1 & 0 & 0 & 0\\ 
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0
+    \end{array} \right)^{-1}
+\]
+\[ L =
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1
+    \end{array} \right)
+\]
+La matriz triangular superior esta dada por  $U = ^{(3)}$
+\[ U =
+    \left( \begin{array}{cccc}
+    2 & 3 & 4 & 5\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\
+    0 & 0 & 0 & 1
+    \end{array} \right)
+\]
+
+Se tiene que comprobar $PA = LU$
+\[ PA  =  LU\]
+\[ 
+    \left( \begin{array}{cccc}
+    0 & 0 & 0 & 1\\ 
+    1 & 0 & 0 & 0\\ 
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0
+    \end{array} \right)
+    \left( \begin{array}{cccc}
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1\\ 
+    2 & 3 & 4 & 5
+    \end{array} \right) = 
+    \left( \begin{array}{cccc}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\ 
+    0 & 0 & 1 & 0\\ 
+    0 & 0 & 0 & 1
+    \end{array} \right)
+    \left( \begin{array}{cccc}
+    2 & 3 & 4 & 5\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\
+    0 & 0 & 0 & 1
+    \end{array} \right)
+\]
+\[ 
+    \left( \begin{array}{cccc}
+    2 & 3 & 4 & 5\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\
+    0 & 0 & 0 & 1
+    \end{array} \right) = 
+    \left( \begin{array}{cccc}
+    2 & 3 & 4 & 5\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\
+    0 & 0 & 0 & 1
+    \end{array} \right)
+\]

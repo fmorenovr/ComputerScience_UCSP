@@ -1,0 +1,54 @@
+%Vittorino Mandujano Cornejo
+Pruebe que para un $$ \alpha = \frac{p^T(Ax-b)}{p^TAp} $$ minimiza la función cuadrática
+$$
+\begin{array}{lcll}
+    \phi_{\alpha} & = & \phi (x - \alpha p ) \\
+                & = & \frac{1}{2}(x-\alpha p)^TA(x-\alpha p)-b^T(x-\alpha p)
+\end{array}
+$$ 
+
+\textbf{Solución:\\}
+
+Re-escribiendo la función $\phi_{\alpha}$ tenemos
+
+$$
+\phi_{\alpha} = \frac{1}{2} (x^TAx - \alpha x^TAp - \alpha p^TAx + \alpha^2 p^TAp)-b^T(x-\alpha p)
+$$
+
+Y derivamos con respecto a $\alpha$ .
+
+$$
+  \frac{d\phi_{\alpha}}{d\phi} = -\frac{1}{2} (x^TAp + p^TAx) + \alpha p^TAp + b^Tp
+$$
+
+Puesto que $A$ es una matriz simétrica, tenemos que $\alpha x^TAp = \alpha p^TAx$ y simplificamos nuestra expresión
+
+$$
+  \frac{d\phi_{\alpha}}{d\phi} = -x^TAp + \alpha p^TAp + b^Tp
+$$
+
+Igualamos $ \frac{d\phi_{\alpha}}{d\phi}$ a cero en pos de encontrar un punto crítico
+
+$$
+  \frac{d\phi_{\alpha}}{d\phi} = 0
+$$
+
+$$
+   -x^TAp + \alpha p^TAp + b^Tp = 0
+$$
+
+y despejamos el valor de $\alpha$
+
+$$ \alpha = \frac{p^T(Ax-b)}{p^TAp} $$
+
+Que es justamente la expresión que queremos saber si minimiza la función. Para poder saber si definitivamente cumple dicho propósito, debemos aplicar el criterio de la segunda derivada a $\phi_{\alpha}$
+
+$$
+  \frac{d\phi_{\alpha}}{d\phi} = -x^TAp + \alpha p^TAp + b^Tp
+$$
+
+$$
+  \frac{d^2\phi_{\alpha}}{d\phi^2} = p^TAp
+$$
+
+y puesto que $A$ es una matriz simétrica positiva, entonces $p^TAp>0$ y por lo tanto $\frac{d^2\phi_{\alpha}}{d\phi^2}>0$ en $\alpha=\frac{p^T(Ax-b)}{p^TAp}$ también, con lo que se prueba que dicho valor de $\alpha$ sí minimiza la función.

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MiniGoogle</title>
+    <link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- aplication CSS -->
+    <link rel="stylesheet" href="/assets/css/application.min.css">
+    <link rel="stylesheet" href="/assets/css/clock.css">
+    <link rel="stylesheet" href="/assets/dependencies/jquery-ui/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/dependencies/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <main id="content" class="widget-login-container" role="main">
+        <div class="row">
+          <div class="col-lg-4 col-sm-6 col-xs-10 col-lg-offset-4 col-sm-offset-3 col-xs-offset-1">
+            <h4 class="widget-login-logo animated fadeInUp">
+              <i class="fa fa-circle text-gray"></i>
+                Search Engine
+              <i class="fa fa-circle text-warning"></i>
+            </h4>
+            <section class="widget widget-login animated fadeInUp">
+              <header class="pull-center">
+                <h3>Do you feel lucky ?</h3>
+              </header>
+              <div class="widget-body">
+                <form action="/search" id="search-input" role="form" method="get" name="form" class="login-form mt-lg">
+                  <div class="form-group">
+                    <input type="text" 
+                           class="form-control"
+                           name="search-text"
+                           placeholder=""
+                           required />
+                  </div>
+                  <div class="clearfix form-group">
+                    <input type="submit" style="padding-left:15%;padding-right:15%;" class="btn btn-default btn-sm pull-left" value="Search">
+                    <a href="/about" style="padding-left:15%;padding-right:15%;" class="btn btn-default btn-sm pull-right">About</a>
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script>
+    /*document.getElementById("btnbuscar").onclick = function() {myFunction()};
+
+    function myFunction() {
+      var xhttp = new XMLHttpRequest();
+        var text = document.getElementById("search-text").value;
+        var postData = "{ \"query\": \"" + text + "\"}";
+        xhttp.open("POST", "http://localhost:8090/search", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send(postData);
+    }*/
+    </script>
+    <div class="row">
+      <div class="col-sm col-sm-push-6">
+        <div class="clearfix">
+          <p style="padding:25px;text-align:center;"> <strong>Copyright &copy; 2018 ~ MiniGoogle</strong></p>
+        </div>
+      </div>
+  </body>
+</html>

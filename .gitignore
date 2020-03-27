@@ -1,4 +1,6 @@
+build/
 .cache/
+external/
 *.pyc
 a.out
 

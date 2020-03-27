@@ -3,4 +3,4 @@ build/
 external/
 *.pyc
 a.out
-
+.ipynb_checkpoints/

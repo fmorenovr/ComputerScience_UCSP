@@ -7,18 +7,21 @@ Cursos de Maestría en Ciencia de la Computación por el [Centro de Investigaci�
     MCC101 - Algoritmos y Estructura de Datos
     MCC102 - Matematica Computacional
     MCC103 - Computación Paralela y Distribuida
+    MCC104 - Seminario de Tesis I
 
 ## Periodo 2018-II:
 
     MCC201 - Procesamiento de Imágenes y Visión Computacional
     MCC202 - Inteligencia Artificial
     MCC203 - Computación Gráfica
+    MCC204 - Seminario de Tesis II
 
 ## Periodo 2019-I:
 
-    MCC301 - Seminario de Tesis I
+    MCC301 - Topicos Especiales en Computación
+    MCC302 - Seminario de Tesis III
 
 ## Periodo 2019-II:
 
-    MCC401 - Seminario de Tesis II
+    MCC401 - Seminario de Tesis IV
 

@@ -2,6 +2,7 @@ build/
 .cache/
 external/
 *.pyc
+__pycache__
 a.out
 .ipynb_checkpoints/
 

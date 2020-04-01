@@ -4,3 +4,11 @@ external/
 *.pyc
 a.out
 .ipynb_checkpoints/
+
+*.mat
+octave-workspace
+
+features/
+output/
+images/
+split_info/

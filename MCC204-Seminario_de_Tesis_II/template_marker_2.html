@@ -1,0 +1,101 @@
+<% if ~iscell(data), all_data = {}; all_data{1} = data; else, all_data = data; end %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Map Visualization</title>
+    <style>html, body{ width: 100%; height:100%;margin: 0px;padding: 0px}
+            <% if ~exist('resolution', 'var') %>
+            .map-canvas{height:600px; width: 600px}
+            <% else %>
+            table{width:100%; height:100%}
+            .map-canvas{height:<%=resolution{1}%>; width: <%=resolution{2}%>}
+            <% end %>
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization"></script>
+    <script>
+var map, pointarray, heatmap;
+<% for jx = 1 : length(all_data) %>
+<% item = all_data{jx} %>
+var urbanData<%=item.id%> = [
+<% for ix = 1 : length(item.latitudes) %>
+{location: new google.maps.LatLng(<%=item.latitudes(ix)%>, <%=item.longitudes(ix)%>), weight: <%=item.labels(ix)%>},<% end %>
+];
+<% end %>
+function initialize() {
+  <% for jx = 1 : length(all_data) %>
+  <% item = all_data{jx} %>
+  var mapOptions<%=item.id%> = {
+    zoom: <%=item.zoom_level%>,
+    center: new google.maps.LatLng(<%=item.center_latitude%>, <%=item.center_longitude%>),
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    mapTypeControl: false,
+    panControl: false,
+    zoomControl: false,
+    streetViewControl: false
+  };
+  map<%=item.id%> = new google.maps.Map(document.getElementById('map-canvas<%=item.id%>'), mapOptions<%=item.id%>);
+  heatmap<%=item.id%> = new google.maps.visualization.HeatmapLayer({
+    data: urbanData<%=item.id%>
+  });
+
+  <% for ix = 1 : length(item.latitudes_markers) %>
+  var populationOptions = {
+      strokeColor: '#0000FF',
+      strokeOpacity: 0.8,
+      strokeWeight: 0,
+      fillColor: '#0000FF',
+      fillOpacity: 0.35,
+      map: map<%=item.id%>,
+      center: new google.maps.LatLng(<%=item.latitudes_markers(ix)%>, <%=item.longitudes_markers(ix)%>),
+      radius: 250
+   };
+   cityCircle = new google.maps.Circle(populationOptions); 
+  <% end %>
+
+  <% for ix = 1 : length(item.latitudes_markers_2) %>
+  var populationOptions = {
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 0,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35,
+      map: map<%=item.id%>,
+      center: new google.maps.LatLng(<%=item.latitudes_markers_2(ix)%>, <%=item.longitudes_markers_2(ix)%>),
+      radius: 250
+   };
+   cityCircle = new google.maps.Circle(populationOptions); 
+  <% end %>
+
+  heatmap<%=item.id%>.setMap(map<%=item.id%>);
+  <% if item.max_intensity > 0 %>
+  heatmap<%=item.id%>.set('maxIntensity', <%=item.max_intensity%>);
+  <% end %>
+  <% if isfield(item, 'radius') %>
+    heatmap<%=item.id%>.set('radius', <%=item.radius%>);
+  <% else %>
+    heatmap<%=item.id%>.set('radius', 26);
+  <% end %>
+  heatmap<%=item.id%>.set('dissipating', true);
+  <% end %>
+}
+function change_radius(){
+    radius_value = document.getElementById('gradient_txt').value;
+    <% for jx = 1 : length(all_data) %>
+    <% item = all_data{jx} %>
+    heatmap<%=item.id%>.set('radius', parseFloat(radius_value));
+    <% end %>
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+        <center><b><%=item.title%></b></center>
+        <% for jx = 1 : length(all_data) %>
+        <% item = all_data{jx} %>
+        <div class="map-canvas" id="map-canvas<%=item.id%>"></div>
+        <% end %>
+        <input type="text" id="gradient_txt" value="26"/><input type="button" onclick="change_radius();" id="gradient_btn" value="set"/>
+</body>
+</html>
+

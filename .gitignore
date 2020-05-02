@@ -12,8 +12,8 @@ octave-workspace
 
 features/
 output/
+outputs/
 images/
-split_info/
 lib/
 
 imagenet.decafnet.epoch90

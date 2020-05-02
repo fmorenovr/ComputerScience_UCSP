@@ -1,6 +1,6 @@
-# M.Sc. in Computer Science - UCSP - Arequipa - Perú
+# M.Sc. in Computer Science
 
-Cursos de Maestría en Ciencia de la Computación por el [Centro de Investigación e Innovación en Ciencia de la Computación (RICS)](http://rics.ucsp.edu.pe/) en el [Programa de Maestría en Ciencia de la Computación](http://rics.ucsp.edu.pe/mcs/index.html) de la [Universidad Católica San Pablo (UCSP)](http://ucsp.edu.pe/) desde el 2018 hasta el 2020.
+Cursos de Maestría en Ciencia de la Computación por el [Centro de Investigación e Innovación en Ciencia de la Computación (RICS)](http://rics.ucsp.edu.pe/) en el [Programa de Maestría en Ciencia de la Computación](http://rics.ucsp.edu.pe/mcs/index.html) de la [Universidad Católica San Pablo (UCSP)](http://ucsp.edu.pe/) desde el 2018 hasta el 2020. Arequipa - Perú.
 
 ## Periodo 2018-I:
 

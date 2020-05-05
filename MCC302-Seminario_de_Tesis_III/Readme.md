@@ -8,15 +8,15 @@ Modifying and running code of Urban Level recognition [Vicente Ordonez](http://w
 
 * Regression:
 
-    octave regressor.m
+      octave regressor.m
 
 * Classification:
 
-    octave classifier.m
+      octave classifier.m
 
 * Extract features for cities and metrics:
 
-    octave extract_features.m
+      octave extract_features.m
 
 ## Download dataset
 

@@ -20,7 +20,7 @@ Modifying and running code of Urban Level recognition [Vicente Ordonez](http://w
 
 ## Download dataset
 
-To download the dataset composed by streetview images from 2011, 2013 and 2019. Press [here](https://drive.google.com/open?id=1bqja-qX_y_LWrbjcxefMdPspdkrdoehC) to download them. Next, move them into `data/images/pp1/201x` for each year.
+To download the dataset composed by streetview images from 2011, 2013 and 2019. Press [here](https://drive.google.com/drive/folders/1lnnxPlNFm1iDpc8uj3q5Rsixrl1pgC43) to download them. Next, move them into `data/images/pp1/201x` for each year.
 
 ## Install libraries for Octave
 

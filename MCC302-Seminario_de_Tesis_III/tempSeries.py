@@ -4,7 +4,9 @@ import matplotlib.pyplot as plt
 
 import os
 
-from utils import verifyDir
+def verifyDir(dir_path):
+  if not os.path.exists(dir_path):
+    os.makedirs(dir_path)
 
 tempSeries_dir = "outputs/tempSeries/"
 verifyDir(tempSeries_dir)

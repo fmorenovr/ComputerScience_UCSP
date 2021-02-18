@@ -1,6 +1,6 @@
 # M.Sc. in Computer Science
 
-Cursos realizados para obtener el grado de **Maestría en Ciencia de la Computación** ofrecidos por el [Programa de Maestría en Ciencia de la Computación (PMCC)](http://rics.ucsp.edu.pe/mcs/index.html) del [Centro de Investigación e Innovación en Ciencia de la Computación (RICS)](http://rics.ucsp.edu.pe/) en la [Universidad Católica San Pablo (UCSP)](http://ucsp.edu.pe/) desde el 2018 hasta el 2020. Arequipa - Perú.
+Cursos realizados para obtener el grado de **Maestría en Ciencia de la Computación**, ofrecidos por el [Programa de Maestría en Ciencia de la Computación (PMCC)](http://rics.ucsp.edu.pe/mcs/index.html) del [Centro de Investigación e Innovación en Ciencia de la Computación (RICS)](http://rics.ucsp.edu.pe/) en la [Universidad Católica San Pablo (UCSP)](http://ucsp.edu.pe/) desde el 2018 hasta el 2020. Arequipa - Perú.
 
 ## Periodo 2018-I:
 

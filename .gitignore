@@ -16,7 +16,7 @@ outputs/
 images/
 TSNE/
 SVR_RBF/
-
+data/
 lib/
 
 imagenet.decafnet.epoch90

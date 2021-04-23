@@ -8,5 +8,5 @@ Implementation of the _ACM SIGGRAPH_ 2018 paper: "Fast Winding Numbers for Soups
 
 * Next, install run:
 
-    ./compileFile
+      ./compileFile
 

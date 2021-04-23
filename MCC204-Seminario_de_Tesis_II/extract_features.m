@@ -31,7 +31,7 @@ config.pyramid = {[1 1], [2 2]};
 for year_ind = 1 : length(data_years)
   data_year = data_years{year_ind};
 
-  config.image_path = [config.homedir '/data/images/pp1/' num2str(data_year)];
+  config.image_path = [config.homedir 'data/images/pp1/' num2str(data_year)];
   config.image_url = config.image_path
 
   config.output_features_path = [config.features_path 'features_' num2str(data_year) ];

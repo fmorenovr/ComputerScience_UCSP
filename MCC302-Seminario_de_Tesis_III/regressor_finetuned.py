@@ -45,10 +45,10 @@ verifyDevices("gpu")
 
 batch_s, name_loss, opt_name, opt_lr = 128, "mse", "adam", 0.00099
 
-years = ["2011"]#, "2013", "2019"]
-metrics = ["safety"]#, "wealthy", "uniquely"]
-cities = ["Boston"]#, "New York City"]
-delta = [0.5]
+years = ["2011", "2013", "2019"]
+metrics = ["safety", "wealthy", "uniquely"]
+cities = ["Boston", "New York City"]
+delta = [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.5]
 
 C = [1]#np.logspace(6, -6, 13)
 

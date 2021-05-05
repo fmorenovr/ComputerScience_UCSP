@@ -38,7 +38,7 @@ features = ['gist', "vgg16_places", 'vgg16_gap_places', 'vgg16', 'vgg16_gap']#, 
 
 methods = ['RidgeClassifier', 'LogisticRegression', 'LinearSVC', 'Tree', "Forest", "Bayes", "Ada", "Extra", "GBDT", "HistGBDT"]#, 'Perceptron', 'MLP', 'SGD', 'SVC', 'NuSVC']
 
-methods = ['RidgeClassifier', 'LogisticRegression', 'LinearSVC'] if methods_type == "linear" else ['Tree', "Forest", "Bayes", "Ada", "Extra", "GBDT", "HistGBDT"]
+methods = ['RidgeClassifier', 'LogisticRegression', 'LinearSVC'] if methods_type == "linear" else ['Tree', "Forest", "Bayes", "Ada", "Extra", "GBDT"]
 
 stand = ['none']#, 'standard']
 reduct = ['none']#, 'PCA']

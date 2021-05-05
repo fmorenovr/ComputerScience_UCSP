@@ -40,7 +40,7 @@ colors = ['aqua', 'darkorange', 'cornflowerblue', 'navy', 'deeppink', 'red', 'bl
 
 methods = ['RidgeClassifier', 'LogisticRegression', 'LinearSVC', 'Tree', "Forest", "Bayes", "Ada", "Extra", "GBDT", "HistGBDT"]#, 'Perceptron', 'MLP', 'SGD', 'SVC', 'NuSVC']
 
-methods = ['RidgeClassifier', 'LogisticRegression', 'LinearSVC'] if methods_type == "linear" else ['Tree', "Forest", "Bayes", "Ada", "Extra", "GBDT", "HistGBDT"]
+methods = ['RidgeClassifier', 'LogisticRegression', 'LinearSVC'] if methods_type == "linear" else ['Tree', "Forest", "Bayes", "Ada", "Extra", "GBDT"]
 
 stand = ['none']#, 'standard']
 reduct = ['none']#, 'PCA']

@@ -24,7 +24,7 @@ from utils.preprocessing import getFeatures
 years = ["2011", "2013", "2019"]
 metrics = ["safety", "wealthy", "uniquely"]
 cities = ["Boston", "New York City"]
-delta = [0.5]
+delta = [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.5]
 
 C = np.logspace(7, -7, 15)
 
@@ -40,7 +40,7 @@ colors = ['aqua', 'darkorange', 'cornflowerblue', 'navy', 'deeppink', 'red', 'bl
 
 methods = ['Lasso', 'Ridge', 'LinearRegression', 'LinearSVR', 'Tree', "Forest", "Bayes", "Ada", "Extra", "GBDT", "HistGBDT"]#, 'SVR', 'MLP', 'SGD', 'NuSVR']
 
-methods = ['Lasso', 'Ridge', 'LinearRegression', 'LinearSVR'] if methods_type == "linear" else ['Tree', "Forest", "Bayes", "Ada", "Extra", "GBDT", "HistGBDT"]
+methods = ['Lasso', 'Ridge', 'LinearRegression', 'LinearSVR'] if methods_type == "linear" else ['Tree', "Forest", "Bayes", "Ada", "Extra", "GBDT"]
 
 stand = ['none']#, 'standard']
 reduct = ['none']#, 'PCA']

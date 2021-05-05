@@ -34,8 +34,6 @@ for year_ind = 1 : length(data_years)
   config.image_path = [config.homedir 'data/images/pp1/' num2str(data_year)];
   config.image_url = config.image_path
 
-  config.output_features_path = [config.features_path 'features_' num2str(data_year) ];
-
   % Load data from the Place Pulse dataset.
   urban = UrbanPerception(config.urban_data_file, config.urban_data_file_type, data_year);
 
@@ -57,11 +55,16 @@ for year_ind = 1 : length(data_years)
       % GIST
       gist_feature_matrix = double(VisionImage.ComputeGistFeatures(data_city));
 
+      save([config.features_path 'gist_'  num2str(data_year) '_' city '_' metric '.mat'], 'gist_feature_matrix', 'image_list', 'scores', '-v7');
+
+
+
       % FISHER
       gmm_codebook = VisionImage.BuildSiftCodebookGmm(image_list(1:config.kCodebookSizeGmm), config.kCodebookSizeGmm,  config.kCodebookSizeGmm*config.lengthCodeBookGmm);
 
       fisher_feature_matrix = VisionImage.ComputeSiftFeatures(data_city, 'fisher', config.pyramid, gmm_codebook);
-      save([config.output_features_path '_' city '_' metric '.mat'], 'gist_feature_matrix', 'fisher_feature_matrix', 'image_list', 'scores', '-v7');
+      
+      save([config.features_path 'fisher_'  num2str(data_year) '_' city '_' metric '.mat'], 'fisher_feature_matrix', 'gmm_codebook', 'image_list', 'scores', '-v7');
     end
   end
 end

@@ -13,6 +13,7 @@ octave-workspace
 features/
 output/
 outputs/
+models/
 images/
 TSNE/
 SVR_RBF/

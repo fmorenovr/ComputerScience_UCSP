@@ -12,6 +12,7 @@ octave-workspace
 
 features/
 output/
+data/
 outputs/
 models/
 images/

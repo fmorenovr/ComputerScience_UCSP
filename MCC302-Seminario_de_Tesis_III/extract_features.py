@@ -101,6 +101,7 @@ for model_name in models:
         y_data = pandas.DataFrame(y, columns=["y"])
         id_data = pandas.DataFrame(images_list, columns=["ID"])
         data = pandas.concat([id_data, X_data, y_data], axis=1)
+        data.sort_values(by="y", ascending=False, inplace=True)
         data.to_csv(name_dir+"_"+year+"_"+city+"_"+metric+".csv", index=False)
   
   clearSession()

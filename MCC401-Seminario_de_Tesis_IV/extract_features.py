@@ -3,16 +3,16 @@
 # -*- coding: utf-8 -*-
 # encoding: utf-8
 
-from utils.detectors import getGarbageDetections, getGarbageDetector
-from utils.detectors import getGraffitiDetections, getGraffitiDetector
+#from utils.detectors import getGarbageDetections, getGarbageDetector
+#from utils.detectors import getGraffitiDetections, getGraffitiDetector
 
 images_to_test = 'data/images/pp1/2011/Boston/'
 
-model_graph = getGarbageDetector()
-getGarbageDetections(images_to_test, model_graph, output_dir = 'features/garbage/')
+#model_graph = getGarbageDetector()
+#getGarbageDetections(images_to_test, model_graph, output_dir = 'features/garbage/')
 
-model_graph = getGraffitiDetector()
-getGraffitiDetections(images_to_test, model_graph, output_dir = 'features/graffiti/')
+#model_graph = getGraffitiDetector()
+#getGraffitiDetections(images_to_test, model_graph, output_dir = 'features/graffiti/')
 
 from utils.sceneparsers import getSceneParser, getSceneComponents
 

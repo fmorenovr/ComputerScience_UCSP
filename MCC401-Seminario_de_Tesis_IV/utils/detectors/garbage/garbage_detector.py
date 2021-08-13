@@ -123,7 +123,7 @@ def getGarbageDetections(input_args, detection_graph, output_dir='', max_boxes=1
         data_objects = data_objects.append(detections_obj, ignore_index=True)
         print('***********************')
         pbar.update(1)
-      data_objects.to_csv(output_dir+'object_detected.csv', index=False)
+      data_objects.to_csv(output_dir+'objects_detected.csv', index=False)
 
 if __name__ == '__main__':
   images_to_test = 'data/images/pp1/2011/'

@@ -507,7 +507,7 @@ def batch_img(model, imdir, outdir="", reverse=False, shuffle=False, min_thres=.
 
         fig.savefig(outdir+file_name, bbox_inches='tight', pad_inches = 0)
 
-    data_objects.to_csv(outdir+'object_detected.csv', index=False)
+    data_objects.to_csv(outdir+'objects_detected.csv', index=False)
 ############################################################
 #  Training
 ############################################################

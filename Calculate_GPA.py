@@ -35,9 +35,9 @@ courses_list = [
 # 2018-II
 ("Imágenes", 4, 12.75), ("IA", 4, 14.02), ("Gráficos", 4, 14.60), ("Seminario de Tesis II", 4, 19),
 # 2019-I
-("Seminarios Avanzados de Computación", 4, 15), ("Seminario de Tesis III", 12, 19),
+("Seminarios Avanzados de Computación", 4, 14), ("Seminario de Tesis III", 12, 15),
 # 2019-II
-("Seminario de Tesis IV", 16, 19),
+("Seminario de Tesis IV", 16, 16),
 ]
 
 GPA, AVG = getGPA(courses_list, False)

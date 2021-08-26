@@ -16,6 +16,8 @@ from utils import verifyDir
 
 output_dir_ = "to_test/"
 
+output_dir_pp2 = "to_test_pp2/"
+
 delta = [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.5]
 
 top_elements = 10
@@ -30,87 +32,68 @@ for delta_i in delta:
   log_psp = load(output_dir+'LogisticRegression_psp.joblib')
   #print("The best parameters are %s with a score of %0.2f" % (data.best_params_, data.best_score_))
 
-  data_gap = load(output_dir + "dataset_gap.joblib")
-  linear_gap = load(output_dir +'LinearSVC_gap.joblib')
-  rbf_gap = load(output_dir +'RBF_gap.joblib')
-  log_gap = load(output_dir+'LogisticRegression_gap.joblib')
+  data_psp_ = load(output_dir_pp2 + "dataset_psp.joblib")
+  rbf_psp_ = load(output_dir_pp2 +'RBF_psp.joblib')
+  linear_psp_ = load(output_dir_pp2 +'LinearSVC_psp.joblib')
+  log_psp_ = load(output_dir_pp2+'LogisticRegression_psp.joblib')
+
   
-  data_gap_places = load(output_dir + "dataset_gap_places.joblib")
-  linear_gap_places = load(output_dir +'LinearSVC_gap_places.joblib')
-  rbf_gap_places = load(output_dir +'RBF_gap_places.joblib')
-  log_gap_places = load(output_dir+'LogisticRegression_gap_places.joblib')
-
-  models = {'rbf_gap':rbf_gap, 'rbf_psp': rbf_psp, 'rbf_gap_places': rbf_gap_places,
-            'svc_gap': linear_gap, 'svc_psp':linear_psp, 'svc_gap_places': linear_gap_places,
-            'log_gap':log_gap, 'log_psp':log_psp, 'log_gap_places': log_gap_places}
+  models = {'rbf_psp': rbf_psp, 'svc_psp':linear_psp, 'log_psp':log_psp}
   preds = {}
-
-  xtrain_gap, xtest_gap, ytrain_gap, ytest_gap = data_gap['xtrain_val'], data_gap['xtest'], data_gap['ytrain_val'], data_gap['ytest']
+  
+  models_pp2 = {'rbf_psp': rbf_psp_pp2, 'svc_psp':linear_psp_pp2, 'log_psp':log_psp_pp2}
+  preds_pp2 = {}
 
   xtrain_psp, xtest_psp, ytrain_psp, ytest_psp = data_psp['xtrain_val'], data_psp['xtest'], data_psp['ytrain_val'], data_psp['ytest']
+
+  xtrain_psp_pp2, xtest_psp_pp2, ytrain_psp_pp2, ytest_psp_pp2 = data_psp_pp2['xtrain_val'], data_psp_pp2['xtest'], data_psp_pp2['ytrain_val'], data_psp_pp2['ytest']
   
-  xtrain_gap_places, xtest_gap_places, ytrain_gap_places, ytest_gap_places = data_gap_places['xtrain_val'], data_gap_places['xtest'], data_gap_places['ytrain_val'], data_gap_places['ytest']
-  #import numpy as np
-  #print(np.sum(xtest_psp["ID"].values == ytest_gap["ID"].values))
   model_name = "log"
 
-  preds[model_name+"_gap"] = models[model_name+'_gap'].predict(xtest_gap.iloc[:,1:].to_numpy(copy=True))
   preds[model_name+"_psp"] = models[model_name+'_psp'].predict(xtest_psp.iloc[:,1:].to_numpy(copy=True))
-  preds[model_name+"_gap_places"] = models[model_name+'_gap_places'].predict(xtest_gap_places.iloc[:,1:].to_numpy(copy=True))
 
-  y_eq_gap = ytest_gap["class"].values == preds[model_name+"_gap"]
-  y_eq_psp = ytest_gap["class"].values == preds[model_name+"_psp"]
-  y_eq_gap_places = ytest_gap["class"].values == preds[model_name+"_gap_places"]
+  preds_pp2[model_name+"_psp"] = models_pp2[model_name+'_psp'].predict(xtest_psp_pp2.iloc[:,1:].to_numpy(copy=True))
+
+  y_eq_psp = ytest_psp["class"].values == preds[model_name+"_psp"]
+  y_eq_psp_pp2 = ytest_psp_pp2["class"].values == preds_pp2[model_name+"_psp"]
 
   y_eq_pred = [a and b for a, b in zip(y_eq_gap, y_eq_psp)]
 
   d_class={
-           "ID":xtest_gap["ID"].values,
-           "y_scores": ytest_gap["y"].values,
-           "y_test": ytest_gap["class"].values,
-           "y_pred_gap": preds[model_name+"_gap"],
+           "ID":xtest_psp["ID"].values,
+           "y_scores": ytest_psp["safety"].values,
+           "y_test": ytest_psp["class"].values,
            "y_pred_psp": preds[model_name+"_psp"],
-           "y_pred_gap_places": preds[model_name+"_gap_places"],
-           "y_eq_gap": y_eq_gap,
            "y_eq_psp": y_eq_psp,
-           "y_eq_pred": y_eq_pred,
            }
 
   if model_name=='log':
-    y_probs_gap = models[model_name+'_gap'].predict_proba(xtest_gap.iloc[:,1:].to_numpy(copy=True))
     y_probs_psp = models[model_name+'_psp'].predict_proba(xtest_psp.iloc[:,1:].to_numpy(copy=True))
-    y_probs_gap_places = models[model_name+'_gap_places'].predict_proba(xtest_gap_places.iloc[:,1:].to_numpy(copy=True))
 
-    y_probs_gap = [b for a,b in y_probs_gap]
     y_probs_psp = [b for a,b in y_probs_psp]
-    y_probs_gap_places = [b for a,b in y_probs_gap_places]
     
-    d_class["y_prob_gap"] = y_probs_gap
     d_class["y_prob_psp"] = y_probs_psp
-    d_class["y_prob_gap_places"] = y_probs_gap_places
 
   data_summary = pd.DataFrame(data=d_class)
   #print(data_summary)
   #print(data_summary.sum())
   # filtering per assertion
 
-  confusion_matrix_gap = pd.crosstab(data_summary["y_test"], data_summary["y_pred_gap"], rownames=["test"], colnames=["pred"])
   confusion_matrix_psp = pd.crosstab(data_summary["y_test"], data_summary["y_pred_psp"], rownames=["test"], colnames=["pred"])
-  confusion_matrix_gap_places = pd.crosstab(data_summary["y_test"], data_summary["y_pred_gap_places"], rownames=["test"], colnames=["pred"])
 
   fig = plt.figure(figsize=(16, 8))
   #sns.set_theme(style="whitegrid")
-  plt.subplot(1, 3, 1)
-  plt.title("Confusion Matrix GAP")
-  sns.heatmap(confusion_matrix_gap, annot=True, fmt="d")
+#  plt.subplot(1, 3, 1)
+#  plt.title("Confusion Matrix GAP")
+#  sns.heatmap(confusion_matrix_gap, annot=True, fmt="d")
 
   plt.subplot(1, 3, 2)
   plt.title("Confusion Matrix PSP")
   sns.heatmap(confusion_matrix_psp, annot=True, fmt="d")
 
-  plt.subplot(1, 3, 3)
-  plt.title("Confusion Matrix GAP Places")
-  sns.heatmap(confusion_matrix_gap_places, annot=True, fmt="d")
+#  plt.subplot(1, 3, 3)
+#  plt.title("Confusion Matrix GAP Places")
+#  sns.heatmap(confusion_matrix_gap_places, annot=True, fmt="d")
 
   plt.savefig(output_dir+"confusion_matrix_"+model_name+".png", bbox_inches='tight', pad_inches = 0)
   plt.clf()
@@ -271,9 +254,7 @@ for delta_i in delta:
   f_summary.write('<td><b>Class</b></td>');
   f_summary.write('<td><b>Score</b></td>');
   if model_name=='log':
-    f_summary.write('<td><b>Prob Gap</b></td>');
     f_summary.write('<td><b>Prob PSP</b></td>');
-    f_summary.write('<td><b>Prob GAP Places</b></td>');
   for i in range(10):
     f_summary.write('<td><b>Component {}</b></td>'.format(i+1));
   f_summary.write('</tr>');
@@ -297,9 +278,7 @@ for delta_i in delta:
     f_summary.write('<td>{}</td>'.format(row_img["y_test"].values[0]));
     f_summary.write('<td>{}</td>'.format(row_img["y_scores"].values[0]));
     if model_name=='log':
-      f_summary.write('<td>{}</td>'.format(row_img["y_prob_gap"].values[0]));
       f_summary.write('<td>{}</td>'.format(row_img["y_prob_psp"].values[0]));
-      f_summary.write('<td>{}</td>'.format(row_img["y_prob_gap_places"].values[0]));
     for i in range(9,-1,-1):
       f_summary.write('<td><b>{} ({})</b></td>'.format(top_10_img[i][1], columns_name[top_10_img[i][0]]));
   #  for num in data_results[f][m]:
@@ -384,7 +363,7 @@ for delta_i in delta:
       import lime
   from lime import lime_tabular
 
-  explainer  = lime_tabular.LimeTabularExplainer(xtrain_psp.iloc[:,1:].to_numpy(copy=True), mode='classification', training_labels=ytrain_gap["class"].values, class_names =["unsafe", "safe"], feature_names=importance_label, discretize_continuous=False, verbose=True)
+  explainer  = lime_tabular.LimeTabularExplainer(xtrain_psp.iloc[:,1:].to_numpy(copy=True), mode='classification', training_labels=ytrain_psp["class"].values, class_names =["unsafe", "safe"], feature_names=importance_label, discretize_continuous=False, verbose=True)
 
   if model_name=='log':
     probs = models[model_name+'_psp'].predict_proba

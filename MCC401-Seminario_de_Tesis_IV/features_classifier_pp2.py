@@ -23,17 +23,14 @@ from matplotlib.colors import Normalize
 
 input_dir = "features/"
 
-output_dir_ = "to_test/"
+output_dir_ = "to_test_pp2/"
 
-psp_df = pd.read_csv(input_dir+'objects_segmented.csv')
-psp_df["ID"] = psp_df["ID"].apply(lambda x: x.split("_")[1])
-#print(psp_df)
+psp_df = pd.read_csv(input_dir+'Boston_deeplab_xception.csv', sep=";")
 
-y_df = pd.read_csv(input_dir+'labels.csv', sep=";")
-labels_df = y_df[["ID", "safety"]].copy()
-labels_df["ID"] = labels_df["ID"].apply(str)
+psp_df.drop(columns=["no class", "uniquely", "wealthy"], inplace=True)
 
-# data_df = psp_df.merge(labels_df, on="ID", how="left")
+labels_df = psp_df.iloc[:,[0,-1]]
+psp_df.drop(columns=["safety"], inplace=True)
 
 C = np.logspace(5, -5, 11)
 

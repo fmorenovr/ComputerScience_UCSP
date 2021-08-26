@@ -16,9 +16,9 @@ graffiti_dir = "outputs/detector/graffiti/"
 objects_dir = "outputs/detector/objects/"
 
 dirs_list = [
-             [garbage_dir, "garbage_detected.csv", "garbage_segmented.csv"],
+             [garbage_dir, "objects_detected.csv", "garbage_segmented.csv"],
              [objects_dir, "objects_detected.csv", "objects_segmented.csv"]
-             [graffiti_dir, "graffiti_detected.csv", "graffiti_segmented.csv"]
+             [graffiti_dir, "objects_detected.csv", "graffiti_segmented.csv"]
              ]
 
 for cur_dir, summary_file, output_file in dirs_list:
